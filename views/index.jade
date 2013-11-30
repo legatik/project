@@ -2,6 +2,66 @@ extends layout
 
 
 block content
-  //!= js('test')
+  != js('pm')
+  != css('style-search')
   .container
     include navigation
+    #pm-container
+      #pm-header
+        input#pm-dish-input(type="text")
+        lable Введите название блюда
+        select
+          option Русская
+          option Новая русская
+        lable Тип кухни
+        #pm-species
+          input(type="checkbox")
+          lable Закуски
+          input(type="checkbox")
+          lable Салаты
+          input(type="checkbox")
+          lable Супы
+          input(type="checkbox")
+          lable Вторые блюда
+          input(type="checkbox")
+          lable Выпечка
+          input(type="checkbox")
+          lable Десерты
+          input(type="checkbox")
+          lable Напитки
+      #pm-body
+        #pm-ing-container
+          h5 Ингридиенты
+          ul#pm-ing-ul
+            li.pm-ing-li test ing1
+            li.pm-ing-li test ing2
+        #pm-ing-input-cont
+          input#pm-dish-ing(type="text")
+          button Добавить ингридиент
+        #pm-more-options
+          table
+            tr
+              td(width="265px",height="30px")
+                input(type="number")
+                span Веремя приготовления
+              td(height="30px")
+                span Популярность
+                input(type="number")
+            tr
+              td(height="30px")
+                input(type="number")
+                span Сложность
+              td(height="30px")
+                span Цена
+                input(style="float:right")(type="number")
+            tr
+              td(height="30px")
+                input(type="number")
+                span Кремлевская диета
+      button#start-search-btn Начать поиск
+
+//script#sMContTemplate(type="text/template")
+
+        
+       
+    

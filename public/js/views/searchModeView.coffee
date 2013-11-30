@@ -11,7 +11,8 @@ define [
 #    template: JST["admin/public/templates/acl"]
 
     initialize:(@options) ->
-      console.log "index"
+      $ = jQuery
+      console.log "index", ($('#sMContTemplate').html())
       
 #    events:
 #      "change .li-method" : "checkApi",
@@ -19,6 +20,5 @@ define [
       
 
     render: ->
-      console.log "render"
       @
 
