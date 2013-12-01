@@ -24,4 +24,10 @@ dish = new Schema
 	wish:String
 	
 Model = mongoose.model 'Dish', dish
+	
+Model.createThis = () ->
+  @create {title: 'Прохерованный дебил'}, () ->
+    console.log('Create', arguments)
+	
+
 module.exports = Model
