@@ -2,20 +2,30 @@ db = require '../lib/db'
 _ = require 'underscore'
 fs = require 'fs'
 
-{Dish} = db.models
+{Dish, Product} = db.models
 
 exports.boot = (app) ->
-	app.get '/title_complete',  (req, res) ->
-#	  Dish.createThis()
-	  console.log('HELLOOOO TIIIITTTLLLEEEE', req.query)
-	  
-	  find = new RegExp(req.query.title, "i")
-#	  find = '/'+req.query.title+'/'
-	  
-	  dish = Dish.find {title: find}, (err, dishes) ->
-	    dishes = dishes.map (dish) ->
-	      dish.title
-	    res.send {err: err, result: dishes}  
+  app.get '/title_complete',  (req, res) ->
+  #	  Dish.createThis()
+    console.log('HELLOOOO TIIIITTTLLLEEEE', req.query)
+    find = new RegExp(req.query.title, "i")
+  #	  find = '/'+req.query.title+'/'
+    dish = Dish.find {title: find}, (err, dishes) ->
+      dishes = dishes.map (dish) ->
+        dish.title
+      res.send {err: err, result: dishes}  
+
+
+  app.get '/ing_complete',  (req, res) ->
+    console.log "HEARE"
+    Product.find {}, (err, arrProducts) ->
+      console.log("err",err)
+      arrTitle = arrProducts.map (product) ->
+        product.title
+      console.log arrTitle
+      res.send {err: err, result: arrTitle}
+
+
 	  
 #		project = _.extend req.body,
 #			owner: req.user._id

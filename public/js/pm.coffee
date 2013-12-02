@@ -5,37 +5,35 @@ $(document).ready () ->
 
     setTimeOutDish = false
 #/^sd/
-      
-    $("#pm-dish-input").on "keypress", (e) =>
-      setTimeOutDish && clearTimeout setTimeOutDish
-      setTimeOutDish  = setTimeout (->
-          autoCompliteDish()
-          console.log "setTimeOutDish",setTimeOutDish
-          $.ajax
-            type: "GET"
-            url: "/search/title_complete"
-            data: {title: $(e.target).val()}
-            success: (res) ->
-              autoCompliteDish res.result     
-          
-          
-        ), 1000
-            
+#      
 #    $("#pm-dish-ing").on "keypress", (e) =>
-#      setTimeOutDish && clearTimeout(setTimeOutDish)
-#      setTimeOutDish  = setTimeout (->
-#          autoCompliteIng()
-#          console.log "setTimeOutDish",setTimeOutDish
-#        ), 500
-
+#      setTimeOutDish && clearTimeout setTimeOutDish
+#      
+      
+      
+    autoCompliteDish = (val) ->
+      $("#pm-dish-input").autocomplete
+        source: (request, response) ->
+          $.ajax
+            url: "/search/title_complete"
+            data: {title: $("#pm-dish-input").val()}
+            success: (data) ->
+              console.log data
+              response $.map(data.result, (item) ->
+                console.log("sss",item)
+                label: item
+              )
+        minLength: 2
     
 
-    autoCompliteDish = (dishes) ->
-      console.log("autoCompliteDish", dishes)
-      $("#pm-dish-input").autocomplete({
-        source: dishes
-      });
-
     autoCompliteIng = (a) ->
-      console.log("autoCompliteIng")
-
+      $.ajax
+        url: "/search/ing_complete"
+        success: (data) ->
+          console.log "data",data.result
+          $("#pm-dish-ing").autocomplete({source:data.result, minLength: 2})
+          
+          
+    autoCompliteDish()
+    autoCompliteIng()
+    

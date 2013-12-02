@@ -10,4 +10,9 @@ product = new Schema
   id:String
   
 Model = mongoose.model 'Product', product
+
+Model.createThis = () ->
+  @create {title: 'пупок23'}, () ->
+    console.log('Create', arguments)
+
 module.exports = Model

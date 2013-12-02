@@ -15,7 +15,7 @@ passport = require 'passport'
 RedisStore = require('connect-redis')(express)
 app = express()
 
-{User} = db.models
+{User,Product} = db.models
 
 app.configure () ->
 	app.set "port", process.env.PORT or 3000
@@ -48,6 +48,8 @@ app.namespace '/search', require('./controllers/search').boot.bind @, app
 #app.namespace '/user', require('./controllers/user').boot.bind @, app
 #app.namespace '/projects', require('./controllers/projects').boot.bind @, app
 #app.namespace '/files', require('./controllers/files').boot.bind @, app
+
+#Product.createThis()
 
 app.get '/', (req, res) ->
 	res.render 'index', {title: 'Onlile JS Compiller', user: req.user, loc:'home'}
