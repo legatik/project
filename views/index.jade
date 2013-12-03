@@ -6,16 +6,16 @@ block content
   != css('style-search')
   .container
     include navigation
-    #pm-container
+    form#pm-container
       #pm-header
-        input#pm-dish-input(type="text")
+        input#pm-dish-input(type="text",name="test")
         lable Введите название блюда
         select
           option Русская
           option Новая русская
         lable Тип кухни
         #pm-species
-          input(type="checkbox")
+          input(type="checkbox",name="test2")
           lable Закуски
           input(type="checkbox")
           lable Салаты

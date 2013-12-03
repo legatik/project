@@ -34,6 +34,11 @@ $(document).ready () ->
           $("#pm-dish-ing").autocomplete({source:data.result, minLength: 2})
           
           
+    $("#start-search-btn").on "click", (e) =>
+      e.preventDefault()
+      console.log "serialize", $("#pm-container").serialize()
+    
+          
     autoCompliteDish()
     autoCompliteIng()
     
