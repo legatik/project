@@ -36,8 +36,15 @@ $(document).ready () ->
           
     $("#start-search-btn").on "click", (e) =>
       e.preventDefault()
-      console.log "serialize", $("#pm-container").serialize()
-    
+      collectDataSearch()
+      
+    collectDataSearch = () ->
+      
+      searchDatasent = 
+        title: $("#pm-dish-input")
+      
+      
+      
           
     autoCompliteDish()
     autoCompliteIng()
