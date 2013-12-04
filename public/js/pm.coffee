@@ -39,10 +39,38 @@ $(document).ready () ->
       collectDataSearch()
       
     collectDataSearch = () ->
+      #species
+      speciesArr = $("#pm-species > input[type='checkbox']:checked")
+      speciesSend = []
+      i = 0
+      while i < speciesArr.length
+        speciesSend.push($(speciesArr[i]).attr("name"))
+        i++
+        
+      # ing
+
+      ingArr = $(".pm-ing-li")
+      ingSend = []
+      i = 0
+      while i < ingArr.length
+        ingSend.push($(ingArr[i]).text())
+        i++
+      
+      #todo добавить массив ингридиетнов
       
       searchDatasent = 
-        title: $("#pm-dish-input")
-      
+        title        : $("#pm-dish-input").val()
+        kitchen      : $("#selectKitchen").val()
+        species      : speciesSend
+        ing          : ingSend
+        time_cooking : $("#time-cooke").val()
+        cost         : $("#cost").val()
+        complexity   : $("#complexity").val()
+        rating       : $("#rating").val()
+        kremling_diet : $("#kremling_diet").val()
+
+      console.log "searchDatasent",searchDatasent
+
       
       
           

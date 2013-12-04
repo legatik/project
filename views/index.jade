@@ -10,24 +10,24 @@ block content
       #pm-header
         input#pm-dish-input(type="text",name="test")
         lable Введите название блюда
-        select
+        select#selectKitchen
           option Русская
           option Новая русская
         lable Тип кухни
         #pm-species
-          input(type="checkbox",name="test2")
+          input(type="checkbox", name="Закуски")
           lable Закуски
-          input(type="checkbox")
+          input(type="checkbox", name="Салаты")
           lable Салаты
-          input(type="checkbox")
+          input(type="checkbox", name="Супы")
           lable Супы
-          input(type="checkbox")
+          input(type="checkbox", name="Вторые блюда")
           lable Вторые блюда
-          input(type="checkbox")
+          input(type="checkbox", name="Выпечка")
           lable Выпечка
-          input(type="checkbox")
+          input(type="checkbox", name="Десерты")
           lable Десерты
-          input(type="checkbox")
+          input(type="checkbox", name="Напитки")
           lable Напитки
       #pm-body
         #pm-ing-container
@@ -42,21 +42,21 @@ block content
           table
             tr
               td(width="265px",height="30px")
-                input(type="number")
+                input#time-cooke(type="number")
                 span Веремя приготовления
               td(height="30px")
                 span Популярность
-                input(type="number")
+                input#rating(type="number")
             tr
               td(height="30px")
-                input(type="number")
+                input#complexity(type="number")
                 span Сложность
               td(height="30px")
                 span Цена
-                input(style="float:right")(type="number")
+                input#cost(style="float:right")(type="number")
             tr
               td(height="30px")
-                input(type="number")
+                input#kremling_diet(type="number")
                 span Кремлевская диета
       button#start-search-btn Начать поиск
 
