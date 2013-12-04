@@ -12,9 +12,13 @@ $(document).ready () ->
       e.preventDefault()
       addIng()
 
-    $(".del-ing").on "click", (e) =>
-      $($(e.target).parent()).remove()
 
+    addEventRemoveIng = () ->
+      $(".del-ing").unbind("click")
+      $(".del-ing").on "click", (e) =>
+        $($(e.target).parent()).remove()
+  
+      
     autoCompliteDish = (val) ->
       $("#pm-dish-input").autocomplete
         source: (request, response) ->
@@ -33,7 +37,7 @@ $(document).ready () ->
     autoCompliteIng = (a) ->
       console.log("HEARE")
       $.ajax
-        url: "/search/ing_complete"
+        url: "/search/ing_autcomplete"
         success: (data) ->
           console.log "data",data.result
           $("#pm-dish-ing").autocomplete({source:data.result, minLength: 2})
@@ -45,7 +49,10 @@ $(document).ready () ->
       if !newIng then return
       newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing'>x</div></li>"
       $("#pm-ing-ul").append(newIngEl)
-      
+      addEventRemoveIng()
+      $("#pm-dish-ing").val("")
+      $("#pm-dish-ing").focus()
+
       
     collectDataSearch = () ->
       #species

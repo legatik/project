@@ -31,8 +31,8 @@ block content
           lable Напитки
       #pm-body
         #pm-ing-container
-          h5 Ингридиенты
-          ul#pm-ing-ul
+          h4 Ингридиенты
+          ol#pm-ing-ul
             li 
               span.pm-ing test ing1
               div.del-ing x
@@ -45,23 +45,29 @@ block content
         #pm-more-options
           table
             tr
-              td(width="265px",height="30px")
-                input#time-cooke(type="number")
+              td(width="265px",height="34px")
+                input#time-cooke(type="number", min=0)
                 span Веремя приготовления
-              td(height="30px")
+              td(height="34px")
                 span Популярность
-                input#rating(type="number")
+                input#rating(type="number", min=0)
             tr
-              td(height="30px")
-                input#complexity(type="number")
-                span Сложность
-              td(height="30px")
-                span Цена
-                input#cost(style="float:right")(type="number")
-            tr
-              td(height="30px")
-                input#kremling_diet(type="number")
+              td(height="34px")
+                input#kremling_diet(type="number", min=0)
                 span Кремлевская диета
+                
+              td(height="34px")
+                span(style="width: 92px;display: inline-block;") Сложность
+                input#complexity(type="number", min=0, max=10)
+            tr
+              td(height="34px")
+                select#cost
+                  option 
+                  option Низкая
+                  option Средняя
+                  option Высокая
+                span Цена
+
       button#start-search-btn Начать поиск
 
 //script#sMContTemplate(type="text/template")
