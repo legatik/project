@@ -2,15 +2,19 @@ $(document).ready () ->
   require [
     "cs!/../js/views/searchModeView"
   ], (TestView) ->
+      
 
-    setTimeOutDish = false
-#/^sd/
-#      
-#    $("#pm-dish-ing").on "keypress", (e) =>
-#      setTimeOutDish && clearTimeout setTimeOutDish
-#      
-      
-      
+    $("#start-search-btn").on "click", (e) =>
+      e.preventDefault()
+      collectDataSearch()
+
+    $("#add-ing").on "click", (e) =>
+      e.preventDefault()
+      addIng()
+
+    $(".del-ing").on "click", (e) =>
+      $($(e.target).parent()).remove()
+
     autoCompliteDish = (val) ->
       $("#pm-dish-input").autocomplete
         source: (request, response) ->
@@ -27,16 +31,21 @@ $(document).ready () ->
     
 
     autoCompliteIng = (a) ->
+      console.log("HEARE")
       $.ajax
         url: "/search/ing_complete"
         success: (data) ->
           console.log "data",data.result
           $("#pm-dish-ing").autocomplete({source:data.result, minLength: 2})
           
-          
-    $("#start-search-btn").on "click", (e) =>
-      e.preventDefault()
-      collectDataSearch()
+      
+      
+    addIng = () ->
+      newIng = $("#pm-dish-ing").val()
+      if !newIng then return
+      newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing'>x</div></li>"
+      $("#pm-ing-ul").append(newIngEl)
+      
       
     collectDataSearch = () ->
       #species
@@ -49,7 +58,7 @@ $(document).ready () ->
         
       # ing
 
-      ingArr = $(".pm-ing-li")
+      ingArr = $(".pm-ing")
       ingSend = []
       i = 0
       while i < ingArr.length
