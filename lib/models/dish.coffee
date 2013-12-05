@@ -16,12 +16,15 @@ dish = new Schema
 	id: String
 	dateAdding: Date
 	comments:[{type: ObjectId, ref: 'Comment'}]
-	kitchen:Number
+	kitchen:String
 	serving:Number
 	complexity:Number
 	kremling_diet:Number
 	fact:String
 	wish:String
+	key : String
+	description: String
+	ingredients: Array
 	
 Model = mongoose.model 'Dish', dish
 	
