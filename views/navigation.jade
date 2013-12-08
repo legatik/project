@@ -1,25 +1,33 @@
 .navbar.navbar-inverse
-	a.navbar-brand(href="#") Projects
+	a.navbar-brand(href="/") Мировая кухня
 	ul.nav.navbar-nav
-		if (loc=='home')
+		if (loc=='searchIng')
 			li.active
-				a(href="/") Home
+				a(href="/search/ing") Поиск по ингридиентам
 		else
 			li
-				a(href="/") Home
+				a(href="/search/ing") Поиск по ингридиентам
 		if user
-			if (loc=='projects')
-				li.active
-					a(href="/user/projects") Projects
-			else
-				li
-					a(href="/user/projects") Projects
-		if (loc=='jscomp')
+		if (loc=='searchCategory')
 			li.active
-				a(href="/js_compiller") JS compiller
+				a(href="/serch/category") Поиск по категориям
 		else
 			li
-				a(href="/js_compiller") JS compiller
+				a(href="/serch/category") Поиск по категориям
+		if (loc=='randomDish')
+			li.active
+				a(href="/reandom_dish") Случайный рецепт
+		else
+			li
+				a(href="/reandom_dish") Случайный рецепт
+		if (loc=='newsCookery')
+			li.active
+				a(href="/news") Кулинарные новости
+		else
+			li
+				a(href="/news") Кулинарные новости
+
+
 
 	ul.nav.navbar-nav.pull-right
 		li.dropdown

@@ -15,8 +15,7 @@ exports.boot = (app) ->
         dish.title
       res.send {err: err, result: dishes}  
 
-
-  app.get '/ing_autcomplete',  (req, res) ->
+  app.get '/ing_autcomplete1',  (req, res) ->
     console.log "HEARE"
     Product.find {}, (err, arrProducts) ->
       console.log("err",err)
@@ -25,6 +24,8 @@ exports.boot = (app) ->
       console.log arrTitle
       res.send {err: err, result: arrTitle}
 
+  app.get '/ing', (req, res) ->
+	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng'}
 
 	  
 #		project = _.extend req.body,

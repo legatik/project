@@ -1,0 +1,79 @@
+extends layout
+
+
+block content
+  script(data-main='/js/libs/config_requre/config', src='../js/libs/requre.js')
+  != js('pm')
+  != css('style-search')
+  include navigation
+  include left-column
+  include right-column
+  form#pm-container
+    #pm-header
+      input#pm-dish-input(type="text",name="test")
+      lable Введите название блюда
+      select#selectKitchen
+        option Русская
+        option Новая русская
+      lable Тип кухни
+      #pm-species
+        input(type="checkbox", name="Закуски")
+        lable Закуски
+        input(type="checkbox", name="Салаты")
+        lable Салаты
+        input(type="checkbox", name="Супы")
+        lable Супы
+        input(type="checkbox", name="Вторые блюда")
+        lable Вторые блюда
+        input(type="checkbox", name="Выпечка")
+        lable Выпечка
+        input(type="checkbox", name="Десерты")
+        lable Десерты
+        input(type="checkbox", name="Напитки")
+        lable Напитки
+    #pm-body
+      #pm-ing-container
+        h4 Ингридиенты
+        ol#pm-ing-ul
+          li 
+            span.pm-ing test ing1
+            div.del-ing x
+          li
+            span.pm-ing test ing2
+            div.del-ing x
+      #pm-ing-input-cont
+        input#pm-dish-ing(type="text")
+        button#add-ing Добавить ингридиент
+      #pm-more-options
+        table
+          tr
+            td(width="265px",height="34px")
+              input#time-cooke(type="number", min=0)
+              span Веремя приготовления
+            td(height="34px")
+              span Популярность
+              input#rating(type="number", min=0)
+          tr
+            td(height="34px")
+              input#kremling_diet(type="number", min=0)
+              span Кремлевская диета
+              
+            td(height="34px")
+              span(style="width: 92px;display: inline-block;") Сложность
+              input#complexity(type="number", min=0, max=10)
+          tr
+            td(height="34px")
+              select#cost
+                option 
+                option Низкая
+                option Средняя
+                option Высокая
+              span Цена
+
+    button#start-search-btn Начать поиск
+
+//script#sMContTemplate(type="text/template")
+
+      
+     
+  

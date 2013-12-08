@@ -37,7 +37,7 @@ $(document).ready () ->
     autoCompliteIng = (a) ->
       console.log("HEARE")
       $.ajax
-        url: "/search/ing_autcomplete"
+        url: "/search/ing_autcomplete1"
         success: (data) ->
           console.log "data",data.result
           $("#pm-dish-ing").autocomplete({source:data.result, minLength: 2})

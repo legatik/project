@@ -2,7 +2,7 @@ doctype 5
 html
 	head
 		title= title
-		!= css('style')
+		!= css('style-layout')
 		!= css('bootstrap.min')
 		!= css('jquery-ui')
 		!= js('libs/jquery-2.0.3.min')
@@ -11,6 +11,9 @@ html
 		!= js('libs/underscore-min')
 		!= js("libs/backbone-min")
 		!= js("libs/jquery-ui")
-		script(data-main='/js/libs/config_requre/config', src='js/libs/requre.js')
 	body
-		block content
+		.container-my
+			block content
+		
+		
+				

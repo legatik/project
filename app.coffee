@@ -45,14 +45,15 @@ auth.init app, passport
 options = {db:{type: 'mongo'}}
 
 app.namespace '/search', require('./controllers/search').boot.bind @, app
-#app.namespace '/user', require('./controllers/user').boot.bind @, app
+#app.namespace '/serch/ing', require('./controllers/user').boot.bind @, app
 #app.namespace '/projects', require('./controllers/projects').boot.bind @, app
 #app.namespace '/files', require('./controllers/files').boot.bind @, app
 
 #Product.createThis()
 
+
 app.get '/', (req, res) ->
-	res.render 'index', {title: 'Onlile JS Compiller', user: req.user, loc:'home'}
+	res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home'}
 
 app.get '/register', (req, res) ->
 	res.render 'registration', {title: 'Onlile JS Compiller'}
