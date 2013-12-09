@@ -6,17 +6,14 @@ fs = require 'fs'
 
 exports.boot = (app) ->
   app.get '/title_complete',  (req, res) ->
-  #	  Dish.createThis()
-    console.log('HELLOOOO TIIIITTTLLLEEEE', req.query)
+#    console.log('HELLOOOO TIIIITTTLLLEEEE', req.query)
     find = new RegExp(req.query.title, "i")
-  #	  find = '/'+req.query.title+'/'
     dish = Dish.find {title: find}, (err, dishes) ->
       dishes = dishes.map (dish) ->
         dish.title
-      res.send {err: err, result: dishes}  
+      res.send {err: err, result: dishes}
 
   app.get '/ing_autcomplete1',  (req, res) ->
-    console.log "HEARE"
     Product.find {}, (err, arrProducts) ->
       console.log("err",err)
       arrTitle = arrProducts.map (product) ->
@@ -27,7 +24,45 @@ exports.boot = (app) ->
   app.get '/ing', (req, res) ->
 	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng'}
 
-	  
+
+
+  app.post '/DishesReq', (req, res) ->
+    ProductsList = []
+    ExProductsList = []
+    species = []
+    ProductsList = req.body.ing  if req.body.ing
+    ExProductsList = req.body.exproducts  if req.body.exproducts
+    species = req.body.species  if req.body.species
+    filter = {}
+    filter.kitchen = req.body.kitchen  if req.body.kitchen
+    filter.cost = req.body.cost  if req.body.cost
+    if species.length isnt 0
+      filter.species =
+        $in: species
+    filter.time_cooking = +req.body.time_cooking  if req.body.time_cooking
+    filter.rating = +req.body.rating  if req.body.rating
+    filter.kremling_diet = req.body.kremling_diet  if req.body.kremling_diet
+    console.log 'filter',filter
+    if ProductsList.length isnt 0 and ExProductsList.length isnt 0
+      filter.ingredients =
+        $in: ProductsList
+        $nin: ExProductsList
+    else unless ProductsList.length is 0
+      filter.ingredients = $in: ProductsList
+    else filter.ingredients = $nin: ExProductsList  unless ExProductsList.length is 0
+    console.log filter
+    dish = Dish.find filter, (err, dishes) ->
+      result = dishes.sort((a, b) ->
+        x = _.intersection(req.body.ing, a.get("ingredients")).length
+        y = _.intersection(req.body.ing, b.get("ingredients")).length
+        console.log 'XY', x, y
+        (if (x > y) then -1 else ((if (x is y) then 0 else 1)))
+      )
+      res.send(result)
+
+
+
+
 #		project = _.extend req.body,
 #			owner: req.user._id
 #		Project.findOne {owner: req.user._id, name: project.name}, (err, p) ->

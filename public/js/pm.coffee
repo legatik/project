@@ -2,7 +2,7 @@ $(document).ready () ->
   require [
     "cs!/../js/views/searchModeView"
   ], (TestView) ->
-      
+
 
     $("#start-search-btn").on "click", (e) =>
       e.preventDefault()
@@ -17,8 +17,8 @@ $(document).ready () ->
       $(".del-ing").unbind("click")
       $(".del-ing").on "click", (e) =>
         $($(e.target).parent()).remove()
-  
-      
+
+
     autoCompliteDish = (val) ->
       $("#pm-dish-input").autocomplete
         source: (request, response) ->
@@ -32,7 +32,7 @@ $(document).ready () ->
                 label: item
               )
         minLength: 2
-    
+
 
     autoCompliteIng = (a) ->
       console.log("HEARE")
@@ -41,9 +41,9 @@ $(document).ready () ->
         success: (data) ->
           console.log "data",data.result
           $("#pm-dish-ing").autocomplete({source:data.result, minLength: 2})
-          
-      
-      
+
+
+
     addIng = () ->
       newIng = $("#pm-dish-ing").val()
       if !newIng then return
@@ -53,7 +53,7 @@ $(document).ready () ->
       $("#pm-dish-ing").val("")
       $("#pm-dish-ing").focus()
 
-      
+
     collectDataSearch = () ->
       #species
       speciesArr = $("#pm-species > input[type='checkbox']:checked")
@@ -62,7 +62,7 @@ $(document).ready () ->
       while i < speciesArr.length
         speciesSend.push($(speciesArr[i]).attr("name"))
         i++
-        
+
       # ing
 
       ingArr = $(".pm-ing")
@@ -71,10 +71,10 @@ $(document).ready () ->
       while i < ingArr.length
         ingSend.push($(ingArr[i]).text())
         i++
-      
+
       #todo добавить массив ингридиетнов
-      
-      searchDatasent = 
+
+      searchDatasent =
         title        : $("#pm-dish-input").val()
         kitchen      : $("#selectKitchen").val()
         species      : speciesSend
@@ -86,10 +86,16 @@ $(document).ready () ->
         kremling_diet : $("#kremling_diet").val()
 
       console.log "searchDatasent",searchDatasent
+      $.ajax
+        type: 'POST'
+        url: "/search/DishesReq"
+        data: searchDatasent
+        success: (data) ->
+          console.log 'success', arguments
 
-      
-      
-          
+
+
+
     autoCompliteDish()
     autoCompliteIng()
-    
+
