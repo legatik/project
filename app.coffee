@@ -45,7 +45,7 @@ auth.init app, passport
 options = {db:{type: 'mongo'}}
 
 app.namespace '/search', require('./controllers/search').boot.bind @, app
-#app.namespace '/serch/ing', require('./controllers/user').boot.bind @, app
+app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 #app.namespace '/projects', require('./controllers/projects').boot.bind @, app
 #app.namespace '/files', require('./controllers/files').boot.bind @, app
 
