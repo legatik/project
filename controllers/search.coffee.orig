@@ -8,14 +8,12 @@ exports.boot = (app) ->
   app.get '/title_complete',  (req, res) ->
 #    console.log('HELLOOOO TIIIITTTLLLEEEE', req.query)
     find = new RegExp(req.query.title, "i")
-  #	  find = '/'+req.query.title+'/'
     dish = Dish.find {title: find}, (err, dishes) ->
       dishes = dishes.map (dish) ->
         dish.title
       res.send {err: err, result: dishes}
 
   app.get '/ing_autcomplete1',  (req, res) ->
-    console.log "HEARE"
     Product.find {}, (err, arrProducts) ->
       console.log("err",err)
       arrTitle = arrProducts.map (product) ->
@@ -26,8 +24,12 @@ exports.boot = (app) ->
   app.get '/ing', (req, res) ->
 	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng'}
 
+<<<<<<< HEAD
   app.get '/category', (req, res) ->
 	  res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory'}
+
+	  
+=======
 
 
   app.post '/DishesReq', (req, res) ->
@@ -67,6 +69,7 @@ exports.boot = (app) ->
 
 
 
+>>>>>>> e6acabce2eaa297b046e60af8bc91ae42aaa4577
 #		project = _.extend req.body,
 #			owner: req.user._id
 #		Project.findOne {owner: req.user._id, name: project.name}, (err, p) ->

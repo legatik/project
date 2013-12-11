@@ -15,7 +15,7 @@ passport = require 'passport'
 RedisStore = require('connect-redis')(express)
 app = express()
 
-{User,Product} = db.models
+{User,Product, Dish} = db.models
 
 app.configure () ->
 	app.set "port", process.env.PORT or 3000
@@ -51,6 +51,21 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 
 #Product.createThis()
 
+#Dish.find {}, (err, dishes) ->
+#  dishes.forEach (dish) ->
+#    a =
+#      kremling_diet: +dish.kremling_diet
+#      complexity: +dish.complexity
+#      serving: +dish.serving
+#    Dish.findById dish._id, (err, dish) ->
+#      console.log 'findOne', arguments
+#      dish.update a, (err,res) ->
+#        console.log 'URAAA, res', arguments
+
+
+
+
+
 
 app.get '/', (req, res) ->
 	res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home'}
@@ -79,3 +94,4 @@ app.get '/logout', (req,res) ->
 
 http.createServer(app).listen app.get('port'), () ->
 	console.log "Express server listening on port " + app.get('port')
+
