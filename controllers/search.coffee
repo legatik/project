@@ -27,6 +27,9 @@ exports.boot = (app) ->
   app.get '/ing', (req, res) ->
 	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng'}
 
+  app.get '/category', (req, res) ->
+	  res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory'}
+
 	  
 #		project = _.extend req.body,
 #			owner: req.user._id
