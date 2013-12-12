@@ -5,6 +5,14 @@ fs = require 'fs'
 {Dish, Product} = db.models
 
 exports.boot = (app) ->
+
+  app.get '/ing', (req, res) ->
+	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', kitchen:"all"}
+
+  app.get '/category', (req, res) ->
+	  res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', kitchen:"all"}
+
+
   app.get '/title_complete',  (req, res) ->
 #    console.log('HELLOOOO TIIIITTTLLLEEEE', req.query)
     find = new RegExp(req.query.title, "i")
@@ -17,17 +25,7 @@ exports.boot = (app) ->
   app.get '/ing_autcomplete1',  (req, res) ->
     console.log "HEARE"
     Product.find {}, (err, arrProducts) ->
-      console.log("err",err)
-      arrTitle = arrProducts.map (product) ->
-        product.title
-      console.log arrTitle
-      res.send {err: err, result: arrTitle}
-
-  app.get '/ing', (req, res) ->
-	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', kitchen:"all"}
-
-  app.get '/category', (req, res) ->
-	  res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', kitchen:"all"}
+      res.send {err: err, result: arrProducts}
 
 
   app.post '/DishesReq', (req, res) ->

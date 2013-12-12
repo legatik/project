@@ -68,7 +68,7 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 
 
 app.get '/', (req, res) ->
-	res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home'}
+	res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchen: "all"}
 
 app.get '/register', (req, res) ->
 	res.render 'registration', {title: 'Onlile JS Compiller'}

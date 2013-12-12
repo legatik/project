@@ -2,6 +2,8 @@ $(document).ready () ->
   require [
     "cs!/../js/views/searchModeView"
   ], (TestView) ->
+#todo сделать что бы в начале фэйчились продукты, потом все остальное
+    @productsArr = []
 
 
     $("#start-search-btn").on "click", (e) =>
@@ -28,23 +30,30 @@ $(document).ready () ->
             success: (data) ->
               console.log data
               response $.map(data.result, (item) ->
-                console.log("sss",item)
                 label: item
               )
         minLength: 2
 
 
-    autoCompliteIng = (a) ->
-      console.log("HEARE")
+    autoCompliteIng = (a) =>
       $.ajax
         url: "/search/ing_autcomplete1"
-        success: (data) ->
-          console.log "data",data.result
-          $("#pm-dish-ing").autocomplete({source:data.result, minLength: 2})
+        success: (data) =>
+          @productsArr = data.result
+          arrTitle = data.result.map (product) ->
+            product.title
+          $("#pm-dish-ing").autocomplete({
+            source:arrTitle,
+            minLength: 2,
+            select: (event, ui) -> checkIng(event, ui)
+          })
 
-
-
-    addIng = () ->
+    checkIng = (event,ui) ->
+      checkIng = @productsArr.filter (item)->
+        if item.title == ui.item.label then return item
+      species = checkIng[0]
+      
+    addIng = () =>
       newIng = $("#pm-dish-ing").val()
       if !newIng then return
       newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing'>x</div></li>"
@@ -92,6 +101,8 @@ $(document).ready () ->
         data: searchDatasent
         success: (data) ->
           console.log 'success', arguments
+
+
 
 
 

@@ -3,7 +3,8 @@ exports.boot = (app) ->
 
   app.get '/:kitchen', (req, res) ->
     console.log "heare@@!!!",req.params.kitchen
-#    res.render 'kitchen', {title: 'Мировая кухня | Итальянская кухня', user: req.user, loc:'searchIng', kitchen:"Итальянская"}
+    kitchen = req.params.kitchen
+    res.render 'kitchen', {title: 'Мировая кухня | Итальянская кухня', user: req.user, loc:'searchIng', kitchen: kitchen}
 
 	  
 #		project = _.extend req.body,
