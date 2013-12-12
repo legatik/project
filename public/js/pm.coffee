@@ -2,8 +2,20 @@ $(document).ready () ->
   require [
     "cs!/../js/views/searchModeView"
   ], (TestView) ->
-#todo сделать что бы в начале фэйчились продукты, потом все остальное
+#todo - сделать что бы в начале фэйчились продукты, потом все остальное
+#     - изменить категории в админки и бд, и здесь (<option>Прочее</option>)
     @productsArr = []
+    @arrComparison = []
+    @arrComparison["Грибы"] = "#gribi"
+    @arrComparison["Крупы и каши"] = "#krupa_oreh"
+    @arrComparison["Молочные продукты"] = "#molochnie"
+    @arrComparison["Фрукты и ягоды"] = "#frukti"
+    @arrComparison["Овощи и зелень"] = "#ovochi"
+    @arrComparison["Рыба и морепродукты"] = "#moreprodukti"
+    @arrComparison["Яйца и молочные продукты"]
+    @arrComparison["Мясные продукты"] = "#maso"
+    @arrComparison["Мука и мучные изделия"] = "#muchnie"
+    @arrComparison["Добавки и витамины"] = "#dobavki"
 
 
     $("#start-search-btn").on "click", (e) =>
@@ -45,13 +57,18 @@ $(document).ready () ->
           $("#pm-dish-ing").autocomplete({
             source:arrTitle,
             minLength: 2,
-            select: (event, ui) -> checkIng(event, ui)
+            select: (event, ui) =>
+              checkIng(event, ui)
           })
 
     checkIng = (event,ui) ->
-      checkIng = @productsArr.filter (item)->
-        if item.title == ui.item.label then return item
-      species = checkIng[0]
+      console.log "heare"
+      eventIng = @productsArr.filter (item)->
+        item.title is ui.item.label
+      key = eventIng[0].species
+      id = @arrComparison[key]
+      $(id).css("opacity",1)
+      
       
     addIng = () =>
       newIng = $("#pm-dish-ing").val()
