@@ -1,9 +1,9 @@
 
 exports.boot = (app) ->
 
-  app.get '/italy', (req, res) ->
-    res.send 200
-#	  res.render 'search_ing', {title: 'Мировая кухня | Итальянская кухня', user: req.user, loc:'searchIng'}
+  app.get '/:kitchen', (req, res) ->
+    console.log "heare@@!!!",req.params.kitchen
+#    res.render 'kitchen', {title: 'Мировая кухня | Итальянская кухня', user: req.user, loc:'searchIng', kitchen:"Итальянская"}
 
 	  
 #		project = _.extend req.body,

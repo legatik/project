@@ -24,10 +24,10 @@ exports.boot = (app) ->
       res.send {err: err, result: arrTitle}
 
   app.get '/ing', (req, res) ->
-	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng'}
+	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', kitchen:"all"}
 
   app.get '/category', (req, res) ->
-	  res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory'}
+	  res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', kitchen:"all"}
 
 
   app.post '/DishesReq', (req, res) ->
