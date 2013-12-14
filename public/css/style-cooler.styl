@@ -1,10 +1,36 @@
-#container-my
-  background: grey
-
+#pm-ing-container
+  width:160px
+  height:300px
+  border:1px black solid 
+  display:inline-block
+  float:right
+  #pm-ing-ul
+    margin-left: -10px
+    li
+      .del-ing
+        float:right
+        display:inline-block
+        width: 15px
+        border: 1px solid
+        height: 15px
+        text-align: center
+        line-height: 12px
+        border-radius: 10px
+        margin-right:10px
+      .del-ing:hover
+        background:red
+        cursor:pointer
+#pm-container
+  float:left
+  width:182px
+  height:300px
+  border:1px solid black
+  
 #cooler-container
   position:relative
   width: 348px;
   height: 389px;
+  display:inline-block
   #holodilnik
     position:absolute
     width: 346px
@@ -14,7 +40,7 @@
     position: absolute;
     top: 25px;
     left: 18px;
-    z-index:10;
+    z-index:0;
   #sodergimoe
     width: 346px;
     height: 389px;

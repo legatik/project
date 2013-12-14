@@ -5,7 +5,7 @@ block content
   script(data-main='/js/libs/config_requre/config', src='../js/libs/requre.js')
   != js('pm')
   != css('style-cooler')
-  != css('style-search-new')
+  //!= css('style-search-new')
   include navigation
   include left-column
   include right-column
@@ -14,22 +14,52 @@ block content
       img#holodilnik(src="/img/cooler/holodilnik.png")
       img#polki(src="/img/cooler/polki.png")
       #sodergimoe
-        img.cooler-companent#dobavki(src="/img/cooler/dobavki.png")
-        div#dobavki-menu
-          | test1
-          | test2
+        img.cooler-companent#dobavki(src="/img/cooler/dobavki.png", ing="")
+        img.cooler-companent#maso(src="/img/cooler/maso.png", ing="")
+        img.cooler-companent#krupa_oreh(src="/img/cooler/krupa_oreh.png", ing="")
+        img.cooler-companent#gribi(src="/img/cooler/gribi.png", ing="")
+        img.cooler-companent#frukti(src="/img/cooler/frukti.png", ing="")
+        img.cooler-companent#molochnie(src="/img/cooler/molochnie.png", ing="")
+        img.cooler-companent#moreprodukti(src="/img/cooler/moreprodukti.png", ing="")
+        img.cooler-companent#muchnie(src="/img/cooler/muchnie.png", ing="")
+        img.cooler-companent#ovochi(src="/img/cooler/ovochi.png", ing="")
+
+    #pm-ing-container
+      h4 Ингридиенты
+      
+      #gribi-cont Грибы
+        ol#gribi-ol
         
-        img.cooler-companent#maso(src="/img/cooler/maso.png")
-        img.cooler-companent#krupa_oreh(src="/img/cooler/krupa_oreh.png")
-        img.cooler-companent#gribi(src="/img/cooler/gribi.png")
-        img.cooler-companent#frukti(src="/img/cooler/frukti.png")
-        img.cooler-companent#molochnie(src="/img/cooler/molochnie.png")
-        img.cooler-companent#moreprodukti(src="/img/cooler/moreprodukti.png")
-        img.cooler-companent#muchnie(src="/img/cooler/muchnie.png")
-        img.cooler-companent#ovochi(src="/img/cooler/ovochi.png")
+      #krupa_oreh-cont Крупы и каши
+        ol#krupa_oreh-ol
         
+      #molochnie-cont Молочные продукты
+        ol#molochnie-ol
         
-  form#pm-container
+      #frukti-cont Фрукты и ягоды
+        ol#frukti-ol
+        
+      #ovochi-cont Овощи и зелень
+        ol#ovochi-ol
+         
+      #moreprodukti-cont Рыба и морепродукты
+        ol#moreprodukti-ol
+        
+      #maso-cont Мясные продукты
+        ol#maso-ol
+        
+      #muchnie-cont Мука и мучные изделия
+        ol#muchnie-ol
+         
+      #dobavki-cont Добавки и витамины
+        ol#dobavki-ol
+         
+    #pm-container
+      input#pm-dish-ing(type="text", placeholder="введите ингридиент")
+        
+
+        
+  //form#pm-container
     #pm-header
       input#pm-dish-input(type="text",name="test")
       lable Введите название блюда
@@ -53,15 +83,6 @@ block content
         input(type="checkbox", name="Напитки")
         lable Напитки
     #pm-body
-      #pm-ing-container
-        h4 Ингридиенты
-        ol#pm-ing-ul
-          li 
-            span.pm-ing test ing1
-            div.del-ing x
-          li
-            span.pm-ing test ing2
-            div.del-ing x
       #pm-ing-input-cont
         input#pm-dish-ing(type="text")
         button#add-ing Добавить ингридиент

@@ -3,7 +3,8 @@ $(document).ready () ->
     "cs!/../js/views/searchModeView"
   ], (TestView) ->
 #todo - сделать что бы в начале фэйчились продукты, потом все остальное
-#     - изменить категории в админки и бд, и здесь (<option>Прочее</option>)
+#     - изменить категории в админки и бд, и здесь (<option>Прочее</option>) ["Яйца и молочные продукты"]
+# после подредактировать html (search-category)
     @productsArr = []
     @arrComparison = []
     @arrComparison["Грибы"] = "#gribi"
@@ -30,6 +31,13 @@ $(document).ready () ->
     addEventRemoveIng = () ->
       $(".del-ing").unbind("click")
       $(".del-ing").on "click", (e) =>
+        console.log "$(e.target)",$(e.target)
+        key = $(e.target).attr("key")
+        ings = $(key).attr("ing")
+        ingDel = $($(e.target).parent()).find(".pm-ing").text()
+        ings = ings.replace(ingDel, "")
+        $(key).attr("ing",ings)
+        if !ings then $(key).css("opacity",0)
         $($(e.target).parent()).remove()
 
 
@@ -47,7 +55,7 @@ $(document).ready () ->
         minLength: 2
 
 
-    autoCompliteIng = (a) =>
+    autoCompliteIng = () =>
       $.ajax
         url: "/search/ing_autcomplete1"
         success: (data) =>
@@ -59,6 +67,9 @@ $(document).ready () ->
             minLength: 2,
             select: (event, ui) =>
               checkIng(event, ui)
+              return
+            close: (event, ui) =>
+              $("#pm-dish-ing").val("")
           })
 
     checkIng = (event,ui) ->
@@ -69,13 +80,21 @@ $(document).ready () ->
       id = @arrComparison[key]
       $(id).css("opacity",1)
       
+      listIng = $(id).attr("ing")
+#      if !listIng
+      listIng = listIng + ui.item.label 
+#      else
+#        listIng = listIng +  "," + ui.item.label
+      listIng = $(id).attr("ing",listIng)
+      addIng(ui.item.label, id)
       
-    addIng = () =>
-      newIng = $("#pm-dish-ing").val()
-      if !newIng then return
-      newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing'>x</div></li>"
+    addIng = (newIng,key) =>
+#      newIng = $("#pm-dish-ing").val()
+#      if !newIng then return
+      newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing' key="+key+">x</div></li>"
       $("#pm-ing-ul").append(newIngEl)
       addEventRemoveIng()
+      console.log "s",$("#pm-dish-ing")
       $("#pm-dish-ing").val("")
       $("#pm-dish-ing").focus()
 
@@ -120,8 +139,10 @@ $(document).ready () ->
           console.log 'success', arguments
 
 
-
-
+    console.log $("#dobavki")
+    $("#dobavki").on "click", (e)=>
+      console.log('sss')
+  
 
 
     autoCompliteDish()
