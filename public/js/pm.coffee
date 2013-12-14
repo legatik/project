@@ -39,6 +39,13 @@ $(document).ready () ->
         $(key).attr("ing",ings)
         if !ings then $(key).css("opacity",0)
         $($(e.target).parent()).remove()
+        keyOl = key + "-ol"
+        keyCont = key + "-cont" 
+        liArr = $(keyOl).find("li")
+        console.log "liArr.length",liArr.length
+        if liArr.length == 0 then $(keyCont).hide()
+        
+        
 
 
     autoCompliteDish = (val) ->
@@ -73,14 +80,16 @@ $(document).ready () ->
           })
 
     checkIng = (event,ui) ->
-      console.log "heare"
       eventIng = @productsArr.filter (item)->
         item.title is ui.item.label
       key = eventIng[0].species
       id = @arrComparison[key]
-      $(id).css("opacity",1)
       
       listIng = $(id).attr("ing")
+      if listIng.indexOf(ui.item.label) >= 0 
+        alert("Вы уже добавили этот ингридиент")
+        return
+      $(id).css("opacity",1)
 #      if !listIng
       listIng = listIng + ui.item.label 
 #      else
@@ -91,10 +100,12 @@ $(document).ready () ->
     addIng = (newIng,key) =>
 #      newIng = $("#pm-dish-ing").val()
 #      if !newIng then return
+      ol = key + "-ol"
+      container = key + "-cont" 
       newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing' key="+key+">x</div></li>"
-      $("#pm-ing-ul").append(newIngEl)
+      $(ol).append(newIngEl)
+      $(container).show()
       addEventRemoveIng()
-      console.log "s",$("#pm-dish-ing")
       $("#pm-dish-ing").val("")
       $("#pm-dish-ing").focus()
 
