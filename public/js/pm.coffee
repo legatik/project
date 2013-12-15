@@ -155,14 +155,21 @@ $(document).ready () ->
 
     console.log $("#dobavki")
     $(".cooler-companent").on "mouseenter", (e)=>
-      console.log "e",e.target
-      classEl = $(e.target).attr("class")
+      classEl = $(e.target).attr("fonClass")
       console.log "class",classEl
-      return
-      fonId = "#" + id + "-fon"
-      console.log "fonId",fonId
-      $(fonId).css("opacity",1)
+      classPic = classEl + "-fon"
+      $(classPic).css("opacity",1)
+      listEl = classEl + "-cont"
+      $(listEl).addClass("red-color")
+      
 
+    $(".cooler-companent").on "mouseout", (e)=>
+      classEl = $(e.target).attr("fonClass")
+      console.log "class",classEl
+      classPic = classEl + "-fon"
+      $(classPic).css("opacity",0)
+      listEl = classEl + "-cont"
+      $(listEl).removeClass("red-color")
 
     autoCompliteDish()
     autoCompliteIng()
