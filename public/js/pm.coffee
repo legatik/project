@@ -37,7 +37,9 @@ $(document).ready () ->
         ingDel = $($(e.target).parent()).find(".pm-ing").text()
         ings = ings.replace(ingDel, "")
         $(key).attr("ing",ings)
-        if !ings then $(key).css("opacity",0)
+        if !ings
+          $(key).hide() 
+          $(key).css("opacity",0)
         $($(e.target).parent()).remove()
         keyOl = key + "-ol"
         keyCont = key + "-cont" 
@@ -89,6 +91,7 @@ $(document).ready () ->
       if listIng.indexOf(ui.item.label) >= 0 
         alert("Вы уже добавили этот ингридиент")
         return
+      $(id).show()
       $(id).css("opacity",1)
 #      if !listIng
       listIng = listIng + ui.item.label 
@@ -151,9 +154,14 @@ $(document).ready () ->
 
 
     console.log $("#dobavki")
-    $("#dobavki").on "click", (e)=>
-      console.log('sss')
-  
+    $(".cooler-companent").on "mouseenter", (e)=>
+      console.log "e",e.target
+      classEl = $(e.target).attr("class")
+      console.log "class",classEl
+      return
+      fonId = "#" + id + "-fon"
+      console.log "fonId",fonId
+      $(fonId).css("opacity",1)
 
 
     autoCompliteDish()
