@@ -56,26 +56,26 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 #  products.forEach (product) ->
 #    if product.title == "гречневая каша"
 #       product.species = "Крупы и орехи"
-##       product.save()
+#       product.save()
 #       console.log "product",product
 #       console.log "****************"
 
-#Замена Прочее ? изюм
+#Замена Прочее
 #Product.find {}, (err, products) ->
 #  products.forEach (product) ->
 #    if product.species == "Прочее"
 #       product.species = "Добавки и витамины"
-##       product.save()
+#       product.save()
 #       console.log "product",product
 #       console.log "****************"
-#       
+       
 
 #Замена Крупы и каши
 #Product.find {}, (err, products) ->
 #  products.forEach (product) ->
 #    if product.species == "Крупы и каши"
 #       product.species = "Крупы и орехи"
-##       product.save()
+#       product.save()
 #       console.log "product",product
 #       console.log "****************"
        
@@ -84,35 +84,46 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 #  products.forEach (product) ->
 #    if product.species == "Молочные продукты"
 #       product.species = "Яйца и молочные продукты"
-##       product.save()
+#       product.save()
 #       console.log "product",product
 #       console.log "****************"
 
+#Замена Изюм
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.title == "изюм"
+##       product.species = "Фрукты и ягоды"
+##       product.save()
+#       console.log "product",product
+#       console.log "*********"
+
+#Замена Изюм
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.species == "Яйца и молочные продукты"
+##       product.species = "Фрукты и ягоды"
+##       product.save()
+#       console.log "product",product
+#       console.log "*********"
 
 
 
-
-Dish.find {}, (err, products) ->
-#  console.log "products",products
-#  dish = products[products.length-1]
-#  console.log "dish do",dish
-#  dish.kremling_diet = dish.kremling_diet*1
-#  dish.complexity = dish.complexity*1
-#  dish.complexity = dish.serving*1
-#  dish.save()
-  products.forEach (dish, index) ->
-    ser = dish.serving
-    dish.kremling_diet = Number(dish.complexity)
-    dish.complexity = dish.complexity*1
-    dish.serving = 0
-    dish.serving = Number(ser)
-    console.log "dish",dish
-    dish.save()
-#    dish.save()
-#      dish.kremling_diet = +dish.kremling_diet
-#      dish.complexity = +dish.complexity
-#      dish.complexity = +dish.serving
-      
+##Dish.find {}, (err, products) ->
+##  products.forEach (dish, index) ->
+##  
+##    serving = dish.serving
+##    kremling = dish.kremling_diet
+##    complexity = dish.complexity
+##    
+##    dish.kremling_diet = 1
+##    dish.complexity = 1
+##    dish.serving = 1
+##    
+##    dish.complexity = Number(complexity)
+##    dish.serving = Number(serving)
+##    dish.kremling_diet = Number(kremling)
+##    dish.save ->
+##      console.log 'index',index
 
 
 
