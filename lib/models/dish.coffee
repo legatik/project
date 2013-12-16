@@ -5,23 +5,23 @@ Schema = mongoose.Schema
 
 dish = new Schema
 	title : String
-	who_added: {type: ObjectId, ref: 'User'}
+	who_added: String
 	composition: [{ing:String,col:String}]
-	recipe:Array
-	species:String
+	recipe : Array
+	species : String
 	time_cooking : Number
-	cost:String
-	rating:Number
-	status:String
-	id: String
-	dateAdding: Date
+	cost : String
+	rating : Number
+	status : String
+	id_picture : String
+	dateAdding : Date
 	comments:[{type: ObjectId, ref: 'Comment'}]
-	kitchen:String
-	serving:Number
-	complexity:Number
-	kremling_diet:Number
-	fact:String
-	wish:String
+	kitchen : String
+	serving : Number
+	complexity : Number
+	kremling_diet : Number
+	fact : String
+	wish : String
 	key : String
 	description: String
 	ingredients: Array

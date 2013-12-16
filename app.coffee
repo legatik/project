@@ -51,16 +51,68 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 
 #Product.createThis()
 
-#Dish.find {}, (err, dishes) ->
-#  dishes.forEach (dish) ->
-#    a =
-#      kremling_diet: +dish.kremling_diet
-#      complexity: +dish.complexity
-#      serving: +dish.serving
-#    Dish.findById dish._id, (err, dish) ->
-#      console.log 'findOne', arguments
-#      dish.update a, (err,res) ->
-#        console.log 'URAAA, res', arguments
+#замена гречнеыой каши
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.title == "гречневая каша"
+#       product.species = "Крупы и орехи"
+##       product.save()
+#       console.log "product",product
+#       console.log "****************"
+
+#Замена Прочее ? изюм
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.species == "Прочее"
+#       product.species = "Добавки и витамины"
+##       product.save()
+#       console.log "product",product
+#       console.log "****************"
+#       
+
+#Замена Крупы и каши
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.species == "Крупы и каши"
+#       product.species = "Крупы и орехи"
+##       product.save()
+#       console.log "product",product
+#       console.log "****************"
+       
+#Замена Молочные продукты
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.species == "Молочные продукты"
+#       product.species = "Яйца и молочные продукты"
+##       product.save()
+#       console.log "product",product
+#       console.log "****************"
+
+
+
+
+
+Dish.find {}, (err, products) ->
+#  console.log "products",products
+#  dish = products[products.length-1]
+#  console.log "dish do",dish
+#  dish.kremling_diet = dish.kremling_diet*1
+#  dish.complexity = dish.complexity*1
+#  dish.complexity = dish.serving*1
+#  dish.save()
+  products.forEach (dish, index) ->
+    ser = dish.serving
+    dish.kremling_diet = Number(dish.complexity)
+    dish.complexity = dish.complexity*1
+    dish.serving = 0
+    dish.serving = Number(ser)
+    console.log "dish",dish
+    dish.save()
+#    dish.save()
+#      dish.kremling_diet = +dish.kremling_diet
+#      dish.complexity = +dish.complexity
+#      dish.complexity = +dish.serving
+      
 
 
 
