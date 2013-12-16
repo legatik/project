@@ -98,13 +98,13 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 #       console.log "*********"
 
 #Замена Изюм
-#Product.find {}, (err, products) ->
-#  products.forEach (product) ->
-#    if product.species == "Яйца и молочные продукты"
-##       product.species = "Фрукты и ягоды"
-##       product.save()
-#       console.log "product",product
-#       console.log "*********"
+Product.find {}, (err, products) ->
+  products.forEach (product) ->
+    if product.title == "пшеничные сухарики"
+#       product.species = "Мука и мучные изделия"
+#       product.save()
+       console.log "product",product
+       console.log "*********"
 
 
 

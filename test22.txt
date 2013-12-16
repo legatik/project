@@ -1,0 +1,206 @@
+Express server listening on port 3000
+product { _id: 52a245d42c224fbf0d000011,
+  title: 'мёд',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a2460a2c224fbf0d000012,
+  title: 'ванильный сахар',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a2f9796271deae09000003,
+  title: 'цукаты',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a2f9b06271deae09000004,
+  title: 'ванилин',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a304e36271deae0900000b,
+  title: 'картофельный крахмал',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a307dc6271deae0900000f,
+  title: 'мускатный орех',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a318ee6271deae09000018,
+  title: 'маргарин',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a31bce6271deae0900001c,
+  title: 'корица',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a31ef76271deae09000022,
+  title: 'молотый чёрный перец',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a321646271deae09000024,
+  title: 'томатная паста',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a325596271deae09000026,
+  title: 'хлебный квас',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a3263f6271deae0900002a,
+  title: 'чёрный перец',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a350946271deae09000032,
+  title: 'тмин',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a234ce2c224fbf0d000007,
+  aviability: true,
+  necessarily: false,
+  species: 'Добавки и витамины',
+  title: 'соль' }
+*********
+product { _id: 52a3015c6271deae09000007,
+  aviability: true,
+  necessarily: true,
+  species: 'Добавки и витамины',
+  title: 'вода' }
+*********
+product { _id: 52a3592a6271deae09000038,
+  title: 'яичный желток',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a359a06271deae09000039,
+  title: 'сметанный соус',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a359af6271deae0900003a,
+  title: 'грибной соус',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a38a8c6271deae09000047,
+  title: 'лавровый лист',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a38afa6271deae09000048,
+  title: 'квашеная капуста',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a482314802125c09000006,
+  title: 'желатин',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a484324802125c0900000a,
+  title: 'уксус',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a488654802125c09000012,
+  title: 'горчица',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a48a054802125c09000015,
+  title: 'корень хрена',
+  species: 'Добавки и витамины',
+  necessarily: true,
+  aviability: true }
+*********
+product { _id: 52a7419e333bb36308000001,
+  title: 'душистый перец',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a75bbb333bb3630800000c,
+  title: 'каперсы',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a75f55333bb36308000011,
+  title: 'пшеничные сухарики',
+  species: 'Добавки и витамины',
+  necessarily: false,
+  aviability: true }
+*********
+product { _id: 52a233932c224fbf0d000003,
+  aviability: true,
+  necessarily: true,
+  species: 'Добавки и витамины',
+  title: 'дрожжи' }
+*********
+product { _id: 52a234862c224fbf0d000006,
+  aviability: true,
+  necessarily: true,
+  species: 'Добавки и витамины',
+  title: 'сахарный песок' }
+*********
+product { _id: 52a235262c224fbf0d000009,
+  aviability: true,
+  necessarily: false,
+  species: 'Добавки и витамины',
+  title: 'растительное масло' }
+*********
+product { _id: 52a319a46271deae09000019,
+  aviability: true,
+  necessarily: false,
+  species: 'Добавки и витамины',
+  title: 'мясной бульон' }
+*********
+product { _id: 52a31b986271deae0900001b,
+  aviability: true,
+  necessarily: true,
+  species: 'Добавки и витамины',
+  title: 'сухое красное вино' }
+*********
+product { _id: 52a366756271deae0900003d,
+  aviability: true,
+  necessarily: true,
+  species: 'Добавки и витамины',
+  title: 'панировочные сухари' }
+*********
+
+
+
+
+
+
+Убрать Зеленое яблоко. Оставить только яблоки

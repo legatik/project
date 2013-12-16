@@ -8,12 +8,11 @@ $(document).ready () ->
     @productsArr = []
     @arrComparison = []
     @arrComparison["Грибы"] = ".gribi"
-    @arrComparison["Крупы и каши"] = ".krupa_oreh"
-    @arrComparison["Молочные продукты"] = ".molochnie"
+    @arrComparison["Крупы и орехи"] = ".krupa_oreh"
+    @arrComparison["Яйца и молочные продукты"] = ".molochnie"
     @arrComparison["Фрукты и ягоды"] = ".frukti"
     @arrComparison["Овощи и зелень"] = ".ovochi"
     @arrComparison["Рыба и морепродукты"] = ".moreprodukti"
-#    @arrComparison["Яйца и молочные продукты"]
     @arrComparison["Мясные продукты"] = ".maso"
     @arrComparison["Мука и мучные изделия"] = ".muchnie"
     @arrComparison["Добавки и витамины"] = ".dobavki"
