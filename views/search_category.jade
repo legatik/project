@@ -167,7 +167,9 @@ block content
         button#add-ing Добавить ингридиент
 
     button#start-search-btn Начать поиск
-
+  br
+  br
+  br
   #dishBookAppender
 
 
@@ -178,6 +180,12 @@ block content
 
         
   script#dishBookTemplate(type="text/template")
-    div Heare!!!!
+    div.hard
+    div.hard
+      | <%= data.title %>
+    <% _.each(data.recipe, function(name) { %> <div><%= name %></div> <% }); %>
+    div.hard
+    div.hard
+
      
   

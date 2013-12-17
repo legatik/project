@@ -12,6 +12,7 @@ require.config({
   }
   ],
   paths: {
+	turn: "../../../js/libs/turn"
   },
 
   shim: {

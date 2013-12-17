@@ -150,8 +150,10 @@ $(document).ready () ->
 
 
     renderDish = (data) ->
-      dishBookView = new DisBookView({mode:data})
+      dishBookView = new DisBookView({model:data[0]})
       $("#dishBookAppender").append(dishBookView.render().el)
+      dishBookView.makeBook()
+      
   
     console.log $("#dobavki")
     $(".cooler-companent").on "mouseenter", (e)=>
