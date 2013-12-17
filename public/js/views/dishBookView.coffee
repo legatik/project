@@ -1,24 +1,23 @@
 define [
 ], () ->
 
-  class AclView extends Backbone.View
+  class DishView extends Backbone.View
     
     
     tagName: 'div'
     
-    id: 'acl-container'
+    className: 'dish-book'
     
-#    template: JST["admin/public/templates/acl"]
+    template: _.template(jQuery('#dishBookTemplate').html()),
 
     initialize:(@options) ->
-      $ = jQuery
-      console.log "index", ($('#sMContTemplate').html())
-      
 #    events:
 #      "change .li-method" : "checkApi",
 #      "change .check-api"  : "changeApi"
       
 
     render: ->
+      $ = jQuery
+      $(@.el).html(this.template(this.model));
       @
 

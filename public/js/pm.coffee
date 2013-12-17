@@ -1,10 +1,8 @@
 $(document).ready () ->
   require [
-    "cs!/../js/views/searchModeView"
-  ], (TestView) ->
+    "cs!/../js/views/dishBookView"
+  ], (DisBookView) ->
 #todo - сделать что бы в начале фэйчились продукты, потом все остальное
-#     - изменить категории в админки и бд, и здесь (<option>Прочее</option>) ["Яйца и молочные продукты"]
-# после подредактировать html (search-category)
     @productsArr = []
     @arrComparison = []
     @arrComparison["Грибы"] = ".gribi"
@@ -142,16 +140,19 @@ $(document).ready () ->
         complexity   : $("#complexity").val()
         rating       : $("#rating").val()
         kremling_diet : $("#kremling_diet").val()
-
-      console.log "searchDatasent",searchDatasent
+        
       $.ajax
         type: 'POST'
         url: "/search/DishesReq"
         data: searchDatasent
         success: (data) ->
-          console.log 'success', arguments
+          renderDish(data)
 
 
+    renderDish = (data) ->
+      dishBookView = new DisBookView({mode:data})
+      $("#dishBookAppender").append(dishBookView.render().el)
+  
     console.log $("#dobavki")
     $(".cooler-companent").on "mouseenter", (e)=>
       classEl = $(e.target).attr("fonClass")
