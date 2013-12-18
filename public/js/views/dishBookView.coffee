@@ -12,22 +12,27 @@ define [
 
     initialize:(@options) ->
       @model = @options.model
-#    events:
-#      "change .li-method" : "checkApi",
-#      "change .check-api"  : "changeApi"
       
+    events:
+      "click .peview-dish" : "makeBook",
 
     makeBook: ->
-       $ = jQuery
-       $(@el).turn
-          width: 400
-          height: 100
-          autoCenter: true
+      $ = jQuery
+      console.log "@model",@model
+      $(".bookModel",@el).modal()
+      $(".book",@el).turn
+        width: 600
+        height:300
+        display: 'double'
+        acceleration: true
+        gradients: not $.isTouch
+        elevation: 50
+        when:
+          turned: (e, page) ->
 
 
     render: ->
       $ = jQuery
-      console.log "@model",@model
       $(@el).html(@template({data:@model}));
       @
     

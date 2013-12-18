@@ -157,7 +157,13 @@ block content
           option Средняя
           option Высокая
       button#start-search-btn Начать поиск
-
+    br
+    br
+    br    
+    br
+    br
+    #dishBookAppender
+    
         
   //form#pm-container
     #pm-header
@@ -167,10 +173,6 @@ block content
         button#add-ing Добавить ингридиент
 
     button#start-search-btn Начать поиск
-  br
-  br
-  br
-  #dishBookAppender
 
 
 
@@ -180,12 +182,27 @@ block content
 
         
   script#dishBookTemplate(type="text/template")
-    div.hard
-    div.hard
-      | <%= data.title %>
-    <% _.each(data.recipe, function(name) { %> <div><%= name %></div> <% }); %>
-    div.hard
-    div.hard
+    .peview-dish(style="text-align:center")
+      div <%=data.title%>
+      hr
+      img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg",width="215px")
+    .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content(style="width:645px")
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title <%=data.title%>
+          .modal-body(style="width:600px;height:300px;")
+            .book
+              img(src!="/img/dishes/<%=data.id_picture%>/title.jpg",width="270px")
+              div(style="background:#333; color:#FFF")
+                Содержание
+                ol
+                  <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
+              <% _.each(data.recipe, function(name) { %> <div style="background:#333; color:#FFF"><%= name %></div> <% }); %>
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
 
+//ToDO!!! По возможности заменить все style по уму(по классам)
      
   

@@ -150,12 +150,11 @@ $(document).ready () ->
 
 
     renderDish = (data) ->
-      dishBookView = new DisBookView({model:data[0]})
-      $("#dishBookAppender").append(dishBookView.render().el)
-      dishBookView.makeBook()
-      
-  
-    console.log $("#dobavki")
+      $("#dishBookAppender").empty()
+      data.forEach (model) ->
+        dishBookView = new DisBookView({model:model})
+        $("#dishBookAppender").append(dishBookView.render().el)
+    
     $(".cooler-companent").on "mouseenter", (e)=>
       classEl = $(e.target).attr("fonClass")
       console.log "class",classEl
