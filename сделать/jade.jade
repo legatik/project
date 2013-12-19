@@ -1,0 +1,29 @@
+doctype 5
+html
+	head
+		title= title
+	block scripts
+		!= css('style')
+		!= css('bootstrap.min')
+		!= css('jquery-ui')
+		!= js('libs/jquery-2.0.3.min')
+		!= js('libs/bootstrap.min')
+		!= js('libs/underscore-min')
+		!= js('libs/socket.io')
+		!= js('libs/moment.min')
+		!= js('libs/jquery-ui')
+		!= js('libs/uuid')
+
+		script
+			window.host = '#{host}'
+
+	body
+	.container
+		nav.navbar.navbar-default(role="navigation")
+			a.navbar-brand(href="/") Hello
+			ul.nav.navbar-nav
+				- each item in menu
+					li(class=item.class)
+						a(href=item.href, class=item.class)= item.name
+		.row
+			block content
