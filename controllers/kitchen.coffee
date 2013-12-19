@@ -1,10 +1,43 @@
 
 exports.boot = (app) ->
 
+  mitchingObg =
+    italy:"Итальянская"
+    georgia: "Грузинская"
+    franch : "Французкая"
+    china :"Китайская"
+    armenia : "Армянская"
+    ukrainian : "Украинская"
+    japan : "Японская"
+    uzbek : "Узбекская"
+    indian : "Индийская"
+    azerbaijan :"Азербайджанская"
+    mexican : "Мексиканская"
+    greek : "Греческая"
+    thai : "Тайская"
+    jewish : "Еврейская"
+    turkish : "Турецкая"
+    german : "Немецкая"
+    balkan : "Балканская"
+    spanish : "Испанская"
+    korean : "Корейская"
+    moldova : "Молдавская"
+    tatar :  "Татарская"
+    belarusian : "Белорусская"
+    vietnamese : "Вьетнамская"
+    arab : "Арабская"
+    east_european : "Восточноевропейская"
+    scandinavian : "Скандинавская"
+    baltic : "Прибалтийская"
+    latin : "Латиноамериканская"
+    malaysian : "Малазийская"
+    british : "Британская"
+
   app.get '/:kitchen', (req, res) ->
-    console.log "heare@@!!!",req.params.kitchen
-    kitchen = req.params.kitchen
-    res.render 'kitchen', {title: 'Мировая кухня | Итальянская кухня', user: req.user, loc:'searchIng', kitchen: kitchen}
+    key = req.params.kitchen
+    rusName = mitchingObg[key]
+    title = "Мировая кухня | " + rusName + " кухня" 
+    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchen: key, temp: rusName + " кухня"}
 
 	  
 #		project = _.extend req.body,
