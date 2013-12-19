@@ -195,13 +195,13 @@ block content
             .book
               img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
               div.ing-list
-                Содержание
-                ol
-                  <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
-              <% _.each(data.recipe, function(name) { %> <div class="page"><%= name %></div> <% }); %>
+                div
+                  Содержание
+                  ol
+                    <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
+              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-
-//ToDO!!! По возможности заменить все style по уму(по классам)
-     
+            a(href !="/dish/<%=data._id%>",target="_blank")
+              button на страницу блюда
   

@@ -5,6 +5,7 @@ Schema = mongoose.Schema
 
 dish = new Schema
 	title : String
+	title_key: String
 	who_added: String
 	composition: [{ing:String,col:String}]
 	recipe : Array

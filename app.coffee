@@ -46,7 +46,7 @@ options = {db:{type: 'mongo'}}
 
 app.namespace '/search', require('./controllers/search').boot.bind @, app
 app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
-#app.namespace '/projects', require('./controllers/projects').boot.bind @, app
+app.namespace '/dish', require('./controllers/dish').boot.bind @, app
 #app.namespace '/files', require('./controllers/files').boot.bind @, app
 
 #Product.createThis()
@@ -98,13 +98,13 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 #       console.log "*********"
 
 #Замена Изюм
-Product.find {}, (err, products) ->
-  products.forEach (product) ->
-    if product.title == "пшеничные сухарики"
-#       product.species = "Мука и мучные изделия"
-#       product.save()
-       console.log "product",product
-       console.log "*********"
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.title == "пшеничные сухарики"
+##       product.species = "Мука и мучные изделия"
+##       product.save()
+#       console.log "product",product
+#       console.log "*********"
 
 
 

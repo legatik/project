@@ -1,0 +1,35 @@
+extends layout
+
+
+block content
+  
+  != css('style-dish-page')
+  != js('dish')
+  
+  include navigation
+  include left-column
+  include right-column
+  
+  #center-column
+    #dish-container
+      #dish-title
+        h2 #{dish.title}
+      #dish-body
+        #dish-ing
+          h4 Ингридиенты
+          ul
+            each duoble in dish.composition
+              li #{duoble.ing}  - #{duoble.col}
+               
+        #dish-img-cont
+          Тут будут картинки
+        #dish-img-title
+          img(src="/img/dishes/#{dish._id}/title.jpg")
+        #dish-recept
+          ol
+            each step in dish.recipe
+              li #{step}
+              
+      #block-footer
+        #comment Тут будут коментарии
+          
