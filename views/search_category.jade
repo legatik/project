@@ -182,24 +182,23 @@ block content
 
         
   script#dishBookTemplate(type="text/template")
-    .peview-dish(style="text-align:center")
+    .peview-dish
       div <%=data.title%>
-      hr
-      img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg",width="215px")
+      img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
     .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog
-        .modal-content(style="width:645px")
+        .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4#myModalLabel.modal-title <%=data.title%>
-          .modal-body(style="width:600px;height:300px;")
+          .modal-body
             .book
-              img(src!="/img/dishes/<%=data.id_picture%>/title.jpg",width="270px")
-              div(style="background:#333; color:#FFF")
+              img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+              div.ing-list
                 Содержание
                 ol
                   <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
-              <% _.each(data.recipe, function(name) { %> <div style="background:#333; color:#FFF"><%= name %></div> <% }); %>
+              <% _.each(data.recipe, function(name) { %> <div class="page"><%= name %></div> <% }); %>
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
 
