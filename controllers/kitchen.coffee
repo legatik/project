@@ -1,43 +1,22 @@
-
+_ = require('underscore')
 exports.boot = (app) ->
 
-  mitchingObg =
-    italy:"Итальянская"
-    georgia: "Грузинская"
-    franch : "Французкая"
-    china :"Китайская"
-    armenia : "Армянская"
-    ukrainian : "Украинская"
-    japan : "Японская"
-    uzbek : "Узбекская"
-    indian : "Индийская"
-    azerbaijan :"Азербайджанская"
-    mexican : "Мексиканская"
-    greek : "Греческая"
-    thai : "Тайская"
-    jewish : "Еврейская"
-    turkish : "Турецкая"
-    german : "Немецкая"
-    balkan : "Балканская"
-    spanish : "Испанская"
-    korean : "Корейская"
-    moldova : "Молдавская"
-    tatar :  "Татарская"
-    belarusian : "Белорусская"
-    vietnamese : "Вьетнамская"
-    arab : "Арабская"
-    east_european : "Восточноевропейская"
-    scandinavian : "Скандинавская"
-    baltic : "Прибалтийская"
-    latin : "Латиноамериканская"
-    malaysian : "Малазийская"
-    british : "Британская"
+
+
+
 
   app.get '/:kitchen', (req, res) ->
     key = req.params.kitchen
-    rusName = mitchingObg[key]
+    
+    ob = _.clone(app.mitchingObg)
+    objStr = JSON.stringify(ob)
+    obj = JSON.parse(objStr)
+        
+    rusName = obj[key].name
+    obj[key].class = "active"
+    
     title = "Мировая кухня | " + rusName + " кухня" 
-    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchen: key, temp: rusName + " кухня"}
+    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: obj, temp: rusName + " кухня"}
 
 	  
 #		project = _.extend req.body,

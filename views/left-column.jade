@@ -1,63 +1,71 @@
 #left-column
   |LEFT
   ul
-    li 
-      a(href="/kitchen/italy") Итальянская
-    li
-      a(href="/kitchen/georgia") Грузинская
-    li 
-      a(href="/kitchen/franch") Французкая
-    li 
-      a(href="/kitchen/china") Китайская
-    li 
-      a(href="/kitchen/armenia") Армянская
-    li 
-      a(href="/kitchen/ukrainian") Украинская
-    li 
-      a(href="/kitchen/japan") Японская
-    li 
-      a(href="/kitchen/uzbek") Узбекская
-    li 
-      a(href="/kitchen/indian") Индийская
-    li 
-      a(href="/kitchen/azerbaijan") Азербайджанская
-    li 
-      a(href="/kitchen/mexican") Мексиканская
-    li 
-      a(href="/kitchen/greek") Греческая
-    li 
-      a(href="/kitchen/thai") Тайская
-    li 
-      a(href="/kitchen/jewish") Еврейская
-    li 
-      a(href="/kitchen/turkish") Турецкая
-    li 
-      a(href="/kitchen/german") Немецкая
-    li 
-      a(href="/kitchen/balkan") Балканская
-    li 
-      a(href="/kitchen/spanish") Испанская
-    li 
-      a(href="/kitchen/korean") Корейская
-    li 
-      a(href="/kitchen/moldova") Молдавская
-    li 
-      a(href="/kitchen/tatar") Татарская
-    li 
-      a(href="/kitchen/belarusian") Белорусская
-    li 
-      a(href="/kitchen/vietnamese") Вьетнамская
-    li 
-      a(href="/kitchen/arab") Арабская
-    li 
-      a(href="/kitchen/east_european") Восточноевропейская
-    li 
-      a(href="/kitchen/scandinavian") Скандинавская
-    li 
-      a(href="/kitchen/baltic") Прибалтийская
-    li 
-      a(href="/kitchen/latin") Латиноамериканская
-    li 
-      a(href="/kitchen/malaysian") Малазийская
-    li 
-      a(href="/kitchen/british") Британская
+    - each item in kitchens
+        li(class=item.class)
+            a(href="/kitchen/"+ item.key, class=item.class)= item.name
+
+
+
+
+
+//    li 
+//      a(href="/kitchen/italy") Итальянская
+//    li
+//      a(href="/kitchen/georgia") Грузинская
+//    li 
+//      a(href="/kitchen/franch") Французкая
+//    li 
+//      a(href="/kitchen/china") Китайская
+//    li 
+//      a(href="/kitchen/armenia") Армянская
+//    li 
+//      a(href="/kitchen/ukrainian") Украинская
+//    li 
+//      a(href="/kitchen/japan") Японская
+//    li 
+//      a(href="/kitchen/uzbek") Узбекская
+//    li 
+//      a(href="/kitchen/indian") Индийская
+//    li 
+//      a(href="/kitchen/azerbaijan") Азербайджанская
+//    li 
+//      a(href="/kitchen/mexican") Мексиканская
+//    li 
+//      a(href="/kitchen/greek") Греческая
+//    li 
+//      a(href="/kitchen/thai") Тайская
+//    li 
+//      a(href="/kitchen/jewish") Еврейская
+//    li 
+//      a(href="/kitchen/turkish") Турецкая
+//    li 
+//      a(href="/kitchen/german") Немецкая
+//    li 
+//      a(href="/kitchen/balkan") Балканская
+//    li 
+//      a(href="/kitchen/spanish") Испанская
+//    li 
+//      a(href="/kitchen/korean") Корейская
+//    li 
+//      a(href="/kitchen/moldova") Молдавская
+//    li 
+//      a(href="/kitchen/tatar") Татарская
+//    li 
+//      a(href="/kitchen/belarusian") Белорусская
+//    li 
+//      a(href="/kitchen/vietnamese") Вьетнамская
+//    li 
+//      a(href="/kitchen/arab") Арабская
+//    li 
+//      a(href="/kitchen/east_european") Восточноевропейская
+//    li 
+//      a(href="/kitchen/scandinavian") Скандинавская
+//    li 
+//      a(href="/kitchen/baltic") Прибалтийская
+//    li 
+//      a(href="/kitchen/latin") Латиноамериканская
+//    li 
+//      a(href="/kitchen/malaysian") Малазийская
+//    li 
+//      a(href="/kitchen/british") Британская

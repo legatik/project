@@ -45,6 +45,80 @@ auth.init app, passport
 options = {db:{type: 'mongo'}}
 
 
+app.mitchingObg =
+    italy:
+      name: "Итальянская"
+      key: "italy"
+    georgia:
+      name : "Грузинская"
+      key  : "georgia"
+    franch : 
+      name: "Французкая"
+      key : "franch"
+#    china :"Китайская"
+#    armenia : "Армянская"
+#    ukrainian : "Украинская"
+#    japan : "Японская"
+#    uzbek : "Узбекская"
+#    indian : "Индийская"
+#    azerbaijan :"Азербайджанская"
+#    mexican : "Мексиканская"
+#    greek : "Греческая"
+#    thai : "Тайская"
+#    jewish : "Еврейская"
+#    turkish : "Турецкая"
+#    german : "Немецкая"
+#    balkan : "Балканская"
+#    spanish : "Испанская"
+#    korean : "Корейская"
+#    moldova : "Молдавская"
+#    tatar :  "Татарская"
+#    belarusian : "Белорусская"
+#    vietnamese : "Вьетнамская"
+#    arab : "Арабская"
+#    east_european : "Восточноевропейская"
+#    scandinavian : "Скандинавская"
+#    baltic : "Прибалтийская"
+#    latin : "Латиноамериканская"
+#    malaysian : "Малазийская"
+#    british : "Британская"
+
+
+#app.mitchingObg =
+#    italy:
+#      name: "Итальянская"
+#      key: "italy"
+#    georgia: "Грузинская"
+#    franch : "Французкая"
+#    china :"Китайская"
+#    armenia : "Армянская"
+#    ukrainian : "Украинская"
+#    japan : "Японская"
+#    uzbek : "Узбекская"
+#    indian : "Индийская"
+#    azerbaijan :"Азербайджанская"
+#    mexican : "Мексиканская"
+#    greek : "Греческая"
+#    thai : "Тайская"
+#    jewish : "Еврейская"
+#    turkish : "Турецкая"
+#    german : "Немецкая"
+#    balkan : "Балканская"
+#    spanish : "Испанская"
+#    korean : "Корейская"
+#    moldova : "Молдавская"
+#    tatar :  "Татарская"
+#    belarusian : "Белорусская"
+#    vietnamese : "Вьетнамская"
+#    arab : "Арабская"
+#    east_european : "Восточноевропейская"
+#    scandinavian : "Скандинавская"
+#    baltic : "Прибалтийская"
+#    latin : "Латиноамериканская"
+#    malaysian : "Малазийская"
+#    british : "Британская"
+
+
 app.namespace '/search', require('./controllers/search').boot.bind @, app
 app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 app.namespace '/dish', require('./controllers/dish').boot.bind @, app
