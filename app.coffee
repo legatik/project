@@ -44,8 +44,26 @@ auth.init app, passport
 
 options = {db:{type: 'mongo'}}
 
-
-
+app.mitchingSpec
+  first_course:
+    name : "Первые блюда"
+    key : "first_course"
+  main_dishes:
+    name : "Вторые блюда"
+    key : "main_dishes"
+  salad:
+    name : "Салаты"
+    key : "salad"
+  dessert
+    name : "Десерты"
+    key : "dessert"
+  bake
+    name : "Выпечка"
+    key : "bake"
+  drinks
+    name : "Напитки"
+    key : "drinks"
+     
 
 app.mitchingObg =
     italy:

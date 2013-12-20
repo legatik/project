@@ -23,10 +23,14 @@ exports.boot = (app) ->
   app.get '/:kitchen/:species', (req, res) ->
     keyKitchen = req.params.kitchen
     keySpecies = req.params.species
+    ob = _.clone(app.mitchingObg)
+    objStr = JSON.stringify(ob)
+    obj = JSON.parse(objStr)
+    obj[keyKitchen].class = "active"
+    rusName = obj[keyKitchen].name
     
-    console.log "keySpecies",keySpecies
-    console.log "keyKitchen",keyKitchen
-    res.send 200
+    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: obj, key : keyKitchen}
+    
 
   
 #		project = _.extend req.body,
