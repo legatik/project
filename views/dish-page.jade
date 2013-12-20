@@ -22,7 +22,9 @@ block content
               li #{duoble.ing}  - #{duoble.col}
                
         #dish-img-cont
-          Тут будут картинки
+          - for (var i = 0; i < dish.qty_picture; i++){
+              img(src="/img/dishes/#{dish.id_picture}/p"+i+".jpg")
+          - }
         #dish-img-title
           img(src="/img/dishes/#{dish.id_picture}/title.jpg")
         #dish-recept
