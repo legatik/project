@@ -1,15 +1,21 @@
 #right-column
   ul
-    li
-      a(href="/kitchen/"+key+"/first_course") Первые блюда
-    li
-      a(href="/kitchen/"+key+"/main_dishes") Вторые блюда
-    li
-      a(href="/kitchen/"+key+"/salad") Салаты
-    li
-      a(href="/kitchen/"+key+"/dessert") Десерты
-    li
-      a(href="/kitchen/"+key+"/bake") Выпечка
-    li
-      a(href="/kitchen/"+key+"/drinks") Напитки
-      
+
+    - each item in species
+        li(class=item.class)
+            a(href="/kitchen/"+key+"/"+item.key, class=item.class)= item.name
+  
+//    li
+//      a(href="/kitchen/"+key+"/first_course") Первые блюда
+//    li
+//      a(href="/kitchen/"+key+"/main_dishes") Вторые блюда
+//    li
+//      a(href="/kitchen/"+key+"/salad") Салаты
+//    li
+//      a(href="/kitchen/"+key+"/dessert") Десерты
+//    li
+//      a(href="/kitchen/"+key+"/bake") Выпечка
+//    li
+//      a(href="/kitchen/"+key+"/drinks") Напитки
+//      
+

@@ -12,6 +12,7 @@ assets = require 'connect-assets'
 db = require './lib/db'
 auth = require './lib/auth'
 passport = require 'passport'
+_ = require 'underscore'
 RedisStore = require('connect-redis')(express)
 app = express()
 
@@ -44,7 +45,7 @@ auth.init app, passport
 
 options = {db:{type: 'mongo'}}
 
-app.mitchingSpec
+app.mitchingSpec =
   first_course:
     name : "Первые блюда"
     key : "first_course"
@@ -54,13 +55,13 @@ app.mitchingSpec
   salad:
     name : "Салаты"
     key : "salad"
-  dessert
+  dessert:
     name : "Десерты"
     key : "dessert"
-  bake
+  bake:
     name : "Выпечка"
     key : "bake"
-  drinks
+  drinks:
     name : "Напитки"
     key : "drinks"
      
@@ -144,7 +145,10 @@ app.namespace '/tool', require('./controllers/tool').boot.bind @, app
 
 
 app.get '/', (req, res) ->
-	res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchen: "all"}
+  ob = _.clone(app.mitchingObg)
+  objStr = JSON.stringify(ob)
+  obj = JSON.parse(objStr)
+  res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchen: obj}
 
 app.get '/register', (req, res) ->
 	res.render 'registration', {title: 'Onlile JS Compiller'}

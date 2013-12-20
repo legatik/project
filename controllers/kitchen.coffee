@@ -21,15 +21,26 @@ exports.boot = (app) ->
 
 
   app.get '/:kitchen/:species', (req, res) ->
+    
     keyKitchen = req.params.kitchen
     keySpecies = req.params.species
+    
+    #kitchen
     ob = _.clone(app.mitchingObg)
     objStr = JSON.stringify(ob)
     obj = JSON.parse(objStr)
     obj[keyKitchen].class = "active"
     rusName = obj[keyKitchen].name
     
-    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: obj, key : keyKitchen}
+    #species
+    obs = _.clone(app.mitchingSpec)
+    objsStr = JSON.stringify(obs)
+    objs = JSON.parse(objsStr)
+    objs[keySpecies].class = "active"
+    
+    console.log "objs",objs
+    
+    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: obj, species:objs , key : keyKitchen}
     
 
   
