@@ -16,9 +16,19 @@ exports.boot = (app) ->
     obj[key].class = "active"
     
     title = "Мировая кухня | " + rusName + " кухня" 
-    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: obj, temp: rusName + " кухня"}
+    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: obj, temp: rusName + " кухня", key : key}
 
-	  
+
+
+  app.get '/:kitchen/:species', (req, res) ->
+    keyKitchen = req.params.kitchen
+    keySpecies = req.params.species
+    
+    console.log "keySpecies",keySpecies
+    console.log "keyKitchen",keyKitchen
+    res.send 200
+
+  
 #		project = _.extend req.body,
 #			owner: req.user._id
 #		Project.findOne {owner: req.user._id, name: project.name}, (err, p) ->

@@ -45,6 +45,8 @@ auth.init app, passport
 options = {db:{type: 'mongo'}}
 
 
+
+
 app.mitchingObg =
     italy:
       name: "Итальянская"
@@ -85,9 +87,7 @@ app.mitchingObg =
 
 
 #app.mitchingObg =
-#    italy:
-#      name: "Итальянская"
-#      key: "italy"
+#    italy: "Итальянская"
 #    georgia: "Грузинская"
 #    franch : "Французкая"
 #    china :"Китайская"
