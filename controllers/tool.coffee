@@ -1,12 +1,28 @@
 db = require '../lib/db'
 _ = require 'underscore'
-fs = require 'fs'
+fs = require 'fs-extra'
 
 {Dish, Product} = db.models
 
 exports.boot = (app) ->
 
 #Product.createThis()
+
+
+
+
+
+
+#Dish.find {}, (err, dishArr) ->
+#  dishArr.forEach (dish) ->
+#    path = "/home/dunice/work/project/public/img/dishes/"+dish.id_picture
+#    fs.readdir path, (err,st) ->
+#      console.log "st",st
+#      length = st.length
+#      withoutTitle = Number(length) - 1
+#      dish.qty_picture = withoutTitle
+##      dish.save()
+      
 
 #замена гречнеыой каши
 #Product.find {}, (err, products) ->

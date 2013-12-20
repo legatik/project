@@ -15,6 +15,7 @@ dish = new Schema
 	rating : Number
 	status : String
 	id_picture : String
+	qty_picture: Number
 	dateAdding : Date
 	comments:[{type: ObjectId, ref: 'Comment'}]
 	kitchen : String
