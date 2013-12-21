@@ -7,49 +7,21 @@ exports.boot = (app) ->
 
   app.get '/:kitchen', (req, res) ->
     #kitchen
-    key = req.params.kitchen
-    
-    ob = _.clone(app.mitchingObg)
-    objStr = JSON.stringify(ob)
-    obj = JSON.parse(objStr)
-        
-    rusName = obj[key].name
-    obj[key].class = "active"
-    
+    keyKitchen = req.params.kitchen
+    {keyKitchen, objk, objs} = app.mitching(keyKitchen)
+    rusName = objk[keyKitchen].name
     title = "Мировая кухня | " + rusName + " кухня" 
-     
-
-    #species
-    obs = _.clone(app.mitchingSpec)
-    objsStr = JSON.stringify(obs)
-    objs = JSON.parse(objsStr)
-     
-    
-    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: obj, temp: rusName + " кухня", key : key, species:objs}
+    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: objk, temp: rusName + " кухня", key : keyKitchen, species:objs}
 
 
 
   app.get '/:kitchen/:species', (req, res) ->
-    
     keyKitchen = req.params.kitchen
     keySpecies = req.params.species
-    
-    #kitchen
-    ob = _.clone(app.mitchingObg)
-    objStr = JSON.stringify(ob)
-    obj = JSON.parse(objStr)
-    obj[keyKitchen].class = "active"
-    rusName = obj[keyKitchen].name
-    
-    #species
-    obs = _.clone(app.mitchingSpec)
-    objsStr = JSON.stringify(obs)
-    objs = JSON.parse(objsStr)
-    objs[keySpecies].class = "active"
-    
+    {keyKitchen, objk, objs} = app.mitching(keyKitchen, keySpecies)
     console.log "objs",objs
-    
-    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: obj, species:objs , key : keyKitchen}
+    rusName = objk[keyKitchen].name
+    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: objk, species:objs , key : keyKitchen}
     
 
   

@@ -5,12 +5,13 @@ fs = require 'fs'
 {Dish, Product} = db.models
 
 exports.boot = (app) ->
-
   app.get '/ing', (req, res) ->
-	  res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', kitchen:"all"}
+    {keyKitchen, objk, objs} = app.mitching()
+    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', key : keyKitchen, kitchens: objk, species:objs}
 
   app.get '/category', (req, res) ->
-	  res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', kitchen:"all"}
+    {keyKitchen, objk, objs} = app.mitching()
+    res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs}
 
 
   app.get '/title_complete',  (req, res) ->

@@ -12,7 +12,7 @@ assets = require 'connect-assets'
 db = require './lib/db'
 auth = require './lib/auth'
 passport = require 'passport'
-_ = require 'underscore'
+
 RedisStore = require('connect-redis')(express)
 app = express()
 
@@ -86,18 +86,8 @@ app.namespace '/tool', require('./controllers/tool').boot.bind @, app
 
 
 app.get '/', (req, res) ->
-  #kitchen
-  ob = _.clone(app.mitchingObg)
-  objStr = JSON.stringify(ob)
-  obj = JSON.parse(objStr)
-  
-  
-  #species
-  obs = _.clone(app.mitchingSpec)
-  objsStr = JSON.stringify(obs)
-  objs = JSON.parse(objsStr)
-  key="all"
-  res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: obj, species:objs, key:key}
+  {keyKitchen, objk, objs} = app.mitching()
+  res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen}
 
 app.get '/register', (req, res) ->
 	res.render 'registration', {title: 'Onlile JS Compiller'}
