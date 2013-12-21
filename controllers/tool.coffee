@@ -6,10 +6,8 @@ fs = require 'fs-extra'
 
 exports.boot = (app) ->
 
+
 #Product.createThis()
-
-
-
 
 
 
