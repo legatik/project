@@ -145,10 +145,18 @@ app.namespace '/tool', require('./controllers/tool').boot.bind @, app
 
 
 app.get '/', (req, res) ->
+  #kitchen
   ob = _.clone(app.mitchingObg)
   objStr = JSON.stringify(ob)
   obj = JSON.parse(objStr)
-  res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchen: obj}
+  
+  
+  #species
+  obs = _.clone(app.mitchingSpec)
+  objsStr = JSON.stringify(obs)
+  objs = JSON.parse(objsStr)
+  key="all"
+  res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: obj, species:objs, key:key}
 
 app.get '/register', (req, res) ->
 	res.render 'registration', {title: 'Onlile JS Compiller'}
