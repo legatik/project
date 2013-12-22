@@ -13,8 +13,7 @@ user = new Schema(
 	email: String
 	password: String
 	registered_on: Date
-	projects: [{type: ObjectId, ref: 'Project'}]
-	shared_projects: [{type: ObjectId, ref: 'Project'}]
+	comments: [{type: ObjectId, ref: 'Comment'}]
 )
 Model = mongoose.model 'User', user
 
