@@ -1,4 +1,4 @@
 $(document).ready () ->
-  console.log "dish page"
+  console.log "dish page",user
       
 

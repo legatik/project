@@ -33,5 +33,10 @@ block content
               li #{step}
               
       #block-footer
-        #comment Тут будут коментарии
+        #comment-block
+          Тут отображать коменты
+        if(user)
+          #comment-send
+            textarea#message
+            button#send-message Отправить
           

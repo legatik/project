@@ -13,13 +13,13 @@ exports.boot = (app) ->
 
 #Dish.find {}, (err, dishArr) ->
 #  dishArr.forEach (dish) ->
-#    path = "/home/dunice/work/project/public/img/dishes/"+dish.id_picture
+#    path = "/home/legatik/worke/cook-progect/public/img/dishes/"+dish.id_picture
 #    fs.readdir path, (err,st) ->
 #      console.log "st",st
 #      length = st.length
 #      withoutTitle = Number(length) - 1
 #      dish.qty_picture = withoutTitle
-##      dish.save()
+#      dish.save()
       
 
 #замена гречнеыой каши
