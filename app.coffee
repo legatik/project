@@ -16,7 +16,7 @@ passport = require 'passport'
 RedisStore = require('connect-redis')(express)
 app = express()
 
-{User,Product, Dish} = db.models
+{User,Product, Dish, Comment} = db.models
 
 app.configure () ->
 	app.set "port", process.env.PORT or 3000
@@ -109,7 +109,7 @@ app.get '/logout', (req,res) ->
 	req.logout()
 	res.redirect '/'
 
-
+#Comment.createThis()
 
 http.createServer(app).listen app.get('port'), () ->
 	console.log "Express server listening on port " + app.get('port')
