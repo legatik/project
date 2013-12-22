@@ -36,6 +36,7 @@ block content
         #comment-block
           Тут отображать коменты
         if(user)
+          input#hide-input.hide(dataUser = user, dataDish = dish)
           #comment-send
             textarea#message
             button#send-message Отправить
