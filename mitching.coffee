@@ -7,6 +7,9 @@ module.exports  = (keyKitchen,keySpecies) ->
     main_dishes:
       name : "Вторые блюда"
       key : "main_dishes"
+    snack:
+      name : "Закуски"
+      key : "snack"
     salad:
       name : "Салаты"
       key : "salad"
@@ -22,6 +25,9 @@ module.exports  = (keyKitchen,keySpecies) ->
       
       
   kitchenObj =
+      russian:
+        name: "Русская"
+        key: "russian"
       italy:
         name: "Итальянская"
         key: "italy"

@@ -11,6 +11,20 @@ define [
     template: _.template(jQuery('#dishBookTemplate').html()),
 
     initialize:(@options) ->
+      @mitchingS = []
+      @mitchingS["Супы"] = "first_course"
+      @mitchingS["Вторые блюда"] = "main_dishes"
+      @mitchingS["Закуски"] = "snack"
+      @mitchingS["Салаты"] = "salad"
+      @mitchingS["Десерты"] = "dessert"
+      @mitchingS["Выпечка"] = "bake"
+      @mitchingS["Напитки"] = "drinks"
+      
+      @mitchingK = []
+      @mitchingK["Русская"] = "russian"
+      @mitchingK["Итальянская"] = "italy"
+      @mitchingK["Грузинская"] = "georgia"
+      @mitchingK["Французкая"] = "franch"
       @model = @options.model
       
     events:
@@ -33,6 +47,11 @@ define [
 
     render: ->
       $ = jQuery
-      $(@el).html(@template({data:@model}));
+      console.log "@mitchingK",@mitchingK
+      console.log "@model.kitchen", @model.kitchen
+      key =
+        kitchen : @mitchingK[@model.kitchen]
+        species : @mitchingS[@model.species]
+      $(@el).html(@template({data:@model, key:key}));
       @
     

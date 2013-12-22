@@ -81,7 +81,7 @@ app.mitching = require './mitching'
 
 app.namespace '/search', require('./controllers/search').boot.bind @, app
 app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
-app.namespace '/dish', require('./controllers/dish').boot.bind @, app
+#app.namespace '/dish', require('./controllers/dish').boot.bind @, app
 app.namespace '/tool', require('./controllers/tool').boot.bind @, app
 
 
