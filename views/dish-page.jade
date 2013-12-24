@@ -33,15 +33,21 @@ block content
               li #{step}
               
       #block-footer
+        h4 Коментарии к блюду
         #comment-block
-          Тут отображать коменты
+        if(!user)
+          h3 Только зарегестрированные пользователи могут оставить коментарии
         if(user)
+          h3 Оставьте свой коментарий
           input#hide-input.hide(dataUser = user, dataDish = dish)
-      #comment-send
-        textarea#message
-        button#send-message Отправить
+        #comment-send
+          textarea#message
+          button#send-message Отправить
             
   script#CommentTemplate(type="text/template")
     .user-info
-    .message-user
-         
+      div firstName :
+        span(style="color:red") <%=idUser[0].firstName%>
+      div lastName :
+        span(style="color:red") <%=idUser[0].lastName%>
+    .message-user <%=message%>

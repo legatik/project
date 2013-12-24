@@ -9,21 +9,18 @@ $(document).ready () ->
     
     template: _.template(jQuery('#CommentTemplate').html()),
 
-    initialize:(@options) ->
-
+    initialize:(@model) ->
     render: ->
       $ = jQuery
-      $(@el).html(@template({}));
+      $(@el).html(@template(@model));
       @
 
 
 
   user = JSON.parse $("#hide-input").attr("dataUser")
   dish = JSON.parse $("#hide-input").attr("dataDish")
+  console.log "dish",dish
   $("#hide-input").remove()
-  console.log "use", user
-  console.log "dish", dish
-  
   
   $("#send-message").click ()->
     message = $("#message").val()
@@ -40,8 +37,24 @@ $(document).ready () ->
         success : (status) ->
           if status == "OK"
             model = 
-              user: user
+              idUser:[user] 
               message:message
             commentView = new CommentView(model)
             console.log "heare"
             $("#comment-block").append(commentView.render().el)
+            
+            
+  renderComments = ()->
+    $.ajax
+      type    : 'GET'
+      data    : {idComment:dish.comments}
+      url     : "/comment/find"
+      success : (comments) ->
+        comments.forEach (comment) ->
+          model = 
+            idUser:[user] 
+            message:comment.message
+          commentView = new CommentView(model)
+          $("#comment-block").append(commentView.render().el)
+    
+  renderComments()

@@ -1,5 +1,6 @@
 _ = require('underscore')
 db = require '../lib/db'
+exec = require('child_process').exec
 {Dish} = db.models
 exports.boot = (app) ->
 

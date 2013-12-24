@@ -6,7 +6,7 @@ ObjectId = mongoose.Schema.Types.ObjectId
 Schema = mongoose.Schema
 
 comment = new Schema
-  idUser: ObjectId
+  idUser: [{type: ObjectId, ref: 'User'}]
   message: String
   
 Model = mongoose.model 'Comment', comment

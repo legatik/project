@@ -12,3 +12,9 @@ exports.boot = (app) ->
         res.send err
       else
         res.send 200
+        
+  app.get 'find', (req, res) ->
+    idComment = req.query.idComment
+    Comment.find({_id: {$in: idComment}}).populate("idUser").exec (err, comments) ->
+      res.send comments  
+
