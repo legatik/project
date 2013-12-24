@@ -37,9 +37,11 @@ block content
           Тут отображать коменты
         if(user)
           input#hide-input.hide(dataUser = user, dataDish = dish)
-          #comment-send
-            textarea#message
-            button#send-message Отправить
+      #comment-send
+        textarea#message
+        button#send-message Отправить
             
   script#CommentTemplate(type="text/template")
-    div Hello
+    .user-info
+    .message-user
+         

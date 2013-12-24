@@ -11,14 +11,12 @@ $(document).ready () ->
 
     initialize:(@options) ->
 
-#    events:
-#      "click .peview-dish" : "makeBook",
-
-
     render: ->
       $ = jQuery
       $(@el).html(@template({}));
       @
+
+
 
   user = JSON.parse $("#hide-input").attr("dataUser")
   dish = JSON.parse $("#hide-input").attr("dataDish")
@@ -41,5 +39,9 @@ $(document).ready () ->
         url     : "/comment/create"
         success : (status) ->
           if status == "OK"
-            console.log "good"  
-  
+            model = 
+              user: user
+              message:message
+            commentView = new CommentView(model)
+            console.log "heare"
+            $("#comment-block").append(commentView.render().el)
