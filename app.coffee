@@ -12,6 +12,7 @@ assets = require 'connect-assets'
 db = require './lib/db'
 auth = require './lib/auth'
 passport = require 'passport'
+nodemailer = require 'nodemailer'
 
 RedisStore = require('connect-redis')(express)
 app = express()
@@ -110,6 +111,28 @@ app.get '/logout', (req,res) ->
 	res.redirect '/'
 
 #Comment.createThis()
+
+smtpTransport = nodemailer.createTransport("SMTP",
+  service: "Gmail"
+  auth:
+    user: "leonidova.daria@gmail.com"
+    pass: "44HermionaHr44"
+)
+
+mailOptions =
+  from: "legatik@list.ru"
+  to: "legatik@list.ru"
+  subject: "Hello ✔" # Subject line
+  text: "Hello world ✔" # plaintext body
+  html: "<b>Hello world ✔</b>" # html body
+
+
+smtpTransport.sendMail mailOptions, (error, response) ->
+  if error
+    console.log error
+  else
+    console.log "Message sent: " + response.message
+
 
 http.createServer(app).listen app.get('port'), () ->
 	console.log "Express server listening on port " + app.get('port')

@@ -19,7 +19,6 @@ $(document).ready () ->
 
   user = JSON.parse $("#hide-input").attr("dataUser")
   dish = JSON.parse $("#hide-input").attr("dataDish")
-  console.log "dish",dish
   $("#hide-input").remove()
   
   $("#send-message").click ()->
