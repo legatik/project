@@ -10,17 +10,25 @@ exports.boot = (app) ->
 #Product.createThis()
 
 
-
 #Dish.find {}, (err, dishArr) ->
+#  console.log "Dish",dishArr
 #  dishArr.forEach (dish) ->
-#    path = "/home/legatik/worke/cook-progect/public/img/dishes/"+dish.id_picture
+#    path = "/home/dunice/work/project/public/img/dishes/"+dish.id_picture
 #    fs.readdir path, (err,st) ->
 #      console.log "st",st
 #      length = st.length
 #      withoutTitle = Number(length) - 1
 #      dish.qty_picture = withoutTitle
 #      dish.save()
-      
+
+
+#Product.find {}, (err, products) ->
+#  products.forEach (product) ->
+#    if product.species == "Прочее"
+##       product.save()
+#       console.log "product",product
+#       console.log "******"
+
 
 #замена гречнеыой каши
 #Product.find {}, (err, products) ->
@@ -39,7 +47,7 @@ exports.boot = (app) ->
 #       product.save()
 #       console.log "product",product
 #       console.log "****************"
-       
+
 
 #Замена Крупы и каши
 #Product.find {}, (err, products) ->
@@ -49,7 +57,7 @@ exports.boot = (app) ->
 #       product.save()
 #       console.log "product",product
 #       console.log "****************"
-       
+
 #Замена Молочные продукты
 #Product.find {}, (err, products) ->
 #  products.forEach (product) ->
@@ -81,15 +89,15 @@ exports.boot = (app) ->
 
 ##Dish.find {}, (err, products) ->
 ##  products.forEach (dish, index) ->
-##  
+##
 ##    serving = dish.serving
 ##    kremling = dish.kremling_diet
 ##    complexity = dish.complexity
-##    
+##
 ##    dish.kremling_diet = 1
 ##    dish.complexity = 1
 ##    dish.serving = 1
-##    
+##
 ##    dish.complexity = Number(complexity)
 ##    dish.serving = Number(serving)
 ##    dish.kremling_diet = Number(kremling)
