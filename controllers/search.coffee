@@ -7,11 +7,11 @@ fs = require 'fs'
 exports.boot = (app) ->
   app.get '/ing', (req, res) ->
     {keyKitchen, objk, objs} = app.mitching()
-    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', key : keyKitchen, kitchens: objk, species:objs}
+    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs}
 
-  app.get '/category', (req, res) ->
-    {keyKitchen, objk, objs} = app.mitching()
-    res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs}
+#  app.get '/category', (req, res) ->
+#    {keyKitchen, objk, objs} = app.mitching()
+#    res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs}
 
 
   app.get '/title_complete',  (req, res) ->

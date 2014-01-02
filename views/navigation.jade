@@ -1,3 +1,4 @@
+!= js('nav-bar')
 .navbar.navbar-inverse
 	a.navbar-brand(href="/") Мировая кухня
 	ul.nav.navbar-nav
@@ -7,19 +8,19 @@
 		else
 			li
 				a(href="/search/ing") Поиск по ингридиентам
-		if user
-		if (loc=='searchCategory')
-			li.active
-				a(href="/search/category") Поиск по категориям
-		else
-			li
-				a(href="/search/category") Поиск по категориям
+
 		if (loc=='randomDish')
 			li.active
 				a(href="/reandom_dish") Случайный рецепт
 		else
 			li
 				a(href="/reandom_dish") Случайный рецепт
+		if (loc=='addDish')
+			li.active
+				a(href="/addDish") Добавить рецепт
+		else
+			li
+				a(href="/addDish") Добавить рецепт
 		if (loc=='newsCookery')
 			li.active
 				a(href="/news") Кулинарные новости
@@ -27,9 +28,13 @@
 			li
 				a(href="/news") Кулинарные новости
 
+	form.navbar-form.navbar-left(role='search')
+		.form-group
+			input#nav-dish-input.form-control(type='text', placeholder='Search')
+			button.btn.btn-default(type='submit') ОК
 
 
-	ul.nav.navbar-nav.pull-right
+	ul.nav.navbar-nav.navbar-right
 		li.dropdown
 			a.dropdown-toggle(href="#",  data-toggle="dropdown") Hello, &nbsp;
 				= user && user.firstName || 'Guest'
@@ -46,4 +51,5 @@
 						a(href="/login") Sign In
 					li
 						a(href="/register") Sign Up
+	ul.nav.navbar-nav.navbar-right
 

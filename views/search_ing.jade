@@ -4,18 +4,126 @@ extends layout
 block content
   script(data-main='/js/libs/config_requre/config', src='../js/libs/requre.js')
   != js('pm')
-  != css('style-search')
+  != css('style-cooler')
+  //!= css('style-search-new')
   include navigation
   include left-column
   include right-column
-  form#pm-container
-    #pm-header
-      input#pm-dish-input(type="text",name="test")
+  #center-column
+    #cooler-container
+      img#holodilnik(src="/img/cooler/holodilnik.png")
+      img#p-left-1.polki(src="/img/cooler/p-left-1.png")
+      img#p-left-2.polki(src="/img/cooler/p-left-2.png")
+      img#p-left-niz.polki(src="/img/cooler/p-left-niz.png")
+      img#p-right-1.polki(src="/img/cooler/p-right-1.png")
+      img#p-right-2.polki(src="/img/cooler/p-right-2.png")
+      img#p-right-3.polki(src="/img/cooler/p-right-3.png")
+      img#p-right-4.polki(src="/img/cooler/p-right-4.png")
+      img#p-right-top.polki(src="/img/cooler/p-right-top.png")
+      #sodergimoe
+        img.cooler-companent.frukti#arbuz(src="/img/cooler/arbuz.png", ing="", fonClass = ".frukti")
+        img.cooler-companent-fon.frukti-fon#arbuz-fon(src="/img/cooler/arbuz_fon.png", ing="")
+
+        img.cooler-companent.dobavki#bootilka-tetropack(src="/img/cooler/bootilka_tetropack.png", ing="", fonClass = ".dobavki")
+        img.cooler-companent-fon.dobavki-fon#bootilka-tetropack-fon(src="/img/cooler/bootilka_tetropack_fon.png", ing="")
+
+        img.cooler-companent.dobavki#bootilka-yellow(src="/img/cooler/bootilka_yellow.png", ing="", fonClass = ".dobavki")
+        img.cooler-companent-fon.dobavki-fon#bootilka-yellow-fon(src="/img/cooler/bootilka_yellow_fon.png", ing="")
+
+        img.cooler-companent.frukti#dinya(src="/img/cooler/dinya.png", ing="", fonClass = ".frukti")
+        img.cooler-companent-fon.frukti-fon#dinya-fon(src="/img/cooler/dinya_fon.png", ing="")
+
+        img.cooler-companent.gribi#gribi(src="/img/cooler/gribi.png", ing="",fonClass = ".gribi")
+        img.cooler-companent-fon.gribi-fon#gribi-fon(src="/img/cooler/gribi_fon.png", ing="")
+
+        img.cooler-companent.muchnie#hleb(src="/img/cooler/hleb.png", ing="",fonClass = ".muchnie")
+        img.cooler-companent-fon.muchnie-fon#hleb-fon(src="/img/cooler/hleb_fon.png", ing="")
+
+        img.cooler-companent.moreprodukti#ikra(src="/img/cooler/ikra.png", ing="",fonClass = ".moreprodukti")
+        img.cooler-companent-fon.moreprodukti-fon#ikra-fon(src="/img/cooler/ikra_fon.png", ing="")
+
+        img.cooler-companent.frukti#klubnuka(src="/img/cooler/klubnuka.png", ing="", fonClass = ".frukti")
+        img.cooler-companent-fon.frukti-fon#klubnuka-fon(src="/img/cooler/klubnuka_fon.png", ing="")
+
+        img.cooler-companent.krupa_oreh#krupa(src="/img/cooler/krupa.png", ing="", fonClass = ".krupa_oreh")
+        img.cooler-companent-fon.krupa_oreh-fon#krupa-fon(src="/img/cooler/krupa_fon.png", ing="")
+
+        img.cooler-companent.maso#kurica(src="/img/cooler/kurica.png", ing="", fonClass=".maso")
+        img.cooler-companent-fon.maso-fon#kurica-fon(src="/img/cooler/kurica_fon.png", ing="")
+
+        img.cooler-companent.maso#maso(src="/img/cooler/maso.png", ing="", fonClass=".maso")
+        img.cooler-companent-fon.maso-fon#maso_fon(src="/img/cooler/maso_fon.png", ing="")
+
+        img.cooler-companent.krupa_oreh#oreh(src="/img/cooler/oreh.png", ing="", fonClass = ".krupa_oreh")
+        img.cooler-companent-fon.krupa_oreh-fon#oreh-fon(src="/img/cooler/oreh_fon.png", ing="")
+
+        img.cooler-companent.dobavki#padsolnuh(src="/img/cooler/padsolnuh.png", ing="", fonClass = ".dobavki")
+        img.cooler-companent-fon.dobavki-fon#padsolnuh-fon(src="/img/cooler/padsolnuh_fon.png", ing="")
+
+        img.cooler-companent.moreprodukti#ribi(src="/img/cooler/ribi.png", ing="", fonClass = ".moreprodukti")
+        img.cooler-companent-fon.moreprodukti-fon#ribi-fon(src="/img/cooler/ribi_fon.png", ing="")
+
+        img.cooler-companent.dobavki#tetropak(src="/img/cooler/tetropak.png", ing="", fonClass = ".dobavki")
+        img.cooler-companent-fon.dobavki-fon#tetropak-fon(src="/img/cooler/tetropak_fon.png", ing="")
+
+        img.cooler-companent.ovochi#tikva(src="/img/cooler/tikva.png", ing="", fonClass = ".ovochi")
+        img.cooler-companent-fon.ovochi-fon#tikva-fon(src="/img/cooler/tikva_fon.png", ing="")
+
+        img.cooler-companent.molochnie#yaica(src="/img/cooler/yaica.png", ing="", fonClass = ".molochnie")
+        img.cooler-companent-fon.molochnie-fon#yaica-fon(src="/img/cooler/yaica_fon.png", ing="")
+
+        img.cooler-companent.ovochi#zelen(src="/img/cooler/zelen.png", ing="", fonClass = ".ovochi")
+        img.cooler-companent-fon.ovochi-fon#zelen-fon(src="/img/cooler/zelen_fon.png", ing="")
+      //#sodergimoe2
+        img.cooler-companent#dobavki(src="/img/cooler/dobavki.png", ing="")
+        img.cooler-companent#maso(src="/img/cooler/maso.png", ing="")
+        img.cooler-companent#krupa_oreh(src="/img/cooler/krupa_oreh.png", ing="")
+        img.cooler-companent#gribi(src="/img/cooler/gribi.png", ing="")
+        img.cooler-companent#frukti(src="/img/cooler/frukti.png", ing="")
+        img.cooler-companent#molochnie(src="/img/cooler/molochnie.png", ing="")
+        img.cooler-companent#moreprodukti(src="/img/cooler/moreprodukti.png", ing="")
+        img.cooler-companent#muchnie(src="/img/cooler/muchnie.png", ing="")
+        img.cooler-companent#ovochi(src="/img/cooler/ovochi.png", ing="")
+
+    #pm-ing-container
+      h4 Ингридиенты
+
+      .gribi-cont Грибы
+        ol.gribi-ol
+
+      .krupa_oreh-cont Крупы и каши
+        ol.krupa_oreh-ol
+
+      .molochnie-cont Молочные продукты
+        ol.molochnie-ol
+
+      .frukti-cont Фрукты и ягоды
+        ol.frukti-ol
+
+      .ovochi-cont Овощи и зелень
+        ol.ovochi-ol
+
+      .moreprodukti-cont Рыба и морепродукты
+        ol.moreprodukti-ol
+
+      .maso-cont Мясные продукты
+        ol.maso-ol
+
+      .muchnie-cont Мука и мучные изделия
+        ol.muchnie-ol
+
+      .dobavki-cont Добавки и витамины
+        ol.dobavki-ol
+
+    #pm-container
       lable Введите название блюда
+      input#pm-dish-input(type="text",name="test")
+      lable Введите ингридиент
+      input#pm-dish-ing(type="text", placeholder="введите ингридиент")
+      lable Тип кухни
       select#selectKitchen
         option Русская
         option Новая русская
-      lable Тип кухни
       #pm-species
         input(type="checkbox", name="Закуски")
         lable Закуски
@@ -31,49 +139,67 @@ block content
         lable Десерты
         input(type="checkbox", name="Напитки")
         lable Напитки
+      #pm-more-options
+        span Веремя приготовления
+        input#time-cooke(type="number", min=0)
+        span Популярность
+        input#rating(type="number", min=0)
+        span Кремлевская диета
+        input#kremling_diet(type="number", min=0)
+        span Сложность
+        input#complexity(type="number", min=0, max=10, style='width:170px')
+        br
+        br
+        span Цена
+        select#cost
+          option
+          option Низкая
+          option Средняя
+          option Высокая
+      button#start-search-btn Начать поиск
+    br
+    br
+    br
+    br
+    br
+    #dishBookAppender
+
+
+  //form#pm-container
+    #pm-header
     #pm-body
-      #pm-ing-container
-        h4 Ингридиенты
-        ol#pm-ing-ul
-          li 
-            span.pm-ing test ing1
-            div.del-ing x
-          li
-            span.pm-ing test ing2
-            div.del-ing x
       #pm-ing-input-cont
         input#pm-dish-ing(type="text")
         button#add-ing Добавить ингридиент
-      #pm-more-options
-        table
-          tr
-            td(width="265px",height="34px")
-              input#time-cooke(type="number", min=0)
-              span Веремя приготовления
-            td(height="34px")
-              span Популярность
-              input#rating(type="number", min=0)
-          tr
-            td(height="34px")
-              input#kremling_diet(type="number", min=0)
-              span Кремлевская диета
-              
-            td(height="34px")
-              span(style="width: 92px;display: inline-block;") Сложность
-              input#complexity(type="number", min=0, max=10)
-          tr
-            td(height="34px")
-              select#cost
-                option 
-                option Низкая
-                option Средняя
-                option Высокая
-              span Цена
 
     button#start-search-btn Начать поиск
 
-//script#sMContTemplate(type="text/template")
 
-      
-     
-  
+
+
+
+
+  script#dishBookTemplate(type="text/template")
+    .peview-dish
+      div <%=data.title%>
+      img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+    .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title <%=data.title%>
+          .modal-body
+            .book
+              img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+              div.ing-list
+                div
+                  Содержание
+                  ol
+                    <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
+              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+          .modal-footer
+            a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>",target="_blank")
+              button.btn.btn-default Перейти на страницу блюда
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+
