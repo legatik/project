@@ -27,3 +27,10 @@ block content
       a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
         span.glyphicon.glyphicon-chevron-right
 
+    #dish-date-cont
+      - for (var i = 0; i < dateDish.length; i++){
+        .dish-date-item
+          div #{dateDish[i].title}
+          img.title-img(src!="/img/dishes/#{dateDish[i].id_picture}/title.jpg")
+      - }
+

@@ -91,9 +91,13 @@ app.get '/', (req, res) ->
   Dish.find({})
   .limit(10)
   .sort({rating: -1})
-  .exec (err, dishes) ->
+  .exec (err, dishPop) ->
     {keyKitchen, objk, objs} = app.mitching()
-    res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishes}
+    Dish.find({})
+    .limit(3)
+    .sort({dateAdding: -1})
+    .exec (er, dishDate) ->
+      res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop, dateDish:dishDate}
 
 app.get '/register', (req, res) ->
 	res.render 'registration', {title: 'Onlile JS Compiller'}
