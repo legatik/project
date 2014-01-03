@@ -6,6 +6,7 @@ block content
   include left-column
   include right-column
   != css('style-home')
+  != js("libs/turn")
   != js('home')
 
 
@@ -27,10 +28,33 @@ block content
       a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
         span.glyphicon.glyphicon-chevron-right
 
+    h3 Последние добавленные блюда
     #dish-date-cont
-      - for (var i = 0; i < dateDish.length; i++){
-        .dish-date-item
-          div #{dateDish[i].title}
-          img.title-img(src!="/img/dishes/#{dateDish[i].id_picture}/title.jpg")
-      - }
+    a(href="/addDish")
+      h3 Вы можите дбавить свое блюдо
+
+
+  script#dishBookTemplate(type="text/template")
+    .peview-dish
+      div <%=data.title%>
+      img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+    .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title <%=data.title%>
+          .modal-body
+            .book
+              img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+              div.ing-list
+                div
+                  Содержание
+                  ol
+                    <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
+              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+          .modal-footer
+            a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>",target="_blank")
+              button.btn.btn-default Перейти на страницу блюда
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
 

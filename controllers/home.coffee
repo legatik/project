@@ -4,10 +4,10 @@ _ = require 'underscore'
 {Dish} = db.models
 
 exports.boot = (app) ->
-  app.get '/popular_dish',  (req, res) ->
+  app.get '/date_dish',  (req, res) ->
     Dish.find({})
-    .limit(10)
-    .sort({rating: -1})
-    .exec (err, dishes) ->
-      res.send {err: err, result: dishes}
+    .limit(3)
+    .sort({dateAdding: -1})
+    .exec (er, dishDate) ->
+      res.send dishDate
 
