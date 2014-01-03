@@ -2,14 +2,14 @@ extends layout
 
 
 block content
-  
+
   != css('style-dish-page')
   != js('dish')
-  
+
   include navigation
   include left-column
   include right-column
-  
+
   #center-column
     #dish-container
       #dish-title
@@ -20,7 +20,7 @@ block content
           ul
             each duoble in dish.composition
               li #{duoble.ing}  - #{duoble.col}
-               
+
         #dish-img-cont
           - for (var i = 0; i < dish.qty_picture; i++){
               img(src="/img/dishes/#{dish.id_picture}/p"+i+".jpg")
@@ -31,7 +31,7 @@ block content
           ol
             each step in dish.recipe
               li #{step}
-              
+
       #block-footer
         h4 Коментарии к блюду
         #comment-block
@@ -43,7 +43,7 @@ block content
         #comment-send
           textarea#message
           button#send-message Отправить
-            
+
   script#CommentTemplate(type="text/template")
     .user-info
       div firstName :
@@ -51,3 +51,4 @@ block content
       div lastName :
         span(style="color:red") <%=idUser[0].lastName%>
     .message-user <%=message%>
+
