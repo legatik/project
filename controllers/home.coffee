@@ -11,3 +11,14 @@ exports.boot = (app) ->
     .exec (er, dishDate) ->
       res.send dishDate
 
+  app.get '/', (req, res) ->
+    Dish.find({})
+    .limit(10)
+    .sort({rating: -1})
+    .exec (err, dishPop) ->
+      {keyKitchen, objk, objs} = app.mitching()
+      res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop}
+
+  app.get '/addDish',  (req, res) ->
+    res.send 200
+

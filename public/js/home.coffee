@@ -59,7 +59,7 @@ $(document).ready () ->
   $('.carousel-indicators').find("li").first().addClass("active")
   $('.carousel').carousel()
   $.ajax
-    url: "/home/date_dish"
+    url: "/date_dish"
     success: (data) =>
       data.forEach (model) ->
         dishBookView = new DishView({model:model})

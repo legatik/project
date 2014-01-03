@@ -80,20 +80,12 @@ options = {db:{type: 'mongo'}}
 
 app.mitching = require './mitching'
 
-app.namespace '/home', require('./controllers/home').boot.bind @, app
+app.namespace '', require('./controllers/home').boot.bind @, app
 app.namespace '/search', require('./controllers/search').boot.bind @, app
 app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 app.namespace '/comment', require('./controllers/comment').boot.bind @, app
 app.namespace '/tool', require('./controllers/tool').boot.bind @, app
 
-
-app.get '/', (req, res) ->
-  Dish.find({})
-  .limit(10)
-  .sort({rating: -1})
-  .exec (err, dishPop) ->
-    {keyKitchen, objk, objs} = app.mitching()
-    res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop}
 
 app.get '/register', (req, res) ->
 	res.render 'registration', {title: 'Onlile JS Compiller'}
