@@ -1,0 +1,70 @@
+extends layout
+
+
+block content
+  include navigation
+  include left-column
+  include right-column
+  != css('style-add')
+  != js('add-dish')
+
+
+  #center-column
+    h2 Добавить рецепт
+    div придумат что будет написанно
+    br
+    table
+
+      if(user)
+        tr
+          td Введите ваше имя
+          td
+            input#Fname(type="text", value="#{user.firstName}", disabled="disabled")
+        tr
+          td Введите вашу фаммилию
+          td
+            input#Lname(type="text", value="#{user.lastName}", disabled="disabled")
+        tr
+          td Введите ваш email
+          td
+            input#email(type="text", value="#{user.email}", disabled="disabled")
+      else
+        tr
+          td Введите ваше имя
+          td
+            input#Fname(type="text")
+        tr
+          td Введите вашу фаммилию
+          td
+            input#Lname(type="text")
+        tr
+          td Введите ваш email
+          td
+            input#email(type="text")
+      tr
+        td Напишите свой супер-пупер рецепт
+        td
+    textarea#recept
+    br
+    div#img-cont
+      h3 Добавье фотонрафии к вашему блюду
+      div (*превью картинок могут немного искажаться. Идеальные картинки - квадратные)
+      #im-cont-title
+        div.small-cont
+          div Выберите главную картинку блюда
+          input#pic-title(type="file")
+          img#title-prev
+      #im-cont-step
+        div.small-cont
+          br
+          div Выберите картинки шагов приготовления блюда
+          input.step-inp#step-inp-0(type="file")
+          img.step-img#step-img-0
+
+  script#stepTemplate(type="text/template")
+    div.small-cont
+      br
+      div Выберите картинки шагов приготовления блюда
+      input.step-inp(type="file",id!="step-inp-<%=number%>")
+      img.step-img(id!="step-img-<%=number%>")
+

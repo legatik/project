@@ -20,5 +20,6 @@ exports.boot = (app) ->
       res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop}
 
   app.get '/addDish',  (req, res) ->
-    res.send 200
+    {keyKitchen, objk, objs} = app.mitching()
+    res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs, key:keyKitchen}
 
