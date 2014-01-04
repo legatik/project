@@ -6,7 +6,7 @@ $(document).ready () ->
         reader.readAsDataURL input.files[0]
         reader.onload = (e) ->
           $("#title-prev").attr "src", e.target.result
-          $("#title-prev").show()
+          $("#del-img-title").show()
       else
         alert("Такой фармат картинки не поддерживается")
   readURLStep = (input,idImg) ->
@@ -22,8 +22,6 @@ $(document).ready () ->
           #для довления нового инпута
           all = ($("#im-cont-step").find(".step-inp")).length
           cheked = (Number idImg.replace("#step-img-",""))+1
-          console.log "all",all
-          console.log "checked",cheked
           if cheked is all
             $("#im-cont-step").append(template({number:cheked}))
             addEvent()
@@ -40,4 +38,9 @@ $(document).ready () ->
       readURLStep this,idImg
 
   addEvent()
+
+  $("#del-img-title").click () ->
+    $("#pic-title").val("")
+    $("#title-prev").attr("src","http://i.imgur.com/AeUEdJb.png")
+    $("#del-img-title").hide()
 
