@@ -1,9 +1,42 @@
 db = require '../lib/db'
 _ = require 'underscore'
+nodemailer = require 'nodemailer'
 
 {Dish} = db.models
 
 exports.boot = (app) ->
+
+  app.post '/send_email_recept',  (req, res) ->
+    attachments = []
+    _.each req.files, (data,key)->
+      attachments.push {filePath : data.path}
+
+
+    smtpTransport = nodemailer.createTransport("SMTP",
+      service: "Gmail"
+      auth:
+        user: "leonidova.daria@gmail.com"
+        pass: "44HermionaHr44"
+    )
+
+    console.log "##########",req.body.info.toString()
+    mailOptions =
+      from: "legatik@list.ru"
+      to: "legatik@list.ru"
+      subject: "TEST ✔" # Subject line
+      text: req.body.info.toString()
+#      html: "<b>Hello world ✔</b>" # html body
+      attachments : attachments
+
+    smtpTransport.sendMail mailOptions, (error, response) ->
+      if error
+        console.log error
+      else
+        console.log "Message sent: " + response.message
+        res.send 200
+
+
+
   app.get '/date_dish',  (req, res) ->
     Dish.find({})
     .limit(3)

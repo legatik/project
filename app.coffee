@@ -12,7 +12,7 @@ assets = require 'connect-assets'
 db = require './lib/db'
 auth = require './lib/auth'
 passport = require 'passport'
-nodemailer = require 'nodemailer'
+
 
 RedisStore = require('connect-redis')(express)
 app = express()
@@ -115,6 +115,9 @@ app.get '/logout', (req,res) ->
 #    user: "leonidova.daria@gmail.com"
 #    pass: "44HermionaHr44"
 #)
+#attachments = [
+#  filePath: "121.jpg"
+#]
 
 #mailOptions =
 #  from: "legatik@list.ru"
@@ -122,7 +125,7 @@ app.get '/logout', (req,res) ->
 #  subject: "Hello ✔" # Subject line
 #  text: "Hello world ✔" # plaintext body
 #  html: "<b>Hello world ✔</b>" # html body
-
+#  attachments : attachments
 
 #smtpTransport.sendMail mailOptions, (error, response) ->
 #  if error
