@@ -50,21 +50,20 @@ block content
       h3 Добавье фотонрафии к вашему блюду
       div (*превью картинок могут немного искажаться. Идеальные картинки - квадратные)
       #im-cont-title
+        div
+          b Выберите главную картинку блюда
         div.small-cont
-          div Выберите главную картинку блюда
           input#pic-title(type="file")
-          img#title-prev
+          img#title-prev(src="http://i.imgur.com/AeUEdJb.png")
       #im-cont-step
+        div
+          b Выберите картинки шагов приготовления блюда
         div.small-cont
-          br
-          div Выберите картинки шагов приготовления блюда
           input.step-inp#step-inp-0(type="file")
-          img.step-img#step-img-0
+          img.step-img#step-img-0(src="http://i.imgur.com/AeUEdJb.png")
 
   script#stepTemplate(type="text/template")
     div.small-cont
-      br
-      div Выберите картинки шагов приготовления блюда
       input.step-inp(type="file",id!="step-inp-<%=number%>")
-      img.step-img(id!="step-img-<%=number%>")
+      img.step-img(id!="step-img-<%=number%>",src="http://i.imgur.com/AeUEdJb.png")
 
