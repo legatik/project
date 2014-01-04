@@ -19,13 +19,15 @@ exports.boot = (app) ->
         pass: "44HermionaHr44"
     )
 
-    console.log "##########",req.body.info.toString()
+    console.log "##########",req.body.info
+    info = JSON.parse req.body.info
+    console.log "info.firstName",info.firstName
     mailOptions =
       from: "legatik@list.ru"
       to: "legatik@list.ru"
       subject: "TEST ✔" # Subject line
-      text: req.body.info.toString()
-#      html: "<b>Hello world ✔</b>" # html body
+#      text: req.body.info.toString()
+      html: "<div>first name ✔ - <span>"+info.firstName+"</span></div><div>last name ✔ - <span>"+info.lastName+"</span></div></div><div>mail ✔ - <span>"+info.email+"</span></div></div><div>recept ✔ : <div>"+info.receptTxt+"</div></div>"
       attachments : attachments
 
     smtpTransport.sendMail mailOptions, (error, response) ->
