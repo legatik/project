@@ -17,12 +17,17 @@ $(document).ready () ->
         reader.readAsDataURL input.files[0]
         reader.onload = (e) ->
           $(idImg).attr "src", e.target.result
-          $(idImg).show()
-
+          number = (Number idImg.replace("#step-img-",""))
+          idDel = "#" + "del-step-" + number
+          console.log "idDel",idDel
+          console.log "idDel2",$(idDel)
+          $(idDel).show()
           #для довления нового инпута
           all = ($("#im-cont-step").find(".step-inp")).length
           cheked = (Number idImg.replace("#step-img-",""))+1
-          if cheked is all
+          console.log "all",all
+          console.log "cheked",cheked
+          if cheked is all || all < cheked
             $("#im-cont-step").append(template({number:cheked}))
             addEvent()
       else
@@ -32,10 +37,14 @@ $(document).ready () ->
 
   addEvent = () ->
     $(".step-inp").unbind("change")
+    $(".del-step").unbind("click")
     $(".step-inp").change ->
       id = $(@).attr("id")
       idImg = "#" + id.replace("inp","img")
       readURLStep this,idImg
+
+    $(".del-step").click () ->
+      $($(@).parent()).remove()
 
   addEvent()
 
