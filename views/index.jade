@@ -15,15 +15,15 @@ block content
     div Мы приветствуем Вас на сайте который собрал все популятрные рецепты мира
     #carousel-ctn.carousel.slide(data-ride='carousel')
       ol.carousel-indicators
-        - for (var i = 0; i < (popDish.length)/2; i++){
+        - for (var i = 0; i < (popDish.length)/2;  i++){
             li(data-target='#carousel-ctn', data-slide-to=i)
         - }
       .carousel-inner
-        - for (var i = 0; i < (popDish.length)/2; i){
+        - for (var i = 0; i < popDish.length; i=i+2){
 
               .item
                 img.carousel-img(src='/img/dishes/#{popDish[i].id_picture}/title.jpg', alt='#{popDish[i].title}')
-                img.carousel-img(src='/img/dishes/#{popDish[++i].id_picture}/title.jpg', alt='#{popDish[i].title}')
+                img.carousel-img(src='/img/dishes/#{popDish[i+1].id_picture}/title.jpg', alt='#{popDish[i].title}')
         - }
       a.left.carousel-control(href='#carousel-ctn', data-slide='prev')
         span.glyphicon.glyphicon-chevron-left
