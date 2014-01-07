@@ -4,38 +4,13 @@ exec = require('child_process').exec
 {Dish} = db.models
 exports.boot = (app) ->
 
-  app.get '/:kitchen', (req, res) ->
-    #kitchen
-    keyKitchen = req.params.kitchen
-    {keyKitchen, objk, objs} = app.mitching(keyKitchen)
-    rusName = objk[keyKitchen].name
-    title = "Мировая кухня | " + rusName + " кухня"
-    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: objk, temp: rusName + " кухня", key : keyKitchen, species:objs}
-
-  app.get '/:kitchen/:species', (req, res) ->
-    keyKitchen = req.params.kitchen
-    keySpecies = req.params.species
-    console.log "keyKitchen",keyKitchen
-    {keyKitchen, objk, objs} = app.mitching(keyKitchen, keySpecies)
-    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: objk, species:objs , key : keyKitchen, keySpecies : keySpecies}
-
-  app.get '/:kitchen/:species/:dish', (req, res) ->
-    idDish = req.params.dish
-    Dish.findOne {_id: idDish}, (err, dish) ->
-      if err
-        console.log "tipo 404 (nuzno sdelat stranicy)"
-        res.send 404
-      else
-        keyKitchen = req.params.kitchen
-        keySpecies = req.params.species
-        {keyKitchen, objk, objs} = app.mitching(keyKitchen, keySpecies)
-        title = "Мировая кухня | "+ dish.title_key
-        res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish}
-
   app.get '/speciesPage', (req, res) ->
-    console.log "req",req
-    res.send 200
-# Comment.find({_id: {$in: idComment}}).populate("idUser").exec (err, comments) ->
+    keySpecies = req.query.keySpecies
+    keyKitchen = req.query.keyKitchen
+    {keyKitchen, keySpecies} = app.mitching(keyKitchen, keySpecies, true)
+    if keySpecies.name == "Первые блюда" then keySpecies.name = "Супы"
+    Dish.find({$and: [{kitchen: keyKitchen.name}, {species: keySpecies.name}]}).exec (err, dish) ->
+      res.send dish
 
 
 #		project = _.extend req.body,

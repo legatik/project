@@ -32,9 +32,7 @@ exports.boot = (app) ->
         title = "Мировая кухня | "+ dish.title_key
         res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish}
 
-  app.get '/speciesPage', (req, res) ->
-    console.log "req",req
-    res.send 200
+
 # Comment.find({_id: {$in: idComment}}).populate("idUser").exec (err, comments) ->
 
 

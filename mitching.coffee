@@ -1,5 +1,5 @@
 _ = require 'underscore'
-module.exports  = (keyKitchen,keySpecies) ->
+module.exports  = (keyKitchen,keySpecies, jastName) ->
   specObj =
     first_course:
       name : "Первые блюда"
@@ -66,6 +66,8 @@ module.exports  = (keyKitchen,keySpecies) ->
   #    british : "Британская"
 
 
+
+
   #kitchen
   obk = _.clone(kitchenObj)
   objkStr = JSON.stringify(obk)
@@ -81,6 +83,12 @@ module.exports  = (keyKitchen,keySpecies) ->
 #    objk[keyKitchen].class = "active"
 #    objs[keySpecies].class = "active"
 #    return {keyKitchen, objk, objs}
+
+  if jastName
+    keyKitchen = kitchenObj[keyKitchen]
+    keySpecies = specObj[keySpecies]
+    return {keyKitchen, keySpecies}
+
 
   if keyKitchen && keyKitchen !="all" && !keySpecies
     objk[keyKitchen].class = "active"
