@@ -3,42 +3,52 @@ extends layout
 
 block content
   != css('style-species')
+  != js('species')
   include navigation
   include left-column
   include right-column
 
   #center-column
+    input#server-data.hide(type="text" ,keyKitchen=key, keySpecies = keySpecies)
+    h3
+      span#header-species
+      span &nbsp > &nbsp
+      span#header-kitchen
+      span &nbspкухня
     #img-cont
-      div
-        img#arab(src="/img/flags/arab.gif")
+      div#arab
+        img(src="/img/flags/arab.gif")
         div Арабская
-      div
-        img#armenia(src="/img/flags/armenia.gif")
+      div#armenia
+        img(src="/img/flags/armenia.gif")
         div Армянская
-      div
-        img#azerbaijan(src="/img/flags/azerbaijan.gif")
+      div#azerbaijan
+        img(src="/img/flags/azerbaijan.gif")
         div Азербайджанская
-      div
-        img#balkan(src="/img/flags/balkan.gif")
+      div#balkan
+        img(src="/img/flags/balkan.gif")
         div Балканская
-      div
-        img#baltik(src="/img/flags/baltic.gif")
+      div#baltik
+        img(src="/img/flags/baltic.gif")
         div Прибалтийская
-      div
-        img#belarusian(src="/img/flags/belarusian.gif")
+      div#belarusian
+        img(src="/img/flags/belarusian.gif")
         div Белорусская
-      div
-        img#british(src="/img/flags/british.gif")
+      div#british
+        img(src="/img/flags/british.gif")
         div Британская
-      div
-        img#china(src="/img/flags/china.gif")
+      div#china
+        img(src="/img/flags/china.gif")
         div Китайская
-      div
-        img#east_european(src="/img/flags/east_european.gif")
+      div#east_european
+        img(src="/img/flags/east_european.gif")
         div#vostch-evr Восточноевропейская
-      div
-        img#franch(src="/img/flags/franch.gif")
+      div#franch
+        img(src="/img/flags/franch.gif")
         div Французкая
+      div#russian
+        img(src="/img/flags/russian.gif")
+        div Русская
 //      img#georgia(src="/img/flags/georgia.gif")
 //      img#german(src="/img/flags/german.gif")
 //      img#greek(src="/img/flags/greek.gif")
@@ -51,7 +61,6 @@ block content
 //      img#malaysian(src="/img/flags/malaysian.gif")
 //      img#mexican(src="/img/flags/mexican.gif")
 //      img#moldova(src="/img/flags/moldova.gif")
-//      img#russian(src="/img/flags/russian.gif")
 //      img#scandinavian(src="/img/flags/scandinavian.gif")
 //      img#spanish(src="/img/flags/spanish.gif")
 //      img#tatar(src="/img/flags/tatar.gif")
@@ -60,4 +69,5 @@ block content
 //      img#ukrainian(src="/img/flags/ukrainian.gif")
 //      img#uzbek(src="/img/flags/uzbek.gif")
 //      img#vietnamese(src="/img/flags/vietnamese.gif")
+    #specise-cont
 

@@ -84,6 +84,7 @@ app.namespace '', require('./controllers/home').boot.bind @, app
 app.namespace '/search', require('./controllers/search').boot.bind @, app
 app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 app.namespace '/comment', require('./controllers/comment').boot.bind @, app
+app.namespace '/species', require('./controllers/species').boot.bind @, app
 app.namespace '/tool', require('./controllers/tool').boot.bind @, app
 
 
