@@ -22,8 +22,8 @@ module.exports  = (keyKitchen,keySpecies) ->
     drinks:
       name : "Напитки"
       key : "drinks"
-      
-      
+
+
   kitchenObj =
       russian:
         name: "Русская"
@@ -34,7 +34,7 @@ module.exports  = (keyKitchen,keySpecies) ->
       georgia:
         name : "Грузинская"
         key  : "georgia"
-      franch : 
+      franch :
         name: "Французкая"
         key : "franch"
   #    china :"Китайская"
@@ -70,21 +70,22 @@ module.exports  = (keyKitchen,keySpecies) ->
   obk = _.clone(kitchenObj)
   objkStr = JSON.stringify(obk)
   objk = JSON.parse(objkStr)
-  
-  
+
+
   #species
   obs = _.clone(specObj)
   objsStr = JSON.stringify(obs)
   objs = JSON.parse(objsStr)
-  
+
   if keyKitchen && keySpecies
     objk[keyKitchen].class = "active"
     objs[keySpecies].class = "active"
     return {keyKitchen, objk, objs}
-    
+
   if keyKitchen
     objk[keyKitchen].class = "active"
     return {keyKitchen, objk, objs}
-    
+
   keyKitchen="all"
   return {keyKitchen, objk, objs}
+
