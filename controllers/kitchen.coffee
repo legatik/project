@@ -9,7 +9,7 @@ exports.boot = (app) ->
     keyKitchen = req.params.kitchen
     {keyKitchen, objk, objs} = app.mitching(keyKitchen)
     rusName = objk[keyKitchen].name
-    title = "Мировая кухня | " + rusName + " кухня" 
+    title = "Мировая кухня | " + rusName + " кухня"
     res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: objk, temp: rusName + " кухня", key : keyKitchen, species:objs}
 
   app.get '/:kitchen/:species', (req, res) ->
@@ -17,7 +17,7 @@ exports.boot = (app) ->
     keySpecies = req.params.species
     {keyKitchen, objk, objs} = app.mitching(keyKitchen, keySpecies)
     res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: objk, species:objs , key : keyKitchen}
-    
+
   app.get '/:kitchen/:species/:dish', (req, res) ->
     idDish = req.params.dish
     Dish.findOne {_id: idDish}, (err, dish) ->
@@ -30,10 +30,10 @@ exports.boot = (app) ->
         {keyKitchen, objk, objs} = app.mitching(keyKitchen, keySpecies)
         title = "Мировая кухня | "+ dish.title_key
         res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish}
-  
-  
-  
-  
+
+
+
+
 #		project = _.extend req.body,
 #			owner: req.user._id
 #		Project.findOne {owner: req.user._id, name: project.name}, (err, p) ->

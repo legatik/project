@@ -77,13 +77,17 @@ module.exports  = (keyKitchen,keySpecies) ->
   objsStr = JSON.stringify(obs)
   objs = JSON.parse(objsStr)
 
-  if keyKitchen && keySpecies
+#  if keyKitchen && keySpecies
+#    objk[keyKitchen].class = "active"
+#    objs[keySpecies].class = "active"
+#    return {keyKitchen, objk, objs}
+
+  if keyKitchen && keyKitchen !="all" && !keySpecies
     objk[keyKitchen].class = "active"
-    objs[keySpecies].class = "active"
     return {keyKitchen, objk, objs}
 
-  if keyKitchen
-    objk[keyKitchen].class = "active"
+  if keyKitchen && keySpecies
+    objs[keySpecies].class = "active"
     return {keyKitchen, objk, objs}
 
   keyKitchen="all"
