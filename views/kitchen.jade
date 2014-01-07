@@ -2,13 +2,33 @@ extends layout
 
 
 block content
-  script(data-main='/js/libs/config_requre/config', src='../js/libs/requre.js')
-  != js('pm')
-  != css('style-search')
+  != js('kitchen')
+  != css('style-kitchen')
   include navigation
   include left-column
   include right-column
-  
+
   #center-column
     h2 #{temp}
-  
+    #first_course
+      .lable-kitch
+      .dishBook
+    #main_dishes
+      .lable-kitch
+      .dishBook
+    #snack
+      .lable-kitch
+      .dishBook
+    #salad
+      .lable-kitch
+      .dishBook
+    #dessert
+      .lable-kitch
+      .dishBook
+    #bake
+      .lable-kitch
+      .dishBook
+    #drinks
+      .lable-kitch
+      .dishBook
+
