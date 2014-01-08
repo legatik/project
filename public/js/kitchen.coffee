@@ -5,14 +5,28 @@ $(document).ready () ->
     url: "/kitchenGet/russian"
     success: (data) ->
       app.dishes = data
-      a = twoMas('Супы')
-      console.log a
+      first_courseArr = twoMas('Супы')
+      main_dishesArr  = twoMas('Вторые блюда')
+      snackArr  = twoMas('Закуски')
+      saladArr  = twoMas('Салаты')
+      dessertArr  = twoMas('Десерты')
+      bakeArr  = twoMas('Выпечка')
+      drinksArr  = twoMas('Напитки')
+      console.log "main_dishes",main_dishesArr
+      console.log "first_course", first_courseArr
+      console.log "snack",snackArr
+      console.log "salad",saladArr
+      console.log "dessert",dessertArr
+      console.log "bake",bakeArr
+      console.log "drinksArr",drinksArr
 
   twoMas = (category) ->
     perv = app.dishes.slice()
     perv = perv.filter (el) ->
       el.species == category
-    perv[3].rating=11
+    if perv.length < 3
+      vtor = perv
+      return {perv, vtor}
     mostPopular = _.max perv, (el) ->
       el.rating
     perv.sort (el) ->
