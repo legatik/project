@@ -106,4 +106,8 @@ $(document).ready () ->
     console.log "obj[key]",obj[key]
     testArr = obj[key]
     newArr = _.difference testArr.perv, testArr.vtor
+    $($("#"+id).find(".dishBook")).empty()
+    newArr.forEach (model)->
+      dishBookView = new DishView({model:model})
+      $($("#"+id).find(".dishBook")).append(dishBookView.render().el)
 
