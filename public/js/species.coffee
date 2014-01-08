@@ -82,9 +82,21 @@ $(document).ready () ->
   $.ajax
     type    : 'get'
     data    : {keySpecies:keySpecies}
+    url     : "/species/speciesDate"
+    success : (dishesDate) ->
+      dishesDate.forEach (model) ->
+        dishBookView = new DishView({model:model})
+        $("#date-append").append(dishBookView.render().el)
+
+  $.ajax
+    type    : 'get'
+    data    : {keySpecies:keySpecies}
     url     : "/species/speciesPop"
     success : (dishesPop) ->
-      console.log "dishesPop",dishesPop
+      dishesPop.forEach (model) ->
+        dishBookView = new DishView({model:model})
+        $("#pop-append").append(dishBookView.render().el)
+
 #      $("#dish-date-cont").empty()
 #      dishes.forEach (model) ->
 #        dishBookView = new DishView({model:model})
