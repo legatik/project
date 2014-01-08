@@ -68,9 +68,11 @@ $(document).ready () ->
       obj.drinksArr  = twoMas('Напитки')
       _.each obj, (data, key) ->
         id = "#" + key.replace("Arr","")
-        console.log "id",$(id)
-        console.log "data",data
         data.vtor.forEach (model) ->
+          dishBookView = new DishView({model:model})
+          $($(id).find(".dishBook")).append(dishBookView.render().el)
+        newArr = _.difference data.perv, data.vtor
+        newArr.forEach (model) ->
           dishBookView = new DishView({model:model})
           $($(id).find(".dishBook")).append(dishBookView.render().el)
   twoMas = (category) ->
@@ -102,12 +104,28 @@ $(document).ready () ->
 
   $(".showAll").click (e) ->
     id = ($($(@).parent()).parent()).attr("id")
-    key = id + "Arr"
-    console.log "obj[key]",obj[key]
-    testArr = obj[key]
-    newArr = _.difference testArr.perv, testArr.vtor
-    $($("#"+id).find(".dishBook")).empty()
-    newArr.forEach (model)->
-      dishBookView = new DishView({model:model})
-      $($("#"+id).find(".dishBook")).append(dishBookView.render().el)
+    $("#"+id).stop(true)
+    status = $("#"+id).hasClass("collaps")
+    if status
+      status = $("#"+id).removeClass("collaps")
+      $($("#"+id).find(".showAll > a")).text("показать все")
+      $("#"+id).animate
+        height:262
+      , 500
+    else
+      $($("#"+id).find(".showAll > a")).text("скрыть")
+      height = $($("#"+id).find(".dishBook")).css("height")
+      height = (Number height.replace("px",""))+ 59
+      $("#"+id).addClass("collaps")
+      $("#"+id).animate
+        height:height
+      , 1000
+#    key = id + "Arr"
+#    console.log "obj[key]",obj[ke111y]
+#    testArr = obj[key]
+#    newArr = _.difference testArr.perv, testArr.vtor
+#    $($("#"+id).find(".dishBook")).empty()
+#    newArr.forEach (model)->
+#      dishBookView = new DishView({model:model})
+#      $($("#"+id).find(".dishBook")).append(dishBookView.render().el)
 
