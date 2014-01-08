@@ -97,17 +97,16 @@ $(document).ready () ->
         dishBookView = new DishView({model:model})
         $("#pop-append").append(dishBookView.render().el)
 
+  $("#show-all").click () ->
+    alert("показать все")
+
+
+
+
 #      $("#dish-date-cont").empty()
 #      dishes.forEach (model) ->
 #        dishBookView = new DishView({model:model})
 #        $("#dish-date-cont").append(dishBookView.render().el)
-
-
-
-
-
-
-
 #  $("#img-cont > div").click (e) ->
 #    txt = $(@).text()
 #    key = $(@).attr("id")
