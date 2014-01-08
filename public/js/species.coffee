@@ -71,25 +71,49 @@ $(document).ready () ->
 
   keyKitchen = $("#server-data").attr("keyKitchen")
   keySpecies = $("#server-data").attr("keySpecies")
+  console.log "keyKitchen",keyKitchen
+  console.log "keySpecies",keySpecies
 
-  $("#img-cont > div").click (e) ->
-    txt = $(@).text()
-    key = $(@).attr("id")
-    $("#header-kitchen").text(txt.toLowerCase())
 
-    $.ajax
-      type    : 'get'
-      data    : {keySpecies:keySpecies,keyKitchen:key}
-      url     : "/species/speciesPage"
-      success : (dishes) ->
-        $("#dish-date-cont").empty()
-        dishes.forEach (model) ->
-          dishBookView = new DishView({model:model})
-          $("#dish-date-cont").append(dishBookView.render().el)
+  rus = specObj[keySpecies]
+  $("#title-spec").text(rus.name)
 
-  if keyKitchen == "all"
-    $("#russian").click()
 
-  checkSpecies = specObj[keySpecies]
-  $("#header-species").text(checkSpecies.name)
+  $.ajax
+    type    : 'get'
+    data    : {keySpecies:keySpecies}
+    url     : "/species/speciesPop"
+    success : (dishesPop) ->
+      console.log "dishesPop",dishesPop
+#      $("#dish-date-cont").empty()
+#      dishes.forEach (model) ->
+#        dishBookView = new DishView({model:model})
+#        $("#dish-date-cont").append(dishBookView.render().el)
+
+
+
+
+
+
+
+#  $("#img-cont > div").click (e) ->
+#    txt = $(@).text()
+#    key = $(@).attr("id")
+#    $("#header-kitchen").text(txt.toLowerCase())
+
+#    $.ajax
+#      type    : 'get'
+#      data    : {keySpecies:keySpecies,keyKitchen:key}
+#      url     : "/species/speciesPage"
+#      success : (dishes) ->
+#        $("#dish-date-cont").empty()
+#        dishes.forEach (model) ->
+#          dishBookView = new DishView({model:model})
+#          $("#dish-date-cont").append(dishBookView.render().el)
+
+#  if keyKitchen == "all"
+#    $("#russian").click()
+
+#  checkSpecies = specObj[keySpecies]
+#  $("#header-species").text(checkSpecies.name)
 

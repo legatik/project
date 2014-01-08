@@ -1,0 +1,101 @@
+extends layout
+
+
+block content
+  != css('style-species')
+  != js("libs/turn")
+  != js('species')
+  include navigation
+  include left-column
+  include right-column
+
+  #center-column
+    input#server-data.hide(type="text" ,keyKitchen=key, keySpecies = keySpecies)
+    h3
+      span#header-species
+      span &nbsp > &nbsp
+      span#header-kitchen
+      span &nbspкухня
+    #img-cont
+      div#arab
+        img(src="/img/flags/arab.gif")
+        div Арабская
+      div#armenia
+        img(src="/img/flags/armenia.gif")
+        div Армянская
+      div#azerbaijan
+        img(src="/img/flags/azerbaijan.gif")
+        div Азербайджанская
+      div#balkan
+        img(src="/img/flags/balkan.gif")
+        div Балканская
+      div#baltik
+        img(src="/img/flags/baltic.gif")
+        div Прибалтийская
+      div#belarusian
+        img(src="/img/flags/belarusian.gif")
+        div Белорусская
+      div#british
+        img(src="/img/flags/british.gif")
+        div Британская
+      div#china
+        img(src="/img/flags/china.gif")
+        div Китайская
+      div#east_european
+        img(src="/img/flags/east_european.gif")
+        div#vostch-evr Восточноевропейская
+      div#franch
+        img(src="/img/flags/franch.gif")
+        div Французкая
+      div#russian
+        img(src="/img/flags/russian.gif")
+        div Русская
+    #dish-date-cont
+
+
+  script#dishBookTemplate(type="text/template")
+    .peview-dish
+      div <%=data.title%>
+      img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+    .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title <%=data.title%>
+          .modal-body
+            .book
+              img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+              div.ing-list
+                div
+                  Содержание
+                  ol
+                    <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
+              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+          .modal-footer
+            a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>",target="_blank")
+              button.btn.btn-default Перейти на страницу блюда
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+
+//      img#georgia(src="/img/flags/georgia.gif")
+//      img#german(src="/img/flags/german.gif")
+//      img#greek(src="/img/flags/greek.gif")
+//      img#indian(src="/img/flags/indian.gif")
+//      img#italy(src="/img/flags/italy.gif")
+//      img#japan(src="/img/flags/japan.gif")
+//      img#jewish(src="/img/flags/jewish.gif")
+//      img#korean(src="/img/flags/korean.gif")
+//      img#latin(src="/img/flags/latin.gif")
+//      img#malaysian(src="/img/flags/malaysian.gif")
+//      img#mexican(src="/img/flags/mexican.gif")
+//      img#moldova(src="/img/flags/moldova.gif")
+//      img#scandinavian(src="/img/flags/scandinavian.gif")
+//      img#spanish(src="/img/flags/spanish.gif")
+//      img#tatar(src="/img/flags/tatar.gif")
+//      img#thai(src="/img/flags/thai.gif")
+//      img#turkish(src="/img/flags/turkish.gif")
+//      img#ukrainian(src="/img/flags/ukrainian.gif")
+//      img#uzbek(src="/img/flags/uzbek.gif")
+//      img#vietnamese(src="/img/flags/vietnamese.gif")
+
