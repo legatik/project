@@ -86,6 +86,7 @@ app.namespace '/kitchen', require('./controllers/kitchen').boot.bind @, app
 app.namespace '/comment', require('./controllers/comment').boot.bind @, app
 app.namespace '/species', require('./controllers/species').boot.bind @, app
 app.namespace '/tool', require('./controllers/tool').boot.bind @, app
+app.namespace '/kitchenGet', require('./controllers/kitchenGet').boot.bind @, app
 
 
 app.get '/register', (req, res) ->
