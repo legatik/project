@@ -11,24 +11,84 @@ block content
   #center-column
     h2 #{temp}
     #first_course
-      .lable-kitch
+      h3.lable-kitch
+        | Первые блюда
+        span.showAll
+          | &nbsp(
+          a(nohref) показать все
+          | )
       .dishBook
     #main_dishes
-      .lable-kitch
+      h3.lable-kitch
+        | Вторые блюда
+        span.showAll
+          | &nbsp(
+          a(nohref) показать все
+          | )
       .dishBook
     #snack
-      .lable-kitch
+      h3.lable-kitch
+        | Закуски
+        span.showAll
+          | &nbsp(
+          a(nohref) показать все
+          | )
       .dishBook
     #salad
-      .lable-kitch
+      h3.lable-kitch
+        | Салаты
+        span.showAll
+          | &nbsp(
+          a(nohref) показать все
+          | )
       .dishBook
     #dessert
-      .lable-kitch
+      h3.lable-kitch
+        | Десерты
+        span.showAll
+          | &nbsp(
+          a(nohref) показать все
+          | )
       .dishBook
     #bake
-      .lable-kitch
+      h3.lable-kitch
+        | Выпечка
+        span.showAll
+          | &nbsp(
+          a(nohref) показать все
+          | )
       .dishBook
     #drinks
-      .lable-kitch
+      h3.lable-kitch
+        | Напитки
+        span.showAll
+          | &nbsp(
+          a(nohref) показать все
+          | )
       .dishBook
+
+
+  script#dishBookTemplate(type="text/template")
+    .peview-dish
+      div <%=data.title%>
+      img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+    .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title <%=data.title%>
+          .modal-body
+            .book
+              img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+              div.ing-list
+                div
+                  Содержание
+                  ol
+                    <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
+              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+          .modal-footer
+            a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>",target="_blank")
+              button.btn.btn-default Перейти на страницу блюда
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
 
