@@ -3,7 +3,7 @@ $(document).ready () ->
 #  this.stepArr = []
   readURLTitle = (input) =>
     if input.files and input.files[0]
-      if input.files[0].type == "image/png"
+      if input.files[0].type.indexOf("image") != -1
         reader = new FileReader()
         reader.readAsDataURL input.files[0]
         reader.onload = (e) ->
