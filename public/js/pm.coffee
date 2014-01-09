@@ -203,6 +203,7 @@ $(document).ready () ->
       data.forEach (model) ->
         dishBookView = new DisBookView({model:model})
         $("#dishBookAppender").append(dishBookView.render().el)
+        $(dishBookView.el).hide(0).fadeIn('slow')
 
     $(".cooler-companent").on "mouseenter", (e)=>
       classEl = $(e.target).attr("fonClass")
