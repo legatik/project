@@ -2,7 +2,7 @@ extends layout
 
 
 block content
-  script(data-main='/js/libs/config_requre/config', src='../js/libs/requre.js')
+  != js('libs/turn.js')
   != js('pm')
   != css('style-cooler')
   //!= css('style-search-new')

@@ -1,8 +1,57 @@
 $(document).ready () ->
-  require [
-    "cs!/../js/views/dishBookView"
-  ], (DisBookView) ->
-#todo - сделать что бы в начале фэйчились продукты, потом все остальное
+  #todo - сделать что бы в начале фэйчились продукты, потом все остальное
+  class DisBookView extends Backbone.View
+    tagName: 'div'
+
+    className: 'dish-book'
+
+    template: _.template(jQuery('#dishBookTemplate').html()),
+
+    initialize:(@options) ->
+      @mitchingS = []
+      @mitchingS["Супы"] = "first_course"
+      @mitchingS["Вторые блюда"] = "main_dishes"
+      @mitchingS["Закуски"] = "snack"
+      @mitchingS["Салаты"] = "salad"
+      @mitchingS["Десерты"] = "dessert"
+      @mitchingS["Выпечка"] = "bake"
+      @mitchingS["Напитки"] = "drinks"
+
+      @mitchingK = []
+      @mitchingK["Русская"] = "russian"
+      @mitchingK["Итальянская"] = "italy"
+      @mitchingK["Грузинская"] = "georgia"
+      @mitchingK["Французкая"] = "franch"
+      @model = @options.model
+
+    events:
+      "click .peview-dish" : "makeBook",
+
+    makeBook: ->
+      $ = jQuery
+      console.log "@model",@model
+      $(".bookModel",@el).modal()
+      $(".book",@el).turn
+        width: 600
+        height:300
+        display: 'double'
+        acceleration: true
+        gradients: not $.isTouch
+        elevation: 50
+        when:
+          turned: (e, page) ->
+
+
+    render: ->
+      $ = jQuery
+      console.log "@mitchingK",@mitchingK
+      console.log "@model.kitchen", @model.kitchen
+      key =
+        kitchen : @mitchingK[@model.kitchen]
+        species : @mitchingS[@model.species]
+      $(@el).html(@template({data:@model, key:key}));
+      @
+
     @productsArr = []
     @arrComparison = []
     @arrComparison["Грибы"] = ".gribi"
@@ -35,16 +84,16 @@ $(document).ready () ->
         ings = ings.replace(ingDel, "")
         $(key).attr("ing",ings)
         if !ings
-          $(key).hide() 
+          $(key).hide()
           $(key).css("opacity",0)
         $($(e.target).parent()).remove()
         keyOl = key + "-ol"
-        keyCont = key + "-cont" 
+        keyCont = key + "-cont"
         liArr = $(keyOl).find("li")
         console.log "liArr.length",liArr.length
         if liArr.length == 0 then $(keyCont).hide()
-        
-        
+
+
 
 
     autoCompliteDish = (val) ->
@@ -83,25 +132,25 @@ $(document).ready () ->
         item.title is ui.item.label
       key = eventIng[0].species
       id = @arrComparison[key]
-      
+
       listIng = $(id).attr("ing")
-      if listIng.indexOf(ui.item.label) >= 0 
+      if listIng.indexOf(ui.item.label) >= 0
         alert("Вы уже добавили этот ингридиент")
         return
       $(id).show()
       $(id).css("opacity",1)
 #      if !listIng
-      listIng = listIng + ui.item.label 
+      listIng = listIng + ui.item.label
 #      else
 #        listIng = listIng +  "," + ui.item.label
       listIng = $(id).attr("ing",listIng)
       addIng(ui.item.label, id)
-      
+
     addIng = (newIng,key) =>
 #      newIng = $("#pm-dish-ing").val()
 #      if !newIng then return
       ol = key + "-ol"
-      container = key + "-cont" 
+      container = key + "-cont"
       newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing' key="+key+">x</div></li>"
       $(ol).append(newIngEl)
       $(container).show()
@@ -140,7 +189,7 @@ $(document).ready () ->
         complexity   : $("#complexity").val()
         rating       : $("#rating").val()
         kremling_diet : $("#kremling_diet").val()
-        
+
       $.ajax
         type: 'POST'
         url: "/search/DishesReq"
@@ -154,7 +203,7 @@ $(document).ready () ->
       data.forEach (model) ->
         dishBookView = new DisBookView({model:model})
         $("#dishBookAppender").append(dishBookView.render().el)
-    
+
     $(".cooler-companent").on "mouseenter", (e)=>
       classEl = $(e.target).attr("fonClass")
       console.log "class",classEl
@@ -162,7 +211,7 @@ $(document).ready () ->
       $(classPic).css("opacity",1)
       listEl = classEl + "-cont"
       $(listEl).addClass("red-color")
-      
+
 
     $(".cooler-companent").on "mouseout", (e)=>
       classEl = $(e.target).attr("fonClass")
