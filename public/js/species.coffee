@@ -116,6 +116,7 @@ $(document).ready () ->
           data.forEach (model) ->
             dishBookView = new DishView({model:model})
             $("#all-cont").append(dishBookView.render().el)
+            $(dishBookView.el).hide(0).fadeIn('slow')
           inProgress = false
           skip += 10
     $(window).scroll()
