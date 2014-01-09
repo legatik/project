@@ -24,7 +24,6 @@ exports.boot = (app) ->
       res.send {err: err, result: dishes}
 
   app.get '/ing_autcomplete1',  (req, res) ->
-    console.log "HEARE"
     Product.find {}, (err, arrProducts) ->
       res.send {err: err, result: arrProducts}
 

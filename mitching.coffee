@@ -1,5 +1,5 @@
 _ = require 'underscore'
-module.exports  = (keyKitchen,keySpecies, jastName) ->
+module.exports  = (keyKitchen,keySpecies, jastName, inverse) ->
   specObj =
     first_course:
       name : "Первые блюда"
@@ -83,6 +83,20 @@ module.exports  = (keyKitchen,keySpecies, jastName) ->
 #    objk[keyKitchen].class = "active"
 #    objs[keySpecies].class = "active"
 #    return {keyKitchen, objk, objs}
+
+  if inverse
+    kitcchenSent = ""
+    speciesSent = ""
+    _.each objk, (data) ->
+      console.log 'data',data, keyKitchen
+      if data.name == keyKitchen then kitcchenSent = data.key
+    _.each objs, (data) ->
+      if data.name == keySpecies then speciesSent = data.key
+      if keySpecies == 'Супы' then speciesSent = 'first_course'
+
+    return {kitcchenSent,speciesSent}
+
+
 
   if jastName
     keyKitchen = kitchenObj[keyKitchen]

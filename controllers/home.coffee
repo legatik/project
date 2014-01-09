@@ -58,3 +58,17 @@ exports.boot = (app) ->
     {keyKitchen, objk, objs} = app.mitching()
     res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs, key:keyKitchen}
 
+  app.get '/random_dish',  (req, res) ->
+    console.log "HEARE"
+    Dish.count {}, (err, count)->
+      skip = Math.floor(Math.random() * count)
+      console.log 'skip',skip
+      Dish.find({}).skip(skip).limit(1).exec (err, dish) ->
+        dish.length isnt 0 and dish=dish[0]
+        id = dish._id
+        {kitcchenSent,speciesSent} = app.mitching(dish.kitchen, dish.species, true, true)
+        console.log "kitcchenSent",kitcchenSent
+        console.log "speciesSent",speciesSent
+        link = '/kitchen/'+kitcchenSent+'/'+speciesSent+'/'+id
+        res.redirect link
+

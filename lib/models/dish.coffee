@@ -27,12 +27,14 @@ dish = new Schema
 	key : String
 	description: String
 	ingredients: Array
-	
+
 Model = mongoose.model 'Dish', dish
-	
+
 Model.createThis = () ->
   @create {title: 'Прохерованный дебил'}, () ->
     console.log('Create', arguments)
-
+Model.test = () ->
+  console.log  @
 
 module.exports = Model
+
