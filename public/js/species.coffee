@@ -97,8 +97,31 @@ $(document).ready () ->
         dishBookView = new DishView({model:model})
         $("#pop-append").append(dishBookView.render().el)
 
+  #for scroll
+  inProgress = false
+  skip = 0
   $("#show-all").click () ->
-    alert("показать все")
+
+    $(window).scroll ->
+      if $(window).scrollTop() + $(window).height() >= $(document).height() - 50 and not inProgress
+        $.ajax(
+          url: "/species/speciesLoad"
+          method: "get"
+          data:
+            skip: skip
+            keySpecies:keySpecies
+          beforeSend: ->
+            inProgress = true
+        ).done (data) ->
+          data.forEach (model) ->
+            dishBookView = new DishView({model:model})
+            $("#all-cont").append(dishBookView.render().el)
+          inProgress = false
+          skip += 10
+    $(window).scroll()
+
+
+
 
 
 

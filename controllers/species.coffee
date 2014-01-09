@@ -33,3 +33,14 @@ exports.boot = (app) ->
     .exec (err, dishPop) ->
       res.send dishPop
 
+  app.get '/speciesLoad', (req, res) ->
+    keySpecies = req.query.keySpecies
+    skip = req.query.skip
+    {keySpecies} = app.mitching("all", keySpecies, true)
+    if keySpecies.name == "Первые блюда" then keySpecies.name = "Супы"
+    Dish.find({species:keySpecies.name})
+    .limit(10)
+    .skip(skip)
+    .exec (err, dish) ->
+      res.send dish
+
