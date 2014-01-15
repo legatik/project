@@ -9,13 +9,22 @@ exports.boot = (app) ->
 
 #Product.createThis()
 
+#Dish.find {}, (err, dishArr) ->
+#  dishArr.forEach (dish) ->
+#    if dish.title == "Кисель из клюквы"
+#       dish.species = "Напитки"
+#       dish.save()
+#    if dish.title == "Сбитень"
+#      dish.species = "Напитки"
+#      dish.save()
 
 #Dish.find {}, (err, dishArr) ->
 #  console.log "Dish",dishArr
 #  dishArr.forEach (dish) ->
-#    path = "/home/dunice/work/project/public/img/dishes/"+dish.id_picture
+#    path = "/home/legatik/worke/cook-progect/public/img/dishes/"+dish.id_picture
 #    fs.readdir path, (err,st) ->
 #      console.log "st",st
+#      console.log "dish.id_picture",dish.id_picture
 #      length = st.length
 #      withoutTitle = Number(length) - 1
 #      dish.qty_picture = withoutTitle
