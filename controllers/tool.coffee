@@ -7,6 +7,53 @@ fs = require 'fs-extra'
 exports.boot = (app) ->
 
 
+#Dish.find {}, (err, dishArr) ->
+#  testArr = []
+#  dishArr.forEach (dish) ->
+#    dish.pic_equal = ""
+#    if dish.id == "52a2475a2c224fbf0d000013"
+#      dish.pic_equal = "1,5,6"
+
+#    if dish.id == "52a2fdc46271deae09000005"
+#      dish.pic_equal = "1,4,5"
+
+#    if dish.id == "52a30c876271deae09000015"
+#      dish.pic_equal = "2,6,8"
+
+#    if dish.id == "52a31af56271deae0900001a"
+#      dish.pic_equal = "4,5,6"
+
+#    if dish.id == "52a320776271deae09000023"
+#      dish.pic_equal = "2,3,5"
+
+#    if dish.id == "52a3534c6271deae09000033"
+#      dish.pic_equal = "1,5,6"
+
+#    if dish.id == "52a389dd6271deae09000046"
+#      dish.pic_equal = "1,2,3"
+
+#    if dish.id == "52a4766b4802125c09000002"
+#      dish.pic_equal = "1,2,3"
+
+#    if dish.id == "52a483524802125c09000007"
+#      dish.pic_equal = "1,2,4"
+
+#    if dish.id == "52a485264802125c0900000b"
+#      dish.pic_equal = "1,3,4"
+
+#    if dish.id == "52a747eb333bb36308000004"
+#      dish.pic_equal = "3,1,4"
+
+#    if dish.id == "52a7637d333bb36308000015"
+#      dish.pic_equal = "1,2,3"
+
+#    if dish.id == "52a7670f333bb36308000017"
+#      dish.pic_equal = "1,2,5"
+#      
+#    if dish.id == "52a324a86271deae09000025"
+#      dish.pic_equal = "1,3,4"
+#    dish.save()
+
 #Product.createThis()
 
 #Dish.find {}, (err, dishArr) ->

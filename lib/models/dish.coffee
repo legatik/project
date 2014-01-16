@@ -4,6 +4,7 @@ ObjectId = mongoose.Schema.Types.ObjectId
 Schema = mongoose.Schema
 
 dish = new Schema
+	pic_equal : String
 	title : String
 	title_key: String
 	who_added: String
