@@ -21,16 +21,24 @@ block content
             each duoble in dish.composition
               li #{duoble.ing}  - #{duoble.col}
 
+        #dish-img-title
+          img(src="/img/dishes/#{dish.id_picture}/title.jpg")
+
         #dish-img-cont
           - for (var i = 0; i < dish.qty_picture; i++){
               img(src="/img/dishes/#{dish.id_picture}/p"+i+".jpg")
           - }
-        #dish-img-title
-          img(src="/img/dishes/#{dish.id_picture}/title.jpg")
         #dish-recept
           ol
-            each step in dish.recipe
-              li #{step}
+            - for (var i = 0; i < dish.recipe.length; i++){
+              - equalArr = dish.pic_equal.split(",")
+              li #{dish.recipe[i]}
+                - for (var j = 0; j < equalArr.length; j++){
+                    -if(Number(equalArr[j]) == Number(i+1)){
+                        img(src="/img/dishes/#{dish.id_picture}/p"+j+".jpg")
+                    -}
+                -}
+            - }
 
       #block-footer
         h4 Коментарии к блюду
