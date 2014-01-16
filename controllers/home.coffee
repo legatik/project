@@ -19,7 +19,6 @@ exports.boot = (app) ->
         pass: "44HermionaHr44"
     )
 
-    console.log "##########",req.body.info
     info = JSON.parse req.body.info
     console.log "info.firstName",info.firstName
     mailOptions =
@@ -36,8 +35,6 @@ exports.boot = (app) ->
       else
         console.log "Message sent: " + response.message
         res.send 200
-
-
 
   app.get '/date_dish',  (req, res) ->
     Dish.find({})
@@ -56,7 +53,7 @@ exports.boot = (app) ->
 
   app.get '/addDish',  (req, res) ->
     {keyKitchen, objk, objs} = app.mitching()
-    res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs, key:keyKitchen}
+    res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs}
 
   app.get '/random_dish',  (req, res) ->
     console.log "HEARE"

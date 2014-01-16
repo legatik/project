@@ -1,9 +1,8 @@
 #right-column
   ul
-
     - each item in species
         li(class=item.class)
-            a(href="/kitchen/"+key+"/"+item.key, class=item.class)= item.name
+            a(href="/species/type/"+item.key, class=item.class)= item.name
   
 //    li
 //      a(href="/kitchen/"+key+"/first_course") Первые блюда

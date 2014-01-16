@@ -44,3 +44,7 @@ exports.boot = (app) ->
     .exec (err, dish) ->
       res.send dish
 
+  app.get '/type/:species', (req, res) ->
+    keySpecies = req.params.species
+    {keyKitchen, objk, objs} = app.mitching(keyKitchen, null)
+    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: objk, species:objs , key : keyKitchen, keySpecies : keySpecies}
