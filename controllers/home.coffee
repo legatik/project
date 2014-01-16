@@ -64,8 +64,6 @@ exports.boot = (app) ->
         dish.length isnt 0 and dish=dish[0]
         id = dish._id
         {kitcchenSent,speciesSent} = app.mitching(dish.kitchen, dish.species, true, true)
-        console.log "kitcchenSent",kitcchenSent
-        console.log "speciesSent",speciesSent
-        link = '/kitchen/'+kitcchenSent+'/'+speciesSent+'/'+id
+        link = '/kitchen/'+kitcchenSent+'/'+speciesSent+'/'+id+"/true"
         res.redirect link
 

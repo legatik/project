@@ -56,7 +56,7 @@ block content
                     <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
               <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
           .modal-footer
-            a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>",target="_blank")
+            a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>/false",target="_blank")
               button.btn.btn-default Перейти на страницу блюда
             button.btn.btn-default(type='button', data-dismiss='modal') Close
 
