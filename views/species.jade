@@ -15,11 +15,11 @@ block content
 
     #pop-cont
       h3 Популярные
-      a#show-all.popular(href="javascript:void(0)") Показать все
+      a.show-all.popular(href="javascript:void(0)") Показать все
       #pop-append
     #date-cont
       h3 Последние добавленные
-      a#show-all.last(href="javascript:void(0)") Показать все
+      a.show-all.last(href="javascript:void(0)") Показать все
       #date-append
 
     #all-cont
@@ -49,4 +49,20 @@ block content
             a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>/false",target="_blank")
               button.btn.btn-default Перейти на страницу блюда
             button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+  script#sortTemplate(type="text/template")
+    select.select-sort
+      <% if (sort=="rating") { %>
+      option.pop(type="rating", selected="selected") Популярные
+      option.last(type="dateAdding") Последние добавленные
+      option.title(type="title") По названию
+      <% } else if (sort=="dateAdding"){ %>
+      option.pop(type="rating") Популярные
+      option.last(type="dateAdding", selected="selected") Последние добавленные
+      option.title(type="title") По названию
+      <% } else if (sort=="title"){ %>
+      option.pop(type="rating") Популярные
+      option.last(type="dateAdding") Последние добавленные
+      option.title(type="title", selected="selected") По названию
+      <% } %>
 
