@@ -1,7 +1,6 @@
 $(document).ready () ->
-
+  
   class DishView extends Backbone.View
-
 
     tagName: 'div'
 
@@ -28,10 +27,10 @@ $(document).ready () ->
 
     events:
       "click .peview-dish" : "makeBook",
+      "click .raiting"     : "raitingSend"
 
     makeBook: ->
       $ = jQuery
-      console.log "@model",@model
       $(".bookModel",@el).modal()
       $(".book",@el).turn
         width: 600
@@ -43,6 +42,12 @@ $(document).ready () ->
         when:
           turned: (e, page) ->
 
+    raitingSend:(e) ->
+      link = $(e.currentTarget).attr("link")
+      $.ajax
+        url: link
+        success: (status) =>
+          console.log 'FFF',status 
 
     render: ->
       $ = jQuery
@@ -54,7 +59,7 @@ $(document).ready () ->
       $(@el).html(@template({data:@model, key:key}));
       @
 
-
+  
   $('.carousel').find(".item").first().addClass("active")
   $('.carousel-indicators').find("li").first().addClass("active")
   $('.carousel').carousel()

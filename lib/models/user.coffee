@@ -7,6 +7,7 @@ ObjectId = mongoose.Schema.Types.ObjectId
 Schema = mongoose.Schema
 
 user = new Schema(
+	dishRaiting : [{type: ObjectId, ref: 'Raiting'}]
 	nickname: String
 	firstName: String
 	lastName: String
