@@ -100,14 +100,22 @@ $(document).ready () ->
   #for scroll
   inProgress = false
   skip = 0
+  range = 1
   $("#show-all").click () ->
-
+    $('#pop-cont').hide(0);
+    $('#date-cont').hide(0);
+    if $(this).hasClass('popular')
+      sort = 'rating'
+    if $(this).hasClass('last')
+      sort = 'dateAdding'
     $(window).scroll ->
       if $(window).scrollTop() + $(window).height() >= $(document).height() - 50 and not inProgress
         $.ajax(
           url: "/species/speciesLoad"
           method: "get"
           data:
+            sort: sort
+            range: range
             skip: skip
             keySpecies:keySpecies
           beforeSend: ->
