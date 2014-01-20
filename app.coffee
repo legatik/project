@@ -17,7 +17,8 @@ passport = require 'passport'
 RedisStore = require('connect-redis')(express)
 app = express()
 
-{User,Product, Dish, Comment} = db.models
+{User,Product, Dish, Comment, Raiting} = db.models
+
 
 app.configure () ->
 	app.set "port", process.env.PORT or 3000

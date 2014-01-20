@@ -1,4 +1,5 @@
 $(document).ready () ->
+  
   class DishView extends Backbone.View
 
 
@@ -56,7 +57,7 @@ $(document).ready () ->
   obj = {}
   $.ajax
     type: "GET"
-    url: "/kitchenGet/russian"
+    url: "/kitchenGet/kitchenPage/russian"
     success: (data) ->
       app.dishes = data
       obj.first_courseArr = twoMas('Супы')

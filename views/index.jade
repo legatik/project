@@ -56,6 +56,10 @@ block content
                     <% _.each(data.composition, function(ing) { %> <li><%=ing.ing%> - <%=ing.col%></li> <% }); %>
               <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
           .modal-footer
+           span <%=data.rating%>
+            button.raiting(link !="/kitchenGet/raiting/<%=data._id%>/true" ) +1
+            button.raiting(link !="/kitchenGet/<%=data._id%>/false" ) -1
+              
             a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>/false",target="_blank")
               button.btn.btn-default Перейти на страницу блюда
             button.btn.btn-default(type='button', data-dismiss='modal') Close
