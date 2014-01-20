@@ -11,6 +11,10 @@ exports.boot = (app) ->
 
 
   app.get '/raiting/:dish/:st', (req, res) ->
+    getClientIp = (req) ->
+      x_ip = req.headers['x-forwarded-for']
+      unless x_ip? then x_ip = req.connection.remoteAddress
+      x_ip
     dish = req.params.dish
     st = req.params.st
     if req.user
@@ -20,7 +24,7 @@ exports.boot = (app) ->
       if status
         User.findOne {"_id":req.user["_id"]}, (err, user) ->
           user.dishRaiting.push(dish)
-#          user.save()
+          user.save()
           Dish.findOne {"_id":dish}, (err, dish) ->
             tekRaiting = dish.rating
             if st == "true"
@@ -28,13 +32,13 @@ exports.boot = (app) ->
             if st == "false"
               if Number tekRaiting != 0 then tekRaiting--
             dish.rating = tekRaiting
-#            dish.save()
-            res.send {status:true}
-      else 
+            dish.save()
+            res.send {status:true, rating:tekRaiting }
+      else
         res.send {status:false}
     else
-      console.log 'req.user false'
-    
-    res.send 200
+       x_ip = getClientIp(req)
+       console.log "x_ip",x_ip
+      
 #    Dish.find {kitchen: keyKitchen.name}, (err, dishes) ->
 #      res.send dishes

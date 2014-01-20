@@ -42,12 +42,13 @@ $(document).ready () ->
         when:
           turned: (e, page) ->
 
-    raitingSend:(e) ->
+    raitingSend:(e) =>
       link = $(e.currentTarget).attr("link")
       $.ajax
         url: link
-        success: (status) =>
-          console.log 'FFF',status 
+        success: (data) =>
+          if data.status
+           $("#index-raiting",@el).text(data.rating)
 
     render: ->
       $ = jQuery
