@@ -100,7 +100,37 @@ $(document).ready () ->
   #for scroll
   inProgress = false
   skip = 0
-  $("#show-all").click () ->
+  range = -1
+  sort = 'rating'
+  $(".show-all").click () ->
+    $('#pop-cont').hide(0);
+    $('#date-cont').hide(0);
+    if $(this).hasClass('popular')
+      sort = 'rating'
+    if $(this).hasClass('last')
+      sort = 'dateAdding'
+    addDishes()
+
+
+
+
+
+  addDishes = () ->
+    $("#all-cont").empty()
+    $("#all-cont").append(_.template($('#sortTemplate').html(),{sort:sort}))
+    $('.select-sort').change (e) ->
+      if $(e.target).val() is 'Последние добавленные'
+        sort = 'dateAdding'
+        range = -1
+      else if $(e.target).val() is 'Популярные'
+        sort = 'rating'
+        range = -1
+      else
+        sort = 'title'
+        range = 1
+      inProgress = false
+      skip = 0
+      addDishes()
 
     $(window).scroll ->
       if $(window).scrollTop() + $(window).height() >= $(document).height() - 50 and not inProgress
@@ -108,6 +138,8 @@ $(document).ready () ->
           url: "/species/speciesLoad"
           method: "get"
           data:
+            sort: sort
+            range: range
             skip: skip
             keySpecies:keySpecies
           beforeSend: ->

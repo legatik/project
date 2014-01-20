@@ -36,10 +36,13 @@ exports.boot = (app) ->
   app.get '/speciesLoad', (req, res) ->
     keySpecies = req.query.keySpecies
     skip = req.query.skip
+    sort = {}
+    sort[req.query.sort] = req.query.range
     {keySpecies} = app.mitching("all", keySpecies, true)
     if keySpecies.name == "Первые блюда" then keySpecies.name = "Супы"
     Dish.find({species:keySpecies.name})
     .limit(10)
+    .sort(sort)
     .skip(skip)
     .exec (err, dish) ->
       res.send dish
@@ -48,3 +51,4 @@ exports.boot = (app) ->
     keySpecies = req.params.species
     {keyKitchen, objk, objs} = app.mitching(keyKitchen, null)
     res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: objk, species:objs , key : keyKitchen, keySpecies : keySpecies}
+
