@@ -32,15 +32,6 @@ $(document).ready () ->
     makeBook: ->
       $ = jQuery
       $(".bookModel",@el).modal()
-      $(".book",@el).turn
-        width: 600
-        height:300
-        display: 'double'
-        acceleration: true
-        gradients: not $.isTouch
-        elevation: 50
-        when:
-          turned: (e, page) ->
 
     raitingSend:(e) =>
       link = $(e.currentTarget).attr("link")
@@ -50,14 +41,34 @@ $(document).ready () ->
           if data.status
            $("#index-raiting",@el).text(data.rating)
 
+    turn: () =>
+      $(".book",@el).turn
+        width: 600
+        height:300
+        display: 'double'
+        gradients: not $.isTouch
+        elevation: 50
+        when:
+          turned: (e, page) ->
+
     render: ->
       $ = jQuery
-      console.log "@mitchingK",@mitchingK
-      console.log "@model.kitchen", @model.kitchen
+      console.log '@model',@model
+      
+#      @model.composition.push({col:"ts2",ing:"test"})
+#      @model.composition.push({col:"ts3",ing:"test"})
+#      @model.composition.push({col:"ts4",ing:"test"})
+#      @model.composition.push({col:"ts5",ing:"test"})
+#      @model.composition.push({col:"ts6",ing:"test"})
+      
+      if @model.composition.length > 11
+        @model.compositionMore = true
+      
       key =
         kitchen : @mitchingK[@model.kitchen]
         species : @mitchingS[@model.species]
       $(@el).html(@template({data:@model, key:key}));
+      @turn()
       @
 
   
