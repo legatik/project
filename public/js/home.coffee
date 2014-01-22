@@ -26,8 +26,28 @@ $(document).ready () ->
       @model = @options.model
 
     events:
-      "click .peview-dish" : "makeBook",
-      "click .raiting"     : "raitingSend"
+      "click .peview-dish"      : "makeBook",
+      "click .raiting"          : "raitingSend",
+      "mouseenter .flag-img"    : "hoverFlagOn",
+      "mouseleave .flag-img"    : "hoverFlagOff",
+      "click .flag-img"         : "clickFlag"
+
+    hoverFlagOff: () ->
+      $(".flag-img").animate
+        width: 45
+        top:160
+      , 300
+
+    hoverFlagOn: () ->
+      $(".flag-img").animate
+        width: 60
+        top:149
+      , 300
+    
+    clickFlag: (e) ->
+      e.stopPropagation()
+      window.location.href = "/kitchen/"+ @mitchingK[@model.kitchen]
+      
 
     makeBook: ->
       $ = jQuery
