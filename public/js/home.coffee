@@ -66,7 +66,7 @@ $(document).ready () ->
     render: ->
       $ = jQuery
       if @model.pic_equal then @rasparseStep()
-      console.log "rasparseStep",@model.recipeWithPic
+      console.log "@model",@model
 #      @model.composition.push({col:"ts2",ing:"test"})
 #      @model.composition.push({col:"ts3",ing:"test"})
 #      @model.composition.push({col:"ts4",ing:"test"})

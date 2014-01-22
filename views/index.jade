@@ -79,7 +79,18 @@ block content
                 div
                   Ингридиенты
               <% }; %>
-              //<% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+              <% if (data.pic_equal) { %>
+              <% _.each(data.recipeWithPic, function(obj) { %>
+              <% if (obj.pic){ %>
+              <div class="page"><div><img src="/img/dishes/<%= data.id_picture %>/p<%=obj.pic%>.jpg"></div></div>
+              <% } else {%>
+              <div class="page"/>
+              <% }; %>
+              <div class="page"><div><%= obj.recept %></div></div> 
+              <% }); %>
+              <% }else{ %>
+              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+              <% }; %>
           .modal-footer
             span#index-raiting <%=data.rating%>
             button.raiting(link !="/kitchenGet/raiting/<%=data._id%>/true" ) +1
