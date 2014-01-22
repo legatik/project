@@ -75,8 +75,11 @@ block content
                     <% for(var j = 0; j < data.composition.length; j++) { %>
                     <li><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
                     <% }; %>
+              div.ing-list
+                div
+                  Ингридиенты
               <% }; %>
-              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+              //<% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
           .modal-footer
             span#index-raiting <%=data.rating%>
             button.raiting(link !="/kitchenGet/raiting/<%=data._id%>/true" ) +1

@@ -51,10 +51,22 @@ $(document).ready () ->
         when:
           turned: (e, page) ->
 
+    rasparseStep: ->
+      recipeWithPic = []
+      pic_equal = @model.pic_equal.split(",")
+      recipe = @model.recipe
+      recipe.forEach (recept) ->
+            recipeWithPic.push {recept:recept,pic:false}
+      pic_equal.forEach (eq, index) ->
+        eqFind = Number(eq) - 1
+        recipeWithPic[eqFind].pic = index
+      @model.recipeWithPic = recipeWithPic
+      
+
     render: ->
       $ = jQuery
-      console.log '@model',@model
-      
+      if @model.pic_equal then @rasparseStep()
+      console.log "rasparseStep",@model.recipeWithPic
 #      @model.composition.push({col:"ts2",ing:"test"})
 #      @model.composition.push({col:"ts3",ing:"test"})
 #      @model.composition.push({col:"ts4",ing:"test"})
