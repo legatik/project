@@ -6,7 +6,7 @@
 			span#login-user-txt #{user.firstName}&nbsp#{user.lastName} &nbsp
 			a(href="/logout") Logout
 		else
-			a#login-button.regist-log-button(href="/login") Войти
+			a#login-button.regist-log-button(href="#") Войти
 			a#sing-up-button.regist-log-button(href="/register") Зарегистрироваться
 			
 	#headerblank
@@ -38,23 +38,25 @@
 					else
 						li
 							a(href="/news") Кулинарные новости
-			#login
+			#login-blok
 				#logintxtblank
+					#close-login 
+						b x
 					#loginheading
 						h4 User Login
 					#username User Name:
-					#input
+					#input-email
 						label
-							input#textfield.input(name='textfield', type='text', value='enter your user name')
+							input#textfield.input-new-sty(name='textfield', type='text', value='enter your user name')
 					#password Password:
 					#input02
-					label
-						input#textfield2.input-new-sty(name='textfield2', type='password', value='password')
+						label
+							input#textfield2.input-new-sty(name='textfield2', type='password', value='password')
 					#loginbutton
-						a.login(href='#') login
+						a.login(href='#') Войти
 					#member Not yet a Member? 
 					#register
-						a.register(href='#') Register Now
+						a.register(href='/register') Register Now
 
 							
 							

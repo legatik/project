@@ -73,7 +73,7 @@ body
 
 #headerbg
   width: 100%;
-  height: 309px;
+  height: 166px;
   float: left;
   margin: 0px;
   padding: 0px;
@@ -163,20 +163,41 @@ body
                 background-repeat: repeat;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
-      #login
+      #login-blok
         width: 649px;
-        height: 106px;
+        height: 110px;
         float: right;
-        margin: 35px 53px 0 0;
+        margin: 28px 53px 0 0;
         padding: 0px;
-        background-image: url(images/loginbg.jpg);
+        background:#EFDB9E
+        border: 2px solid #E3C879; 
         background-repeat: no-repeat;
+        border-radius:5px
+        display:none
         #logintxtblank
           width: 622px;
           height: 89px;
           float: left;
           margin: 0px;
           padding: 17px 0 0 27px;
+          position:relative;
+          #close-login
+            text-align: center;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            color: #ab8e4e;
+            border: 1px solid #ab8e4e;
+            border-radius: 10px;
+            line-height: 12px;
+            top: -86px;
+            left: 622px;
+            cursor: pointer;
+            &:hover
+              color:#B34326
+            &:hover:active 
+              top: -85px;
+              border: 1px solid #B34326;
           #loginheading
             width: 622px;
             height: 21px;
@@ -203,9 +224,9 @@ body
             margin: 0px;
             padding: 7px 0 0 0;
             font-family: Arial;
-            font-size: 10px;
-            color: #95844d;
-          #input
+            font-size: 12px;
+            color: #62562D;
+          #input-email
             width: 197px;
             height: 21px;
             float: left;
@@ -213,7 +234,19 @@ body
             padding: 0px;
             font-family: Arial;
             font-size: 10px;
-            color: #95844d;
+            color: #62562D;
+            .input-new-sty
+              width: 188px;
+              float: left;
+              margin: 0px;
+              padding: 2px 0 0 16px;
+              font-family: Arial;
+              font-size: 12px;
+              color: #62562d;
+              border: solid 1px #ead28b;
+              height: 26px;
+              margin-left: 5px;
+              margin-top: 2px;
           #password
             width: 52px;
             height: 14px;
@@ -221,8 +254,9 @@ body
             margin: 0px;
             padding: 7px 0 0 23px;
             font-family: Arial;
-            font-size: 10px;
-            color: #95844d;
+            font-size: 12px;
+            color: #62562D;
+            margin-left: -21px
           #input02
             width: 197px;
             height: 21px;
@@ -230,32 +264,57 @@ body
             margin: 0px;
             padding: 0px;
             font-family: Arial;
-            font-size: 10px;
-            color: #95844d;
+            font-size: 12px;
+            color: #62562D;
+            margin-left: 21px;
+            .input-new-sty
+              width: 188px;
+              float: left;
+              margin: 0px;
+              padding: 2px 0 0 16px;
+              font-family: Arial;
+              font-size: 12px;
+              color: #62562d;
+              border: solid 1px #ead28b;
+              height: 26px;
+              margin-left: 12px;
+              margin-top: 2px;
           #loginbutton
             width: 50px;
             height: 23px;
             float: left;
             margin: 0 0 0 20px;
             padding: 0px
-            .login
-              width: 50px;
-              height: 19px;
-              float: left;
-              margin: 0px;
-              padding: 4px 0 0 0;
-              font-family: Arial;
-              font-size: 10px;
-              color: #000;
-              text-align: center;
+            a
+              width: 65px;
+              height: 33px;
+              position: relative;
+              display: inline-block;
+              color: #777674;
+              font-weight: bold;
               text-decoration: none;
-              background-image: url(../img/images/login.jpg);
-              background-repeat: no-repea
+              text-shadow: rgba(255,255,255,0.5) 1px 1px, rgba(100,100,100,0.3) 3px 7px 3px;
+              user-select: none;
+              padding: 7px 12px;
+              outline: none;
+              border-radius: 3px/100%;
+              background-image: linear-gradient(45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.8), rgba(255,255,255,0) 70%), linear-gradient(to right, #fff, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,0.3)), linear-gradient(to right, #7d7d7d, rgba(255,255,255,0.9) 45%, rgba(125,125,125,0.5)), linear-gradient(to right, #7d7d7d, rgba(255,255,255,0.9) 45%, rgba(125,125,125,0.5)), linear-gradient(to right, #dfbeaa, rgba(255,255,255,0.9) 45%, rgba(223,190,170,0.5)), linear-gradient(to right, #dfbeaa, rgba(255,255,255,0.9) 45%, rgba(223,190,170,0.5));
+              background-repeat: no-repeat;
+              background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+              background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(96%);
+              box-shadow: rgba(0,0,0,0.5) 3px 10px 10px -10px;
+
+              &:hover 
+                transition: .5s linear;
+                background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+
+              &:hover:active 
+                top: 1px;
           #member
             width: 135px;
             height: 14px;
             float: left;
-            margin: 9px 0 0 0;
+            margin: 14px 0 0 0;
             padding: 0px;
             font-family: Arial;
             font-size: 13px;
@@ -264,7 +323,7 @@ body
             width: 200px;
             height: 14px;
             float: left;
-            margin: 9px 0 0 0;
+            margin: 14px 0 0 0;
             padding: 0px;
             font-family: Arial;
             font-size: 13px;
@@ -274,17 +333,7 @@ body
               font-size: 13px;
               color: #943415;
               text-decoration: none;
-.input-new-sty
-  width: 181px;
-  height: 17px;
-  float: left;
-  margin: 0px;
-  padding: 4px 0 0 16px;
-  font-family: Arial;
-  font-size: 10px;
-  color: #95844d;
-  border: solid 1px #ead28b;
-  background-color: #ead28b;
+
 
 .active-menu-item
   background-image: url(../img/images/menu-item-hover.jpg) !important

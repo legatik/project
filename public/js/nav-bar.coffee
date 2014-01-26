@@ -11,3 +11,17 @@ $(document).ready () ->
           )
     minLength: 2
 
+  $("#close-login").click () ->
+    $("#login-blok").fadeOut 'slow', () ->
+      $("#headerbg").css("overflow","hidden")
+      $("#headerbg").animate
+        height: 166
+      , 700
+      
+  $("#login-button").click () ->
+    $("#headerbg").stop(true, true)
+    $("#login-blok").stop(true, true)
+    $("#headerbg").animate
+      height: 309
+    , 700, () ->
+      $("#login-blok").hide().fadeIn 'slow'
