@@ -40,21 +40,21 @@ input.parsley-success, textarea.parsley-success
 
 
 #left-column
+  border-right: 1px dashed #BBAD88;
   float: left;
   width: 240px;
   padding: 5px 5px 5px 0;
-  border:1px solid
   display: inline-block;
   ul
     .active
       color:red
 
 #right-column
+  border-left: 1px dashed #BBAD88;
   float: right;
   width: 240px;
   padding: 5px 5px 5px 0;
   height:200px
-  border:1px solid
   display: inline-block;
   ul
     .active
@@ -79,6 +79,47 @@ body
   padding: 0px;
   background-image: url(../img/images/headerbg.jpg);
   background-repeat: repeat-x;
+  
+  #search-cont
+    margin-right: 27px;
+    display:inline-block
+    float: right;
+    margin-top:6px;
+    #nav-dish-input
+      border-radius:14px
+      width: 188px;
+      float: left;
+      margin: 0px;
+      padding: 2px 0 0 16px;
+      font-family: Arial;
+      font-size: 12px;
+      color: #62562d;
+      border: solid 1px #ead28b;
+      height: 26px;
+      margin-left: 2px;
+      margin-top:5px;
+      width:164px
+    #search-global-btn
+      border-radius: 28px;
+      width: 79px;
+      height: 34px;
+      float: left;
+      margin: 0px;
+      padding: 7px 0 0 0;
+      font-family: Arial;
+      font-size: 13px;
+      font-weight: bold;
+      color: #FFF;
+      text-align: center;
+      text-decoration: none;
+      background-image: url(../img/images/menu-item.jpg);
+      background-repeat: repeat;
+      &:hover
+        background-image: url(../img/images/menu-item-hover.jpg) !important
+        background-repeat: repeat;
+        border-radius: 20px  
+
+
   #login-cont-button
     margin-top:-2px
     float: right;
