@@ -38,7 +38,7 @@
 					else
 						li
 							a(href="/news") Кулинарные новости
-			#login-blok
+			form#login-blok(action="/login",method="POST",enctype="multipart/form-data", data-validate="parsley", data-trigger="change")
 				#logintxtblank
 					#close-login 
 						b x
@@ -47,13 +47,13 @@
 					#username User Name:
 					#input-email
 						label
-							input#textfield.input-new-sty(name='textfield', type='text', value='enter your user name')
+							input#textfield.input-new-sty(type="text", placeholder="Email", name="email", data-trigger="focusin focusout", data-required="true", data-type="email")
 					#password Password:
 					#input02
 						label
-							input#textfield2.input-new-sty(name='textfield2', type='password', value='password')
+							input#textfield2.input-new-sty(type="password", placeholder="Пароль", name="password", data-trigger="focusin focusout", data-required="true")
 					#loginbutton
-						a.login(href='#') Войти
+						a.login(nohref) Войти
 					#member Not yet a Member? 
 					#register
 						a.register(href='/register') Register Now

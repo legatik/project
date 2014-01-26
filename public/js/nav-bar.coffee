@@ -25,3 +25,6 @@ $(document).ready () ->
       height: 309
     , 700, () ->
       $("#login-blok").hide().fadeIn 'slow'
+  
+  $("#loginbutton").click () ->
+    $("#login-blok").submit()
