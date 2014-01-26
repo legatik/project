@@ -77,7 +77,7 @@ body
   float: left;
   margin: 0px;
   padding: 0px;
-  background-image: url(../img/images/headerbg.jpg);
+  background-image: url(../img/images/top.jpg);
   background-repeat: repeat-x;
   
   #search-cont
@@ -152,7 +152,7 @@ body
         border-radius: 20px   
 #headerblank
     width: 1004px;
-    height: 309px;
+    height: 166px;
     float: none;
     margin: 0 auto;
     padding: 0px;
@@ -204,9 +204,14 @@ body
                 background-repeat: repeat;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
-      #login-blok
+                
+      .login-cont-show
         width: 649px;
         height: 110px;
+      .reg-cont-show
+        width:468px
+        height:320px
+      #login-reg-blok
         float: right;
         margin: 28px 53px 0 0;
         padding: 0px;
@@ -215,6 +220,84 @@ body
         background-repeat: no-repeat;
         border-radius:5px
         display:none
+        
+        #reg-send
+          width: 622px;
+          height: 89px;
+          float: left;
+          margin: 0px;
+          padding: 17px 0 0 27px;
+          position:relative;
+          #close-login
+            text-align: center;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            color: #ab8e4e;
+            border: 1px solid #ab8e4e;
+            border-radius: 10px;
+            line-height: 12px;
+            top: -86px;
+            left: 622px;
+            cursor: pointer;
+            &:hover
+              color:#B34326
+            &:hover:active 
+              top: -85px;
+              border: 1px solid #B34326;
+        #regheading
+          width: 622px;
+          height: 21px;
+          float: left;
+          margin: 0 0 8px 0;
+          padding: 0px;
+          font-family: Georgia;
+          font-size: 20px;
+          color: #000;
+          h4
+            width: 622px;
+            height: 21px;
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            font-family: Georgia;
+            font-size: 20px;
+            font-weight: normal;
+            color: #000;
+        .lable-reg
+          width: 114px;
+          height: 14px;
+          float: left;
+          margin: 0px;
+          padding: 7px 0 0 0;
+          font-family: Arial;
+          font-size: 12px;
+          color: #62562D;
+        .input-reg-li
+          width: 197px;
+          height: 21px;
+          float: left;
+          margin: 0px;
+          padding: 0px;
+          font-family: Arial;
+          font-size: 10px;
+          color: #62562D;
+          label
+            ul
+              li
+                width:183px
+            .input-new-sty
+              width: 188px;
+              float: left;
+              margin: 0px;
+              padding: 2px 0 0 16px;
+              font-family: Arial;
+              font-size: 12px;
+              color: #62562d;
+              border: solid 1px #ead28b;
+              height: 26px;
+              margin-left: 5px;
+              margin-top: 2px;
         #logintxtblank
           width: 622px;
           height: 89px;

@@ -7,7 +7,7 @@
 			a(href="/logout") Logout
 		else
 			a#login-button.regist-log-button(href="#") Войти
-			a#sing-up-button.regist-log-button(href="/register") Зарегистрироваться
+			a#sing-up-button.regist-log-button(href="#") Зарегистрироваться
 
 	#search-cont
 		a#search-global-btn(href="#") Найти
@@ -42,25 +42,118 @@
 					else
 						li
 							a(href="/news") Кулинарные новости
-			form#login-blok(action="/login",method="POST",enctype="multipart/form-data", data-validate="parsley", data-trigger="change")
-				#logintxtblank
-					#close-login 
-						b x
-					#loginheading
-						h4 User Login
-					#username User Name:
-					#input-email
-						label
-							input#textfield.input-new-sty(type="text", placeholder="Email", name="email", data-trigger="focusin focusout", data-required="true", data-type="email")
-					#password Password:
-					#input02
-						label
-							input#textfield2.input-new-sty(type="password", placeholder="Пароль", name="password", data-trigger="focusin focusout", data-required="true")
-					#loginbutton
-						a.login(nohref) Войти
-					#member Not yet a Member? 
-					#register
-						a.register(href='/register') Register Now
+			#login-reg-blok
+				form#reg-send(
+					action="/register",
+					method="POST",
+					enctype="multipart/form-data",
+					data-validate="parsley",
+					data-trigger="change"
+				)
+						#close-login 
+							b x
+						#regheading
+							h4 Регестрация
+						.lable-reg Ваш ник:
+						.input-reg-li
+							label
+								input.input-new-sty(
+									type="text"
+									placeholder="Nickname"
+									name="nickname"
+									value=user && user.nickname
+									data-trigger="focusin focusout"
+									data-required="true"
+									data-type="alphanum"
+								)
+						br
+						br
+						br
+						.lable-reg Ваш еmail:
+						.input-reg-li
+							label
+								input.input-new-sty(
+									type="text"
+									placeholder="Email"
+									name="email"
+									value=user && user.email
+									data-trigger="focusin focusout"
+									data-required="true"
+									data-type="email"
+								)
+						br
+						br
+						.lable-reg Ваш пароль:
+						.input-reg-li
+							label
+								input.input-new-sty(
+									type="password"
+									placeholder="Password"
+									name="password"
+									data-trigger="focusin focusout"
+									data-required="true"
+								)
+						br
+						br
+						.lable-reg Повторите пароль:
+						.input-reg-li
+							label
+								input.input-new-sty(
+									type="password"
+									placeholder="Repeat password"
+									data-trigger="focusin focusout"
+									data-required="true"
+									data-equalto="#inputPassword"
+								)
+						br
+						br
+						.lable-reg Ваше имя:
+						.input-reg-li
+							label
+								input.input-new-sty(
+									type="text"
+									placeholder="First Name"
+									name="firstName"
+									value=user && user.firstName
+									data-trigger="focusin focusout"
+									data-required="true"
+								)
+						br
+						br
+						.lable-reg Ваша фамилия:
+						.input-reg-li
+							label
+								input.input-new-sty(
+									type="text"
+									placeholder="Last Name"
+									name="lastName"
+									value=user && user.lastName
+									data-trigger="focusin focusout"
+									data-required="true"
+								)
+
+
+
+					
+				form#login-send(action="/login",method="POST",enctype="multipart/form-data", data-validate="parsley", data-trigger="change", style="display:none")
+					#logintxtblank
+						#close-login 
+							b x
+						#loginheading
+							h4 User Login
+						#username User Name:
+						#input-email
+							label
+								input#textfield.input-new-sty(type="text", placeholder="Email", name="email", data-trigger="focusin focusout", data-required="true", data-type="email")
+						#password Password:
+						#input02
+							label
+								input#textfield2.input-new-sty(type="password", placeholder="Пароль", name="password", data-trigger="focusin focusout", data-required="true")
+						#loginbutton
+							a.login(nohref) Войти
+						#member Not yet a Member? 
+						#register
+							a.register(href='/register') Register Now
 
 							
 							
