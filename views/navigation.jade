@@ -1,6 +1,14 @@
 != js('nav-bar')
 
 #headerbg
+	#login-cont-button
+		if user
+			span#login-user-txt #{user.firstName}&nbsp#{user.lastName} &nbsp
+			a(href="/logout") Logout
+		else
+			a#login-button.regist-log-button(href="/login") Войти
+			a#sing-up-button.regist-log-button(href="/register") Зарегистрироваться
+			
 	#headerblank
 		#header
 			div
@@ -30,27 +38,30 @@
 					else
 						li
 							a(href="/news") Кулинарные новости
+			#login
+				#logintxtblank
+					#loginheading
+						h4 User Login
+					#username User Name:
+					#input
+						label
+							input#textfield.input(name='textfield', type='text', value='enter your user name')
+					#password Password:
+					#input02
+					label
+						input#textfield2.input-new-sty(name='textfield2', type='password', value='password')
+					#loginbutton
+						a.login(href='#') login
+					#member Not yet a Member? 
+					#register
+						a.register(href='#') Register Now
 
+							
+							
 				//form(role='search')
 					div
 						input#nav-dish-input.form-control(type='text', placeholder='Search')
 						button(type='submit') ОК
 
 
-				//ul
-					li
-						a.dropdown-toggle(href="#",  data-toggle="dropdown") Hello, &nbsp;
-							= user && user.firstName || 'Guest'
-							&nbsp;
-							b.caret
-						ul
-							if user
-								li
-									a(href="#") Account
-								li
-									a(href="/logout") Logout
-							else
-								li
-									a(href="/login") Sign In
-								li
-									a(href="/register") Sign Up
+
