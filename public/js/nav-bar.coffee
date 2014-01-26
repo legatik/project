@@ -11,7 +11,7 @@ $(document).ready () ->
           )
     minLength: 2
 
-  $("#close-login").click () ->
+  $(".close-window").click () ->
     $("#login-reg-blok").fadeOut 'slow', () ->
       $("#headerbg").css("overflow","hidden")
       $("#headerbg").animate
@@ -19,20 +19,25 @@ $(document).ready () ->
       , 700
 
   $("#sing-up-button").click () ->
-    openWindow('reg-cont-show')
+    openWindow('reg-cont-show', 526, "#reg-send")
   $("#login-button").click () ->
-    openWindow('login-cont-show')
+    openWindow('login-cont-show', 309, "#login-send")
 
     
 
     
       
-  openWindow = (className) ->      
+  openWindow = (className, h, form) ->
+    $(".form-reg-func").hide()
+    
+    $("#login-reg-blok").removeClass("reg-cont-show")
+    $("#login-reg-blok").removeClass("login-cont-show")      
     $("#login-reg-blok").addClass(className)
+    $(form).show()
     $("#headerbg").stop(true, true)
     $("#login-reg-blok").stop(true, true)
     $("#headerbg").animate
-      height: 309
+      height: h
     , 700, () ->
       $("#login-reg-blok").hide().fadeIn 'slow'
   

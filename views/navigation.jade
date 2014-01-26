@@ -43,14 +43,14 @@
 						li
 							a(href="/news") Кулинарные новости
 			#login-reg-blok
-				form#reg-send(
+				form#reg-send.form-reg-func(
 					action="/register",
 					method="POST",
 					enctype="multipart/form-data",
 					data-validate="parsley",
 					data-trigger="change"
 				)
-						#close-login 
+						#close-reg.close-window
 							b x
 						#regheading
 							h4 Регестрация
@@ -135,9 +135,9 @@
 
 
 					
-				form#login-send(action="/login",method="POST",enctype="multipart/form-data", data-validate="parsley", data-trigger="change", style="display:none")
+				form#login-send.form-reg-func(action="/login",method="POST",enctype="multipart/form-data", data-validate="parsley", data-trigger="change", style="display:none")
 					#logintxtblank
-						#close-login 
+						#close-login.close-window 
 							b x
 						#loginheading
 							h4 User Login
