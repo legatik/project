@@ -28,7 +28,7 @@ $(document).ready () ->
     reqShow = true
     $("#headerbg").stop(true, true)
     $("#login-reg-blok").stop(true, true)
-    $(".form-reg-func").stop(true, true)
+    $(".form-reg-func").stop(true)
     $("#login-send").fadeOut "slow", () ->
       $("#headerbg").animate
         height: 526
@@ -44,7 +44,7 @@ $(document).ready () ->
     reqShow = false
     $("#headerbg").stop(true, true)
     $("#login-reg-blok").stop(true, true)
-    $(".form-reg-func").stop(true, true)
+    $(".form-reg-func").stop(true)
     $("#reg-send").fadeOut "slow", () ->
       $("#login-reg-blok").animate
         height: 110
@@ -87,3 +87,6 @@ $(document).ready () ->
   
   $("#loginbutton").click () ->
     $("#login-send").submit()
+
+  $("#regbutton").click () ->
+    $("#reg-send").submit()
