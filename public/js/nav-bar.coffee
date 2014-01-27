@@ -94,7 +94,10 @@ $(document).ready () ->
   $("#ul-cont").mouseleave (e) ->
     st = $(e.target).hasClass("hover-true")
     if !st then $("#zoom-clases").hide()
-      
+     
+     
+  $("#center-column").mouseenter () ->
+      $("#zoom-clases").hide()
   $(".li-kitcen").mouseenter (e) ->
     $("#zoom-clases").css("display","inline-block")
     hoverLiKitcen = true
