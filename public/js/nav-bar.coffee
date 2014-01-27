@@ -1,6 +1,7 @@
 $(document).ready () ->
   reqShow = false
   logShow = false
+  hoverLiKitcen = false
   $("#nav-dish-input").autocomplete
     source: (request, response) ->
       $.ajax
@@ -90,3 +91,12 @@ $(document).ready () ->
 
   $("#regbutton").click () ->
     $("#reg-send").submit()
+    
+    
+  $(".li-kitcen").mouseenter (e) ->
+    hoverLiKitcen = true
+    number = Number $(e.target).attr("number")
+    heightHover = 8 + number*37
+    $("#zoom-clases").css("top", heightHover)
+    
+    

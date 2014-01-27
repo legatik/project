@@ -1,10 +1,18 @@
 #left-column
-  |LEFT
+  .column-header Выберите кухню 
+  div#zoom-clases
   ul
+    - var i = 1
     - each item in kitchens
-        li(class=item.class)
-            a(href="/kitchen/"+ item.key, class=item.class)= item.name
-
+        li.li-kitcen(class=item.class, number=i)
+            .border-flag(number=i)
+              //.circle-cont
+                .circle
+                .circle
+                .circle
+              img(src="/img/flags/"+item.key+".gif", number=i)
+            a(href="/kitchen/"+ item.key, class=item.class, number=i)= item.name
+            - i = i+1
 
 
 

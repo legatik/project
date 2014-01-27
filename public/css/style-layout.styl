@@ -39,13 +39,82 @@ input.parsley-success, textarea.parsley-success
   margin-top:-20px
 
 
+.column-header
+  width: 216px;
+  height: 46px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 22px;
+  font-weight: normal;
+  color: #7e8901;
+
+
+#zoom-clases
+  position:absolute;
+  left: 10px
+  top: 45px
+  width: 198px;
+  height: 38px;
+  display: inline-block;
+  color: #777674;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: rgba(255,255,255,0.5) 1px 1px, rgba(100,100,100,0.3) 3px 7px 3px;
+  user-select: none;
+  padding: 7px 12px;
+  outline: none;
+  border-radius: 3px/100%;
+  background-image: linear-gradient(45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.8), rgba(255,255,255,0) 70%), linear-gradient(to right, #fff, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 90%, rgba(255,255,255,0.3)), linear-gradient(to right, #7d7d7d, rgba(255,255,255,0.9) 45%, rgba(125,125,125,0.5)), linear-gradient(to right, #7d7d7d, rgba(255,255,255,0.9) 45%, rgba(125,125,125,0.5)), linear-gradient(to right, #dfbeaa, rgba(255,255,255,0.9) 45%, rgba(223,190,170,0.5)), linear-gradient(to right, #dfbeaa, rgba(255,255,255,0.9) 45%, rgba(223,190,170,0.5));
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
+  background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(96%);
+  box-shadow: rgba(0,0,0,0.5) 3px 10px 10px -10px;
+
+
+
+
+
+
 #left-column
   border-right: 1px dashed #BBAD88;
   float: left;
   width: 240px;
   padding: 5px 5px 5px 0;
   display: inline-block;
+  position:relative
   ul
+    list-style: none
+    li.li-kitcen
+      cursor: pointer
+      margin-top:10px
+      a
+        color:#8C2B01
+        font-size: 16px;
+        margin-left: 5px;
+        position: relative;
+        top: 1px
+      .border-flag
+        position:relative
+        border: 2px solid #B85116;
+        border-radius: 5px;
+        padding: 1px;
+        display:inline-block
+        .circle-cont
+          display:inline-block
+          position: absolute;
+          top: -14px;
+          left: 7px;
+          .circle
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 5px;
+            background: #B85116;
+            margin-right: 2px;
+        img
+          width:30px
     .active
       color:red
 
