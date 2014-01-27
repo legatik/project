@@ -69,8 +69,6 @@ $(document).ready () ->
     if reqShow
       renderLog()
     
-
-    
       
   openWindow = (className, h, form) ->
     $("#login-reg-blok").attr("style","")
@@ -93,10 +91,22 @@ $(document).ready () ->
     $("#reg-send").submit()
     
     
+  $("#ul-cont").mouseleave (e) ->
+    st = $(e.target).hasClass("hover-true")
+    if !st then $("#zoom-clases").hide()
+      
   $(".li-kitcen").mouseenter (e) ->
+    $("#zoom-clases").css("display","inline-block")
     hoverLiKitcen = true
     number = Number $(e.target).attr("number")
+    idFind = "#" + $(e.target).attr("idFind")
     heightHover = 8 + number*37
-    $("#zoom-clases").css("top", heightHover)
+    $(".li-hover").removeClass("li-hover")
+    $(idFind).addClass("li-hover")
+    $("#zoom-clases").stop(true,true)
+    $("#zoom-clases").animate
+        top: heightHover
+      , 180
+        
     
     
