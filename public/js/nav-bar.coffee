@@ -92,10 +92,13 @@ $(document).ready () ->
   $("#center-column").mouseenter () ->
       $("#zoom-clases").hide()
       $("#zoom-clases-species").hide()
+      $(".li-hover").removeClass("li-hover")
     
   $("#ul-cont").mouseleave (e) ->
     st = $(e.target).hasClass("hover-true")
-    if !st then $("#zoom-clases").hide()
+    if !st
+      $("#zoom-clases").hide()
+      $(".li-hover").removeClass("li-hover")
      
      
   $(".li-kitcen").mouseenter (e) ->
@@ -111,10 +114,11 @@ $(document).ready () ->
       , 180
         
     
-  $("#ul-cont").mouseleave (e) ->
-    st = $(e.target).hasClass("hover-true")
-    if !st then $("#zoom-clases").hide()
-     
+  $("#ul-cont-species").mouseleave (e) ->
+    st = $(e.target).hasClass("hover-true-species")
+    if !st
+      $("#zoom-clases-species").hide()
+      $(".li-hover").removeClass("li-hover")
 
   $(".li-species").mouseenter (e) ->
     $("#zoom-clases-species").css("display","inline-block")
