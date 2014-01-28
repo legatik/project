@@ -49,15 +49,10 @@ input.parsley-success, textarea.parsley-success
   font-size: 22px;
   font-weight: normal;
   color: #7e8901;
+  text-align:center;
 
 
-#zoom-clases
-  display:none;
-  position:absolute;
-  left: 10px
-  top: 45px
-  width: 198px;
-  height: 38px;
+.zoom-clases
   color: #777674;
   font-weight: bold;
   text-decoration: none;
@@ -71,6 +66,21 @@ input.parsley-success, textarea.parsley-success
   background-size: 200% 100%, auto, 100% 2px, 100% 2px, 100% 1px, 100% 1px;
   background-position: 200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(96%);
   box-shadow: rgba(0,0,0,0.5) 3px 10px 10px -10px;
+
+#zoom-clases
+  display:none;
+  position:absolute;
+  left: 10px
+  top: 45px
+  width: 198px;
+  height: 38px;
+
+#zoom-clases-species
+  position:absolute;
+  left: 10px
+  top: 45px
+  width: 198px;
+  height: 38px;
 
 
 
@@ -137,10 +147,24 @@ input.parsley-success, textarea.parsley-success
   padding: 5px 5px 5px 0;
   height:200px
   display: inline-block;
-  ul
-    .active
-      color:red
-
+  position:relative
+  div#ul-cont-species
+    padding: 1px;
+    position: relative;
+    z-index: 2;
+    ul#ul-species
+      width: 211px;
+      margin-top: 35px;
+      list-style: none
+      .li-species
+        cursor: pointer
+        margin-top:10px
+        a
+          color:#8C2B01
+          font-size: 16px;
+          margin-left: 5px;
+          position: relative;
+          top: 1px
 #center-column
   width: 700px;
   margin: 0 auto;

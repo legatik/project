@@ -1,8 +1,13 @@
 #right-column
-  ul
-    - each item in species
-        li(class=item.class)
-            a(href="/species/type/"+item.key, class=item.class)= item.name
+  .column-header Выберите категорию
+  #zoom-clases-species.zoom-clases.hover-true-species
+  #ul-cont-species
+    ul#ul-species.hover-true-species
+      - var i = 1
+      - each item in species
+          li.hover-true-species.li-species(class=item.class, number=i)
+              a.hover-true-species(href="/species/type/"+item.key, class=item.class, number=i)= item.name
+              - i = i+1
   
 //    li
 //      a(href="/kitchen/"+key+"/first_course") Первые блюда
