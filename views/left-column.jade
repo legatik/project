@@ -5,14 +5,14 @@
     ul#ul-kitchrn.hover-true
       - var i = 1
       - each item in kitchens
-          li.li-kitcen.hover-true(class=item.class, number=i)
-              .border-flag.hover-true(number=i)
+          li.li-kitcen.hover-true(class=item.class, number=i, id="li-item-"+item.key, idFind = "li-item-"+item.key)
+              .border-flag.hover-true(number=i, idFind = "li-item-"+item.key)
                 //.circle-cont
                   .circle
                   .circle
                   .circle
-                img.hover-true(src="/img/flags/"+item.key+".gif", number=i)
-              a.hover-true(href="/kitchen/"+ item.key, class=item.class, number=i)= item.name
+                img.hover-true(src="/img/flags/"+item.key+".gif", number=i, idFind = "li-item-"+item.key)
+              a.hover-true(href="/kitchen/"+ item.key, class=item.class, number=i, idFind = "li-item-"+item.key)= item.name
               - i = i+1
 
 

@@ -103,8 +103,8 @@ $(document).ready () ->
     number = Number $(e.target).attr("number")
     idFind = "#" + $(e.target).attr("idFind")
     heightHover = 8 + number*37
-#    $(".li-hover").removeClass("li-hover")
-#    $(idFind).addClass("li-hover")
+    $(".li-hover").removeClass("li-hover")
+    $(idFind).addClass("li-hover")
     $("#zoom-clases").stop(true,true)
     $("#zoom-clases").animate
         top: heightHover
@@ -121,8 +121,8 @@ $(document).ready () ->
     number = Number $(e.target).attr("number")
     idFind = "#" + $(e.target).attr("idFind")
     heightHover = 11 + number*32
-#    $(".li-hover").removeClass("li-hover")
-#    $(idFind).addClass("li-hover")
+    $(".li-hover").removeClass("li-hover")
+    $(idFind).addClass("li-hover")
     $("#zoom-clases-species").stop(true,true)
     $("#zoom-clases-species").animate
         top: heightHover

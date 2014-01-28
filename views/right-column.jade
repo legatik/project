@@ -5,8 +5,8 @@
     ul#ul-species.hover-true-species
       - var i = 1
       - each item in species
-          li.hover-true-species.li-species(class=item.class, number=i)
-              a.hover-true-species(href="/species/type/"+item.key, class=item.class, number=i)= item.name
+          li.hover-true-species.li-species(class=item.class, number=i, id="li-item-"+item.key, idFind = "li-item-"+item.key)
+              a.hover-true-species(href="/species/type/"+item.key, class=item.class, number=i, id="li-item-"+item.key, idFind = "li-item-"+item.key)= item.name
               - i = i+1
   
 //    li
