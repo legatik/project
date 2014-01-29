@@ -105,16 +105,16 @@ block content
                     Ингридиенты
               <% }; %>
               <% if (data.pic_equal) { %>
-              <% _.each(data.recipeWithPic, function(obj) { %>
+              <% _.each(data.recipeWithPic, function(obj, index) { %>
               <% if (obj.pic){ %>
-              <div class="page"><div><img src="/img/dishes/<%= data.id_picture %>/p<%=obj.pic%>.jpg"></div></div>
+              <div class="page"><div><h4>Шаг № <%=index+1%></h4><div class="step-page-cont"><img src="/img/dishes/<%= data.id_picture %>/p<%=obj.pic%>.jpg"></div></div></div>
               <% } else {%>
-              <div class="page"/>
+              <div class="page"><div><h4>Шаг № <%=index+1%></h4></div></div>
               <% }; %>
-              <div class="page"><div><%= obj.recept %></div></div> 
+              <div class="page"><div><h4>Шаг № <%=index+1%></h4><div><%= obj.recept %></div></div></div> 
               <% }); %>
               <% }else{ %>
-              <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
+              <% _.each(data.recipe, function(name, index) { %> <div class="page"><div><h4>Шаг № <%=index+1%></h4><div> <%= name %></div></div></div> <% }); %>
               <% }; %>
 
 
