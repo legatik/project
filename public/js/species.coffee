@@ -23,51 +23,51 @@ $(document).ready () ->
       name : "Напитки"
       key : "drinks"
 
-  class DishView extends Backbone.View
-    tagName: 'div'
+#  class DishView extends Backbone.View
+#    tagName: 'div'
 
-    className: 'dish-book'
+#    className: 'dish-book'
 
-    template: _.template($('#dishBookTemplate').html()),
+#    template: _.template($('#dishBookTemplate').html()),
 
-    initialize:(@options) ->
-      @mitchingS = []
-      @mitchingS["Супы"] = "first_course"
-      @mitchingS["Вторые блюда"] = "main_dishes"
-      @mitchingS["Закуски"] = "snack"
-      @mitchingS["Салаты"] = "salad"
-      @mitchingS["Десерты"] = "dessert"
-      @mitchingS["Выпечка"] = "bake"
-      @mitchingS["Напитки"] = "drinks"
+#    initialize:(@options) ->
+#      @mitchingS = []
+#      @mitchingS["Супы"] = "first_course"
+#      @mitchingS["Вторые блюда"] = "main_dishes"
+#      @mitchingS["Закуски"] = "snack"
+#      @mitchingS["Салаты"] = "salad"
+#      @mitchingS["Десерты"] = "dessert"
+#      @mitchingS["Выпечка"] = "bake"
+#      @mitchingS["Напитки"] = "drinks"
 
-      @mitchingK = []
-      @mitchingK["Русская"] = "russian"
-      @mitchingK["Итальянская"] = "italy"
-      @mitchingK["Грузинская"] = "georgia"
-      @mitchingK["Французкая"] = "franch"
-      @model = @options.model
+#      @mitchingK = []
+#      @mitchingK["Русская"] = "russian"
+#      @mitchingK["Итальянская"] = "italy"
+#      @mitchingK["Грузинская"] = "georgia"
+#      @mitchingK["Французкая"] = "franch"
+#      @model = @options.model
 
-    events:
-      "click .peview-dish" : "makeBook",
+#    events:
+#      "click .peview-dish" : "makeBook",
 
-    makeBook: ->
-      $(".bookModel",@el).modal()
-      $(".book",@el).turn
-        width: 600
-        height:300
-        display: 'double'
-        acceleration: true
-        gradients: not $.isTouch
-        elevation: 50
-        when:
-          turned: (e, page) ->
+#    makeBook: ->
+#      $(".bookModel",@el).modal()
+#      $(".book",@el).turn
+#        width: 600
+#        height:300
+#        display: 'double'
+#        acceleration: true
+#        gradients: not $.isTouch
+#        elevation: 50
+#        when:
+#          turned: (e, page) ->
 
-    render: ->
-      key =
-        kitchen : @mitchingK[@model.kitchen]
-        species : @mitchingS[@model.species]
-      $(@el).html(@template({data:@model, key:key}));
-      @
+#    render: ->
+#      key =
+#        kitchen : @mitchingK[@model.kitchen]
+#        species : @mitchingS[@model.species]
+#      $(@el).html(@template({data:@model, key:key}));
+#      @
 
   keyKitchen = $("#server-data").attr("keyKitchen")
   keySpecies = $("#server-data").attr("keySpecies")
@@ -85,7 +85,7 @@ $(document).ready () ->
     url     : "/species/speciesDate"
     success : (dishesDate) ->
       dishesDate.forEach (model) ->
-        dishBookView = new DishView({model:model})
+        dishBookView = new window.DishView({model:model})
         $("#date-append").append(dishBookView.render().el)
 
   $.ajax
@@ -94,7 +94,7 @@ $(document).ready () ->
     url     : "/species/speciesPop"
     success : (dishesPop) ->
       dishesPop.forEach (model) ->
-        dishBookView = new DishView({model:model})
+        dishBookView = new window.DishView({model:model})
         $("#pop-append").append(dishBookView.render().el)
 
   #for scroll
@@ -146,7 +146,7 @@ $(document).ready () ->
             inProgress = true
         ).done (data) ->
           data.forEach (model) ->
-            dishBookView = new DishView({model:model})
+            dishBookView = new window.DishView({model:model})
             $("#all-cont").append(dishBookView.render().el)
             $(dishBookView.el).hide(0).fadeIn('slow')
           inProgress = false
