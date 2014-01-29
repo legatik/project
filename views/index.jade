@@ -46,8 +46,15 @@ block content
       .modal-dialog
         .modal-content
           .modal-header
-            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#myModalLabel.modal-title <%=data.title%>
+            .background-btn
+            a.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            span#index-raiting <%=data.rating%>
+            a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/true" ) +1
+            a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/false" ) -1
+              
+            a#go-dish.zoom-clases(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>/false",target="_blank")
+              | Перейти на страницу блюда
+            //button.btn.btn-default(type='button', data-dismiss='modal') Close
           .modal-body
             img#backgr-book(src="/img/images/book-back.jpg")
             #info
@@ -55,7 +62,10 @@ block content
               br
               | Или Вы можите перейти на страниуцу блюда 
             .book
-              img.hard(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+              div#title-page.ing-list
+                h4#myModalLabel.modal-title <%=data.title%>
+                .img-cont-border
+                  img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
               <% if (data.compositionMore) { %>
               div.ing-list
                 div
@@ -94,12 +104,5 @@ block content
               <% }else{ %>
               <% _.each(data.recipe, function(name) { %> <div class="page"><div><%= name %></div></div> <% }); %>
               <% }; %>
-          .modal-footer
-            span#index-raiting <%=data.rating%>
-            button.raiting(link !="/kitchenGet/raiting/<%=data._id%>/true" ) +1
-            button.raiting(link !="/kitchenGet/raiting/<%=data._id%>/false" ) -1
-              
-            a(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>/false",target="_blank")
-              button.btn.btn-default Перейти на страницу блюда
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
+
 

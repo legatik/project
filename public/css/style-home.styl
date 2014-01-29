@@ -33,6 +33,18 @@
     .modal-dialog
       .modal-content
         width:645px
+        background:transparent
+        height:341px
+        .modal-header
+         border-bottom: 0px
+         .background-btn   
+            position: absolute;
+            //width: 200px;
+            //height: 27px;
+            background: #FFF;
+            z-index: -1;
+            top: 12px;
+            opacity: 0.2;      
         .modal-body
           position:relative;
           width:600px;
@@ -47,9 +59,22 @@
             position: absolute;
             width: 280px;
           .book
-            div.hard
-              img
-                width:270px
+            #title-page
+              h4
+                text-align: center;
+                margin-top: 12px;
+                margin-bottom: 12px;
+                color: #8c2b01;
+                font-weight: bold;
+              .img-cont-border
+                border: 2px solid #b85116;
+                border-radius: 5px;
+                padding: 1px;
+                display: inline-block;
+                position: relative;
+                left: 51px;
+                img
+                  width:200px
             div.hard
             .ing-list
               background-image: url('/img/images/left-page.jpg')
