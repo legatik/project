@@ -79,8 +79,12 @@ block content
                   h4
                     Ингридиенты
                   ul
-                    <% for(var i = 0;i < 11; i++) { %>
+                    <% for(var i = 0; i < 11; i++) { %>
+                    <% if (data.composition[i].col) { %>
                     <li><span><%=i+1%>. </span><%=data.composition[i].ing%> - <%=data.composition[i].col%></li>
+                    <% }else {%>
+                    <li><span><%=i+1%>. </span><%=data.composition[i].ing%></li>
+                    <% }; %>
                     <% }; %>
               div.ing-list
                 div
@@ -88,7 +92,11 @@ block content
                     Ингридиенты
                   ul
                     <% for(var j = 11; j < data.composition.length; j++) { %>
+                    <% if (data.composition[j].col) { %>
                     <li><span><%=j+1%>. </span><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
+                    <% }else {%>
+                    <li><span><%=j+1%>. </span><%=data.composition[j].ing%></li>
+                    <% }; %>
                     <% }; %>
               <%}else{%>
               div.ing-list
@@ -97,7 +105,11 @@ block content
                     Ингридиенты
                   ul
                     <% for(var j = 0; j < data.composition.length; j++) { %>
+                    <% if (data.composition[j].col) { %>
                     <li><span><%=j+1%>. </span><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
+                    <% }else {%>
+                    <li><span><%=j+1%>. </span><%=data.composition[j].ing%></li>
+                    <% }; %>
                     <% }; %>
               div.ing-list
                 div
