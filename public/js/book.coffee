@@ -25,13 +25,23 @@ $(document).ready () ->
       @mitchingK["Французкая"] = "franch"
       @model = @options.model
       @openBook = false
+      @titleBolshe = 0
 
     events:
       "click .peview-dish"      : "makeBook",
       "click .raiting"          : "raitingSend",
       "mouseenter .flag-img"    : "hoverFlagOn",
       "mouseleave .flag-img"    : "hoverFlagOff",
-      "click .flag-img"         : "clickFlag"
+      "click .flag-img"         : "clickFlag",
+      "mouseenter"              : "animateTitleTxt",
+
+    animateTitleTxt: () ->
+      text = Number(($("#title-text", @el).css("width")).replace("px",""))
+      cont = Number(($("#title-dish", @el).css("width")).replace("px",""))
+      @titleBolshe = text - cont
+      if @titleBolshe > 0
+        console.log "rrrr"
+        
 
     hoverFlagOff: () ->
       $flagCont = $(".flag-img", @el).parent()
