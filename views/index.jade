@@ -59,9 +59,15 @@ block content
           .modal-body
             img#backgr-book(src="/img/images/book-back.jpg")
             #info
-              | Вы можете листать журнал с рецептом, зажав левую кнопку мышки и потяв за краешек угла.
-              br
-              | Или Вы можите перейти на страниуцу блюда 
+              h4
+                Прочти меня
+              div
+                div(style="display:inline-block;width:20px;height:20px")
+                |Вы можете листать журнал с рецептом, зажав левую кнопку мышки и потяв за краешек угла странички.
+                br
+                br
+                div(style="display:inline-block;width:5px;height:20px")
+                |  Так же, Вы можите перейти на страниуцу блюда, где вы сможите увидеть рецепт в развернутом виде, оцинить его и осавить свой коментарий. 
             .book
               div#title-page.ing-list
                 h4#myModalLabel.modal-title <%=data.title%>
@@ -70,28 +76,33 @@ block content
               <% if (data.compositionMore) { %>
               div.ing-list
                 div
-                  Ингридиенты
-                  ol
+                  h4
+                    Ингридиенты
+                  ul
                     <% for(var i = 0;i < 11; i++) { %>
-                    <li><%=data.composition[i].ing%> - <%=data.composition[i].col%></li>
+                    <li><span><%=i+1%>. </span><%=data.composition[i].ing%> - <%=data.composition[i].col%></li>
                     <% }; %>
               div.ing-list
                 div
-                  ol
+                  h4
+                    Ингридиенты
+                  ul
                     <% for(var j = 11; j < data.composition.length; j++) { %>
-                    <li><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
+                    <li><span><%=j+1%>. </span><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
                     <% }; %>
               <%}else{%>
               div.ing-list
                 div
-                  Ингридиенты
-                  ol
+                  h4
+                    Ингридиенты
+                  ul
                     <% for(var j = 0; j < data.composition.length; j++) { %>
-                    <li><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
+                    <li><span><%=j+1%>. </span><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
                     <% }; %>
               div.ing-list
                 div
-                  Ингридиенты
+                  h4
+                    Ингридиенты
               <% }; %>
               <% if (data.pic_equal) { %>
               <% _.each(data.recipeWithPic, function(obj) { %>
