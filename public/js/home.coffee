@@ -33,15 +33,21 @@ $(document).ready () ->
       "click .flag-img"         : "clickFlag"
 
     hoverFlagOff: () ->
-      $(".flag-img").animate
+      $flagCont = $(".flag-img", @el).parent()
+      $($flagCont).animate
+        top:159
+      , 300
+      $(".flag-img", @el).animate
         width: 45
-        top:160
       , 300
 
     hoverFlagOn: () ->
-      $(".flag-img").animate
-        width: 60
+      $flagCont = $(".flag-img", @el).parent()
+      $($flagCont).animate
         top:149
+      , 300
+      $(".flag-img", @el).animate
+        width: 60
       , 300
     
     clickFlag: (e) ->
@@ -85,6 +91,7 @@ $(document).ready () ->
 
     render: ->
       $ = jQuery
+      console.log "sss", @model
       if @model.pic_equal then @rasparseStep()
       console.log "@model",@model
 #      @model.composition.push({col:"ts2",ing:"test"})
