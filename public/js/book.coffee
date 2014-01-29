@@ -24,6 +24,7 @@ $(document).ready () ->
       @mitchingK["Грузинская"] = "georgia"
       @mitchingK["Французкая"] = "franch"
       @model = @options.model
+      @openBook = false
 
     events:
       "click .peview-dish"      : "makeBook",
@@ -56,7 +57,9 @@ $(document).ready () ->
       
 
     makeBook: ->
-      $ = jQuery
+      if !@openBook
+        @turn()
+        @openBook = true
       $(".bookModel",@el).modal()
 
     raitingSend:(e) =>
@@ -105,7 +108,6 @@ $(document).ready () ->
         kitchen : @mitchingK[@model.kitchen]
         species : @mitchingS[@model.species]
       $(@el).html(@template({data:@model, key:key}));
-      @turn()
       @
 
   window.DishView = DishView
