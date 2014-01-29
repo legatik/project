@@ -46,11 +46,12 @@ block content
       .modal-dialog
         .modal-content
           .modal-header
-            .background-btn
-            a.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            span#index-raiting <%=data.rating%>
-            a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/true" ) +1
-            a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/false" ) -1
+            //.background-btn-go
+            //.background-btn-close
+            a.zoom-clases.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            //span#index-raiting <%=data.rating%>
+            //a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/true" ) +1
+            //a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/false" ) -1
               
             a#go-dish.zoom-clases(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>/false",target="_blank")
               | Перейти на страницу блюда
