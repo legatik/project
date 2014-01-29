@@ -52,7 +52,6 @@ $(document).ready () ->
 #        species : @mitchingS[@model.species]
 #      $(@el).html(@template({data:@model, key:key}));
 #      @
-
   
   app = {}
   obj = {}
