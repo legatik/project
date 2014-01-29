@@ -1,0 +1,93 @@
+!= css('style-book')
+script#dishBookTemplate(type="text/template")
+  .peview-dish
+    #title-dish <%=data.title%>
+    img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+    .border-flag
+      img.flag-img(src!="/img/flags/<%=key.kitchen%>.gif", title!="<%=data.kitchen%> кухня")
+  .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          //.background-btn-go
+          //.background-btn-close
+          a.zoom-clases.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          //span#index-raiting <%=data.rating%>
+          //a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/true" ) +1
+          //a.raiting.zoom-clases(href !="/kitchenGet/raiting/<%=data._id%>/false" ) -1
+            
+          a#go-dish.zoom-clases(href !="/kitchen/<%=key.kitchen%>/<%=key.species%>/<%=data._id%>/false",target="_blank")
+            | Перейти на страницу блюда
+          //button.btn.btn-default(type='button', data-dismiss='modal') Close
+        .modal-body
+          img#backgr-book(src="/img/images/book-back.jpg")
+          #info
+            h4
+              Прочти меня
+            div
+              div(style="display:inline-block;width:20px;height:20px")
+              |Вы можете листать журнал с рецептом, зажав левую кнопку мышки и потяв за краешек угла странички.
+              br
+              br
+              div(style="display:inline-block;width:5px;height:20px")
+              |  Так же, Вы можите перейти на страниуцу блюда, где вы сможите увидеть рецепт в развернутом виде, оцинить его и осавить свой коментарий. 
+          .book
+            div#title-page.ing-list
+              h4#myModalLabel.modal-title <%=data.title%>
+              .img-cont-border
+                img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
+            <% if (data.compositionMore) { %>
+            div.ing-list
+              div
+                h4
+                  Ингридиенты
+                ul
+                  <% for(var i = 0; i < 11; i++) { %>
+                  <% if (data.composition[i].col) { %>
+                  <li><span><%=i+1%>. </span><%=data.composition[i].ing%> - <%=data.composition[i].col%></li>
+                  <% }else {%>
+                  <li><span><%=i+1%>. </span><%=data.composition[i].ing%></li>
+                  <% }; %>
+                  <% }; %>
+            div.ing-list
+              div
+                h4
+                  Ингридиенты
+                ul
+                  <% for(var j = 11; j < data.composition.length; j++) { %>
+                  <% if (data.composition[j].col) { %>
+                  <li><span><%=j+1%>. </span><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
+                  <% }else {%>
+                  <li><span><%=j+1%>. </span><%=data.composition[j].ing%></li>
+                  <% }; %>
+                  <% }; %>
+            <%}else{%>
+            div.ing-list
+              div
+                h4
+                  Ингридиенты
+                ul
+                  <% for(var j = 0; j < data.composition.length; j++) { %>
+                  <% if (data.composition[j].col) { %>
+                  <li><span><%=j+1%>. </span><%=data.composition[j].ing%> - <%=data.composition[j].col%></li>
+                  <% }else {%>
+                  <li><span><%=j+1%>. </span><%=data.composition[j].ing%></li>
+                  <% }; %>
+                  <% }; %>
+            div.ing-list
+              div
+                h4
+                  Ингридиенты
+            <% }; %>
+            <% if (data.pic_equal) { %>
+            <% _.each(data.recipeWithPic, function(obj, index) { %>
+            <% if (obj.pic){ %>
+            <div class="page"><div><h4>Шаг № <%=index+1%></h4><div class="step-page-cont"><img src="/img/dishes/<%= data.id_picture %>/p<%=obj.pic%>.jpg"></div></div></div>
+            <% } else {%>
+            <div class="page"><div><h4>Шаг № <%=index+1%></h4></div></div>
+            <% }; %>
+            <div class="page"><div><h4>Шаг № <%=index+1%></h4><div><%= obj.recept %></div></div></div> 
+            <% }); %>
+            <% }else{ %>
+            <% _.each(data.recipe, function(name, index) { %> <div class="page"><div><h4>Шаг № <%=index+1%></h4><div> <%= name %></div></div></div> <% }); %>
+            <% }; %>
