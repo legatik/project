@@ -44,12 +44,16 @@ $(document).ready () ->
       
     endAnimateTxt: () ->
       @contAnimateTxt = false
+#      $("#title-text", @el).stop(true,true)
+#      $("#title-text", @el).animate
+#        left : 0
+#      , 100
       
     animateTitleTxt: () ->
       if $("#title-text", @el).length && @contAnimateTxt
         text = Number(($("#title-text", @el).css("width")).replace("px",""))
         cont = Number(($("#title-dish", @el).css("width")).replace("px",""))
-        $("#title-text", @el).stop(true, true)
+        $("#title-text", @el).stop(true)
         
         textLeng = ($("#title-text", @el).text()).length
         console.log "textLeng",textLeng
@@ -60,15 +64,19 @@ $(document).ready () ->
         
         if textLeng > 35 then  timeout = 1800
         
+        self = @
         @titleBolshe = text - cont
         if @titleBolshe > 0
           $("#title-text", @el).animate
             left : @titleBolshe*(-1)
-          , timeout,() =>
+          , timeout,() ->
             setTimeout (=>
               $(@).animate
                 left : 0
-              , 200
+              , 
+                duration: 400
+                complete: ->
+                  self.animateTitleTxt()
             ), 300
         
         
