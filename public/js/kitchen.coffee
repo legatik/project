@@ -109,14 +109,14 @@ $(document).ready () ->
     status = $("#"+id).hasClass("collaps")
     if status
       status = $("#"+id).removeClass("collaps")
-      $($("#"+id).find(".showAll > a")).text("показать все")
+      $($("#"+id).find(".showAll")).text("показать все")
       $("#"+id).animate
         height:281
       , 500
     else
-      $($("#"+id).find(".showAll > a")).text("скрыть")
+      $($("#"+id).find(".showAll")).text("скрыть")
       height = $($("#"+id).find(".dishBook")).css("height")
-      height = (Number height.replace("px",""))+ 59
+      height = (Number height.replace("px",""))+ 71
       $("#"+id).addClass("collaps")
       $("#"+id).animate
         height:height
