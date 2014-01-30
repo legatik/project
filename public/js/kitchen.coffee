@@ -111,7 +111,7 @@ $(document).ready () ->
       status = $("#"+id).removeClass("collaps")
       $($("#"+id).find(".showAll > a")).text("показать все")
       $("#"+id).animate
-        height:262
+        height:281
       , 500
     else
       $($("#"+id).find(".showAll > a")).text("скрыть")
