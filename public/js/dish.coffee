@@ -1,5 +1,4 @@
 $(document).ready () ->
-
   class CommentView extends Backbone.View
 
 
@@ -14,6 +13,19 @@ $(document).ready () ->
       $ = jQuery
       $(@el).html(@template(@model));
       @
+
+  $("#login-footer").click () ->
+    $("html, body").animate
+      scrollTop: 0
+    , 1000, () ->
+      $("#login-button").click()
+
+  $("#reg-footer").click () ->
+    $("html, body").animate
+      scrollTop: 0
+    , 1000, () ->
+      $("#sing-up-button").click()
+
 
   if $("#hide-input").length == 0 then return
   user = JSON.parse $("#hide-input").attr("dataUser")
@@ -55,4 +67,3 @@ $(document).ready () ->
           $("#comment-block").append(commentView.render().el)
 
   renderComments()
-
