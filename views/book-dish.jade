@@ -3,7 +3,11 @@
 script#dishBookTemplate(type="text/template")
   .peview-dish
     #title-dish
-      #title-text <%=data.title%>
+      <% if (data.title.length > 24) { %>
+      div#title-text <%=data.title%>
+      <%}else{%>
+      | <%=data.title%>
+      <%}%>
     img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
     .border-flag
       img.flag-img(src!="/img/flags/<%=key.kitchen%>.gif", title!="<%=data.kitchen%> кухня")

@@ -26,6 +26,7 @@ $(document).ready () ->
       @model = @options.model
       @openBook = false
       @titleBolshe = 0
+      @contAnimateTxt = false
 
     events:
       "click .peview-dish"      : "makeBook",
@@ -33,14 +34,44 @@ $(document).ready () ->
       "mouseenter .flag-img"    : "hoverFlagOn",
       "mouseleave .flag-img"    : "hoverFlagOff",
       "click .flag-img"         : "clickFlag",
-      "mouseenter"              : "animateTitleTxt",
+      "mouseenter"              : "beginAnimateTxt",
+      "mouseleave"              : "endAnimateTxt"
 
+
+    beginAnimateTxt: () ->
+      @contAnimateTxt = true
+      @animateTitleTxt()
+      
+    endAnimateTxt: () ->
+      @contAnimateTxt = false
+      
     animateTitleTxt: () ->
-      text = Number(($("#title-text", @el).css("width")).replace("px",""))
-      cont = Number(($("#title-dish", @el).css("width")).replace("px",""))
-      @titleBolshe = text - cont
-      if @titleBolshe > 0
-        console.log "rrrr"
+      if $("#title-text", @el).length && @contAnimateTxt
+        text = Number(($("#title-text", @el).css("width")).replace("px",""))
+        cont = Number(($("#title-dish", @el).css("width")).replace("px",""))
+        $("#title-text", @el).stop(true, true)
+        
+        textLeng = ($("#title-text", @el).text()).length
+        console.log "textLeng",textLeng
+        
+        timeout = 800
+        
+        if textLeng > 29 then  timeout = 1600
+        
+        if textLeng > 35 then  timeout = 1800
+        
+        @titleBolshe = text - cont
+        if @titleBolshe > 0
+          $("#title-text", @el).animate
+            left : @titleBolshe*(-1)
+          , timeout,() =>
+            setTimeout (=>
+              $(@).animate
+                left : 0
+              , 200
+            ), 300
+        
+        
         
 
     hoverFlagOff: () ->
@@ -101,6 +132,18 @@ $(document).ready () ->
         recipeWithPic[eqFind].pic = index
       @model.recipeWithPic = recipeWithPic
       
+
+#    afterRender(): ->
+#      cont = Number(($("#title-dish", @el).css("width")).replace("px",""))
+#      console.log "cont",cont
+#      if cont > 25
+#        text = $("#title-dish", @el).text()
+#        console.log "text",text
+#        $("#title-dish", @el).text("")
+#        $titleText = "<div id='#title-text'/>"
+#        $($titleText).text(text)
+#        $("#title-dish").append($titleText)
+        
 
     render: ->
       $ = jQuery
