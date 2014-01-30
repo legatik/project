@@ -12,7 +12,7 @@ block content
 
   #center-column
     h2 Мировая кухня
-    div Мы приветствуем Вас на сайте который собрал все популятрные рецепты мира
+    div#hello-txt Мы приветствуем Вас на сайте который собрал все популятрные рецепты мира
     #carousel-ctn.carousel.slide(data-ride='carousel')
       ol.carousel-indicators
         - for (var i = 0; i < (popDish.length)/2;  i++){
@@ -33,9 +33,7 @@ block content
     h3 Последние добавленные блюда
     #dish-date-cont
     a(href="/addDish")
-      h3 Вы можите дбавить свое блюдо
-
-
-
+      h3#add-link 
+        span Добавьте своё блюдо на наш сайт!
 
 
