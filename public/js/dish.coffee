@@ -26,7 +26,12 @@ $(document).ready () ->
     , 1000, () ->
       $("#sing-up-button").click()
 
+  doSmilie = () ->  
+    alert() 
 
+
+
+# Only logined user
   if $("#hide-input").length == 0 then return
   user = JSON.parse $("#hide-input").attr("dataUser")
   dish = JSON.parse $("#hide-input").attr("dataDish")

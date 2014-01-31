@@ -44,6 +44,8 @@ exports.boot = (app) ->
       res.send dishDate
 
   app.get '/', (req, res) ->
+    console.log "  HOME(((((((((((((((((((())))))))))))))))))))"
+    console.log req.user
     Dish.find({})
     .limit(10)
     .sort({rating: -1})

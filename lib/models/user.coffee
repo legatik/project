@@ -42,7 +42,6 @@ Model.register = (user, cb) ->
 
 
 Model.findUser = (user, cb) ->
-	console.log 'findUser', user
 	md5 = crypto.createHash 'md5'
 	md5.update user.password
 	user.password = md5.digest('base64')
