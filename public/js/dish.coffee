@@ -26,10 +26,9 @@ $(document).ready () ->
     , 1000, () ->
       $("#sing-up-button").click()
 
-  doSmilie = () ->  
-    alert() 
-
-
+  $(".pic-smile").click (e) ->
+    txtSmile = $(e.target).attr("txtSmile")
+    console.log "txtSmile",txtSmile
 
 # Only logined user
   if $("#hide-input").length == 0 then return
@@ -64,11 +63,14 @@ $(document).ready () ->
       data    : {idComment:dish.comments}
       url     : "/comment/find"
       success : (comments) ->
-        comments.forEach (comment) ->
-          model =
-            idUser:[user]
-            message:comment.message
-          commentView = new CommentView(model)
-          $("#comment-block").append(commentView.render().el)
+        if comments
+          comments.forEach (comment) ->
+            model =
+              idUser:[user]
+              message:comment.message
+            commentView = new CommentView(model)
+            $("#comment-block").append(commentView.render().el)
+        else 
+           $("#comment-block").text("Ваш коментарий может быть первый")
 
   renderComments()
