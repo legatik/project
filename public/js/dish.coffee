@@ -103,6 +103,7 @@ $(document).ready () ->
               message:message
             commentView = new CommentView(model)
             $("#comment-block").append(commentView.render().el)
+            $("#firstCommentInfo").hide()
             commentView.replaceSmail()
 
 
@@ -120,7 +121,9 @@ $(document).ready () ->
             commentView = new CommentView(model)
             $("#comment-block").append(commentView.render().el)
             commentView.replaceSmail()
-        else 
-           $("#comment-block").text("Ваш коментарий может быть первый")
+        else
+           $firsCommentInfo = $("<div id='firstCommentInfo'>")
+           $($firsCommentInfo).text("Ваш коментарий может быть первый")
+           $("#comment-block").append($firsCommentInfo)
 
   renderComments()
