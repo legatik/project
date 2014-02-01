@@ -9,6 +9,21 @@ $(document).ready () ->
     template: _.template(jQuery('#CommentTemplate').html()),
 
     initialize:(@model) ->
+    
+    replaceSmail: ->
+      textMess = $(".message-user", @el).text()
+      textMess = textMess.replace(/:-\|/g,"<img src='/img/images/smails/dumbfounded.png'>")
+      textMess = textMess.replace(/:-\)\)/g,"<img src='/img/images/smails/big_grin.png'>")
+      textMess = textMess.replace(/:-\)/g,"<img src='/img/images/smails/happy.png'>")
+      textMess = textMess.replace(/8-P/g,"<img src='/img/images/smails/crazy.png'>")
+      textMess = textMess.replace(/:-]/g,"<img src='/img/images/smails/appalled.png'>")
+      textMess = textMess.replace(/;-\(/g,"<img src='/img/images/smails/evil.png'>")
+      textMess = textMess.replace(/:-o/g,"<img src='/img/images/smails/pipe.png'>")
+      textMess = textMess.replace(/:sleep:/g,"<img src='/img/images/smails/sleep.png'>")
+      $(".message-user", @el).html(textMess)
+      
+    
+    
     render: ->
       $ = jQuery
       $(@el).html(@template(@model));
@@ -62,7 +77,6 @@ $(document).ready () ->
 
   $(".pic-smile").click (e) ->
     txtSmile = $(e.target).attr("txtSmile")
-    console.log "txtSmile",txtSmile
     $('#message').insertAtCaret(txtSmile);
 
 # Only logined user
@@ -88,8 +102,8 @@ $(document).ready () ->
               idUser:[user]
               message:message
             commentView = new CommentView(model)
-            console.log "heare"
             $("#comment-block").append(commentView.render().el)
+            commentView.replaceSmail()
 
 
   renderComments = ()->
@@ -105,6 +119,7 @@ $(document).ready () ->
               message:comment.message
             commentView = new CommentView(model)
             $("#comment-block").append(commentView.render().el)
+            commentView.replaceSmail()
         else 
            $("#comment-block").text("Ваш коментарий может быть первый")
 
