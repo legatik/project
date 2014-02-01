@@ -103,11 +103,13 @@ $(document).ready () ->
             model =
               idUser:[user]
               message:message
+              dateAdded : new moment
+            model.dateAdded = model.dateAdded.format("llll")
             commentView = new CommentView(model)
             $("#comment-block").prepend(commentView.render().el)
             $("#coment-title").text("Коментарии к блюду")
             commentView.replaceSmail()
-
+            $("#message").val('')
 
   renderComments = ()->
     $.ajax
@@ -118,9 +120,11 @@ $(document).ready () ->
         if comments
           comments.forEach (comment) ->
             model =
-              idUser:[user]
-              message:comment.message
-            console.log "model",model
+              idUser    : [user]
+              message   : comment.message
+              dateAdded : new moment comment.dateAdded
+            model.dateAdded = model.dateAdded.format("llll")
+            
             commentView = new CommentView(model)
             $("#comment-block").prepend(commentView.render().el)
             commentView.replaceSmail()

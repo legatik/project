@@ -8,12 +8,14 @@ Schema = mongoose.Schema
 comment = new Schema
   idUser: [{type: ObjectId, ref: 'User'}]
   message: String
+  dateAdded: Date
   
 Model = mongoose.model 'Comment', comment
 
 
 Model.createThis = (idUser, idDish, message, cb) ->
-  @create {message:message, idUser:idUser}, (err, comment) ->
+  date = new Date
+  @create {message:message, idUser:idUser, dateAdded:date}, (err, comment) ->
     if err
       cb && cb(err)
     else

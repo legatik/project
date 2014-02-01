@@ -5,6 +5,7 @@ block content
 
   != css('style-dish-page')
   != js('dish')
+  != js("libs/moment")
 
   include navigation
   include left-column
@@ -69,7 +70,7 @@ block content
 
   script#CommentTemplate(type="text/template")
     .user-info
-      span(style="color:rgb(138, 42, 1)") <%=idUser[0].nickname%>
-      span(style="grey") <%=idUser[0].nickname%>
+      span(style="color:rgb(138, 42, 1);font-size: 15px") <%=idUser[0].nickname%>
+      span(style="margin-left: 9px;color: grey;font-size: 12px;") <%=dateAdded%>
     .message-user <%=message%>
 
