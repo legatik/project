@@ -18,8 +18,8 @@ $(document).ready () ->
       textMess = textMess.replace(/8-P/g,"<img src='/img/images/smails/crazy.png'>")
       textMess = textMess.replace(/:-]/g,"<img src='/img/images/smails/appalled.png'>")
       textMess = textMess.replace(/;-\(/g,"<img src='/img/images/smails/evil.png'>")
-      textMess = textMess.replace(/:-o/g,"<img src='/img/images/smails/pipe.png'>")
-      textMess = textMess.replace(/:sleep:/g,"<img src='/img/images/smails/sleep.png'>")
+      textMess = textMess.replace(/:-o/g,"<img style='width: 35px;' src='/img/images/smails/pipe.png'>")
+      textMess = textMess.replace(/:sleep:/g,"<img style='width: 32px;' src='/img/images/smails/sleep.png'>")
       $(".message-user", @el).html(textMess)
       
     
