@@ -7,26 +7,29 @@
     margin-bottom: 0px;
   #dish-body
     overflow:hidden
-    #dish-ing
-      display:inline-block;
-      width: 300px;
-      min-height: 320px;
-      border-radius: 12px;
-      border: 1px dashed #8C2B01;
-      h4
-        text-align: center;
-        color: #8C2B01;
-      ol
-        li:first-letter
-          text-transform: uppercase
-    #dish-img-title
-      float: right
-      display:inline-block
-      margin-left: 60px
-      margin-bottom:20px
-      img
+    #header-dish-cont
+      min-height: 326px;
+      #dish-ing
+        display:inline-block;
+        width: 300px;
+        min-height: 320px;
         border-radius: 12px;
-        width:330px;
+        border: 1px dashed #8C2B01;
+        h4
+          text-align: center;
+          color: #8C2B01;
+        ol
+          li:first-letter
+            text-transform: uppercase
+      #dish-img-title
+        float: right
+        display:inline-block
+        margin-left: 60px
+        margin-bottom:20px
+        img
+          border-radius: 12px;
+          width:330px;
+          height:325px
 
     #title-begin-recept
       text-align: center;
@@ -42,39 +45,68 @@
       
       
   #block-footer
+    #comment-block
+      .comment-item
+        padding: 8px;
+        background: #efdb9e;
+        border: 2px solid #e3c879;
+        background-repeat: no-repeat;
+        border-radius: 5px;
+        color: #000;
+        margin-bottom:10px
+        min-height:100px
+        border:1px solid black
+        .user-info
+          border-bottom: 1px dashed #bbad88;
+          display: block;
+          height: 23px;
+          div
+            display:inline-block
+        .message-user
+          display:inline-block
+          width:500px
+          min-height:60px
+          margin-left:20px
     #comment-send
-      margin: 28px 53px 0 0;
       padding: 0px;
       background: #efdb9e;
       border: 2px solid #e3c879;
       background-repeat: no-repeat;
       border-radius: 5px;
       color: #000;
+      h3
+        margin-top: 8px;
+        margin-bottom: -10px;
+        text-align: center;
+        color: #8a2a01;
+        max-width:94%;
       #message
         background: rgba(239,208,115,0.5);
         width: 94%;
+        max-width: 94%;
         margin-top: 20px;
         margin-left: 19px;
         border-radius: 9px;
+        height:75px;
       #smile-cont
+        display:inline-block
+        margin-left:12px
+        width: 400px;
+        text-align:center;
+        margin-top: 3px;
         .pic-smile
           cursor:pointer
-    .comment-item
-      margin-bottom:10px
-      height:100px
-      border:1px solid black
-      .user-info
+      #send-message
         display:inline-block
-        border-right:1px solid black
-        width: 140px
-        height:95px
-        float: left
-      .message-user
-        display:inline-block
-        width:500px
-        height:100px
-        margin-left:20px
-        border-left:1px solid black
+        cursor:pointer
+        text-decoration: none;
+        width: 146px;
+        text-align: center;
+        margin-left: 114px;
+        &:hover 
+          transition: .5s linear;
+          background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+
     #coment-title
       text-align: center;
       color: rgb(138, 42, 1);

@@ -15,16 +15,17 @@ block content
       #dish-title
         h2 #{dish.title}
       #dish-body
-        #dish-ing
-          h4 Ингридиенты
-          ol
-            each duoble in dish.composition
-              if duoble.col
-                li #{duoble.ing}  - #{duoble.col}
-              else
-                li #{duoble.ing}
-        #dish-img-title
-          img(src="/img/dishes/#{dish.id_picture}/title.jpg")
+        #header-dish-cont
+          #dish-ing
+            h4 Ингридиенты
+            ol
+              each duoble in dish.composition
+                if duoble.col
+                  li #{duoble.ing}  - #{duoble.col}
+                else
+                  li #{duoble.ing}
+          #dish-img-title
+            img(src="/img/dishes/#{dish.id_picture}/title.jpg")
         h3#title-begin-recept Рецепт
         .hr
         - for (var i = 0; i < dish.recipe.length; i++){
@@ -43,17 +44,15 @@ block content
         - }
 
       #block-footer
-        h3#coment-title Коментарии к блюду
-        #comment-block
         if(!user)
           #info-noreg-cont
             h4 Только зарегестрированные пользователи могут оставить коментарии
             a#login-footer.zoom-clases Войти
             a#reg-footer.zoom-clases Зарегестрироваться
         if(user)
-          h3 Оставьте свой коментарий
           input#hide-input.hide(dataUser = user, dataDish = dish)
           #comment-send
+            h3 Оставьте свой коментарий
             textarea#message
             #smile-cont
               img.pic-smile(src="/img/images/smails/big_grin.png", txtSmile=":-))")
@@ -64,13 +63,13 @@ block content
               img.pic-smile(src="/img/images/smails/evil.png", txtSmile=";-(")
               img.pic-smile( src="/img/images/smails/pipe.png", txtSmile=":-o")
               img.pic-smile(src="/img/images/smails/sleep.png", txtSmile=":sleep:")
-            button#send-message Отправить
+            a#send-message.zoom-clases Отправить
+        h3#coment-title Коментарии к блюду
+        #comment-block
 
   script#CommentTemplate(type="text/template")
     .user-info
-      div firstName :
-        span(style="color:red") <%=idUser[0].firstName%>
-      div lastName :
-        span(style="color:red") <%=idUser[0].lastName%>
+      span(style="color:rgb(138, 42, 1)") <%=idUser[0].nickname%>
+      span(style="grey") <%=idUser[0].nickname%>
     .message-user <%=message%>
 

@@ -79,8 +79,10 @@ $(document).ready () ->
     txtSmile = $(e.target).attr("txtSmile")
     $('#message').insertAtCaret(txtSmile);
 
+  if $("#hide-input").length == 0
+    $("#coment-title").text("Ваш коментарий может стать первым!")
+    return
 # Only logined user
-  if $("#hide-input").length == 0 then return
   user = JSON.parse $("#hide-input").attr("dataUser")
   dish = JSON.parse $("#hide-input").attr("dataDish")
   $("#hide-input").remove()
@@ -102,8 +104,8 @@ $(document).ready () ->
               idUser:[user]
               message:message
             commentView = new CommentView(model)
-            $("#comment-block").append(commentView.render().el)
-            $("#firstCommentInfo").hide()
+            $("#comment-block").prepend(commentView.render().el)
+            $("#coment-title").text("Коментарии к блюду")
             commentView.replaceSmail()
 
 
@@ -118,12 +120,14 @@ $(document).ready () ->
             model =
               idUser:[user]
               message:comment.message
+            console.log "model",model
             commentView = new CommentView(model)
-            $("#comment-block").append(commentView.render().el)
+            $("#comment-block").prepend(commentView.render().el)
             commentView.replaceSmail()
         else
-           $firsCommentInfo = $("<div id='firstCommentInfo'>")
-           $($firsCommentInfo).text("Ваш коментарий может быть первый")
-           $("#comment-block").append($firsCommentInfo)
+#           $firsCommentInfo = $("<div id='firstCommentInfo'>")
+#           $($firsCommentInfo).text("Ваш коментарий может быть первый")
+#           $("#comment-block").append($firsCommentInfo)
+            $("#coment-title").text("Ваш коментарий может стать первым!")
 
   renderComments()
