@@ -130,7 +130,11 @@
         color: #66250a;
         cursor:pointer
         text-decoration:none
+        &:hover 
+          transition: .5s linear;
+          background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px); 
      #login-footer
        margin-right: 60px
        padding-left: 62px;
        padding-right: 62px;
+

@@ -21,15 +21,11 @@ $(document).ready () ->
       textMess = textMess.replace(/:-o/g,"<img style='width: 35px;' src='/img/images/smails/pipe.png'>")
       textMess = textMess.replace(/:sleep:/g,"<img style='width: 32px;' src='/img/images/smails/sleep.png'>")
       $(".message-user", @el).html(textMess)
-      
-    
     
     render: ->
       $ = jQuery
       $(@el).html(@template(@model));
       @
-
-
 
   jQuery.fn.extend insertAtCaret: (myValue) ->
     @each (i) ->
@@ -55,8 +51,6 @@ $(document).ready () ->
         @value += myValue
         @focus()
 
-
-
   $("#login-footer").click () ->
     $("html, body").animate
       scrollTop: 0
@@ -72,49 +66,51 @@ $(document).ready () ->
   $(".pic-smile").click (e) ->
     txtSmile = $(e.target).attr("txtSmile")
     $('#message').insertAtCaret(txtSmile);
-
-  if $("#hide-input").length == 0
-    $("#coment-title").text("Ваш коментарий может стать первым!")
-    return
-# Only logined user
-  user = JSON.parse $("#hide-input").attr("dataUser")
   dish = JSON.parse $("#hide-input").attr("dataDish")
-  $("#hide-input").remove()
-  $("#send-message").click ()->
-    message = $("#message").val()
-    if message
-      objSend = {
-        userId:user._id
-        message:message
-        dishId:dish._id
-      }
-      $.ajax
-        type    : 'POST'
-        data    : objSend
-        url     : "/comment/create"
-        success : (status) ->
-          if status == "OK"
-            model =
-              idUser:[user]
-              message:message
-              dateAdded : new moment
-            model.dateAdded = model.dateAdded.format("llll")
-            commentView = new CommentView(model)
-            $("#comment-block").prepend(commentView.render().el)
-            $("#coment-title").text("Коментарии к блюду")
-            commentView.replaceSmail()
-            $("#message").val('')
+  testUser = $("#hide-input").attr("dataUser")
+  
+  
+  if testUser
+# Only logined user
+    user = JSON.parse $("#hide-input").attr("dataUser")
+    $("#hide-input").remove()
+    $("#send-message").click ()->
+      message = $("#message").val()
+      if message
+        objSend = {
+          userId:user._id
+          message:message
+          dishId:dish._id
+        }
+        $.ajax
+          type    : 'POST'
+          data    : objSend
+          url     : "/comment/create"
+          success : (status) ->
+            if status == "OK"
+              model =
+                idUser:[user]
+                message:message
+                dateAdded : new moment
+              model.dateAdded = model.dateAdded.format("llll")
+              commentView = new CommentView(model)
+              $("#comment-block").prepend(commentView.render().el)
+              $("#coment-title").text("Коментарии к блюду")
+              commentView.replaceSmail()
+              $("#message").val('')
 
   renderComments = ()->
+    dish.comments
     $.ajax
       type    : 'GET'
       data    : {idComment:dish.comments}
       url     : "/comment/find"
       success : (comments) ->
+        console.log "comments",comments
         if comments
           comments.forEach (comment) ->
             model =
-              idUser    : [user]
+              idUser    : [comment.idUser[0]]
               message   : comment.message
               dateAdded : new moment comment.dateAdded
             model.dateAdded = model.dateAdded.format("llll")
@@ -123,9 +119,6 @@ $(document).ready () ->
             $("#comment-block").prepend(commentView.render().el)
             commentView.replaceSmail()
         else
-#           $firsCommentInfo = $("<div id='firstCommentInfo'>")
-#           $($firsCommentInfo).text("Ваш коментарий может быть первый")
-#           $("#comment-block").append($firsCommentInfo)
             $("#coment-title").text("Ваш коментарий может стать первым!")
 
   renderComments()

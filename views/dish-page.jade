@@ -45,13 +45,13 @@ block content
         - }
 
       #block-footer
+        input#hide-input.hide(dataUser = user, dataDish = dish)
         if(!user)
           #info-noreg-cont
             h4 Только зарегестрированные пользователи могут оставить коментарии
             a#login-footer.zoom-clases Войти
             a#reg-footer.zoom-clases Зарегестрироваться
         if(user)
-          input#hide-input.hide(dataUser = user, dataDish = dish)
           #comment-send
             h3 Оставьте свой коментарий
             textarea#message
