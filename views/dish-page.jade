@@ -32,9 +32,9 @@ block content
         - for (var i = 0; i < dish.recipe.length; i++){
           - equalArr = dish.pic_equal.split(",")
           h4.step-h4 Шаг № #{i+1}
-          table.dish-recept
+          table
             tr
-              td #{dish.recipe[i]}
+              td(width="700") #{dish.recipe[i]}
               td
                 - for (var j = 0; j < equalArr.length; j++){
                     -if(Number(equalArr[j]) == Number(i+1)){
