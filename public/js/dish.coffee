@@ -57,12 +57,6 @@ $(document).ready () ->
 
 
 
-
-
-
-
-
-
   $("#login-footer").click () ->
     $("html, body").animate
       scrollTop: 0
