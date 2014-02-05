@@ -1,7 +1,7 @@
 _ = require('underscore')
 db = require '../lib/db'
 exec = require('child_process').exec
-{Dish} = db.models
+{Dish, User} = db.models
 exports.boot = (app) ->
 
   app.get '/:kitchen', (req, res) ->
@@ -26,5 +26,16 @@ exports.boot = (app) ->
         keySpecies = req.params.species
         {keyKitchen, objk, objs} = app.mitching(keyKitchen, keySpecies)
         title = "Мировая кухня | "+ dish.title_key
-        
-        res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc}
+        stLike = 'no-check'
+        if req.user
+          User.findById(req.user["_id"])
+          .populate('dishRaiting')
+          .exec (err, user) ->
+            user.dishRaiting.forEach (raiting)->
+              console.log "raiting",raiting
+              if raiting.dish.toString() == idDish.toString() then stLike = raiting.st
+            console.log "st", stLike
+            res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike}
+        else
+          console.log "RRRRRRRRRRRRRR"
+          res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike}
