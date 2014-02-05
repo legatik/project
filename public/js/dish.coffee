@@ -109,6 +109,18 @@ $(document).ready () ->
           $(idNotCheck).addClass("not-select")
           console.log "status", data
 
+    $(".raiting-url > img").on "mouseenter", (e) ->
+      $(@).stop(true, true)
+      $(@).animate
+        width:34
+        , 200 
+    $(".raiting-url > img").on "mouseout", (e) ->
+      $(@).stop(true, true)
+      $(@).animate
+        width:31
+        , 200 
+
+
   renderComments = ()->
     dish.comments
     $.ajax
