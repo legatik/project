@@ -99,6 +99,16 @@ $(document).ready () ->
               commentView.replaceSmail()
               $("#message").val('')
 
+    $(".raiting-url").on "click", (e) ->
+      $.ajax
+        type    : 'GET'
+        url     : $(@).attr("url")
+        success : (data) =>
+          $(".not-select").removeClass("not-select")
+          idNotCheck = "#" + $(@).attr("not-check")
+          $(idNotCheck).addClass("not-select")
+          console.log "status", data
+
   renderComments = ()->
     dish.comments
     $.ajax

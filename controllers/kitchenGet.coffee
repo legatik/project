@@ -16,7 +16,6 @@ exports.boot = (app) ->
     if st != "false" and st != "true"
       res.send {status:false}
       return
-    console.log "firs st", st
     if st == "true" then st = true
     if st == "false" then st = false
     if req.user
@@ -26,23 +25,40 @@ exports.boot = (app) ->
       .exec (err, user) ->
         Dish.findById dishId , (err ,dish) ->
           idRaiting = false
+          raitingSt = ''
           user.dishRaiting.forEach (raiting)->
-            if raiting.dish.toString() == dishId.toString() then idRaiting = raiting["_id"]
+            if raiting.dish.toString() == dishId.toString() 
+              idRaiting = raiting["_id"]
+              raitingSt = raiting.st
           if idRaiting
-            tekRaiting = dish.rating
-            console.log "st",st
-            if st
-              if Number tekRaiting < 10 then tekRaiting++
-            if !st
-              if Number tekRaiting != 0 then tekRaiting--
-            dish.rating = tekRaiting
-            dish.save()
-            Raiting.findById idRaiting, (err, raiting) ->
-              console.log "raiting",raiting
-              if !err
-                raiting.st = st
-                raiting.save()
-            res.send {status:true, rating:tekRaiting }            
+            if !raitingSt == st
+              tekRaiting = dish.rating
+              if st
+                if Number tekRaiting < 10 then tekRaiting++
+              if !st
+                if Number tekRaiting != 0 then tekRaiting--
+              dish.rating = tekRaiting
+              dish.save()
+              Raiting.findById idRaiting, (err, raiting) ->
+                if !err
+                  raiting.st = st
+                  raiting.save()
+              res.send {status:true, rating:tekRaiting }
+            else
+              res.send {status:false}
+          else
+            Raiting.createThis st, dish, (crRaiting) ->
+              tekRaiting = dish.rating
+              if st
+                if Number tekRaiting < 10 then tekRaiting++
+              if !st
+                if Number tekRaiting != 0 then tekRaiting--
+              dish.rating = tekRaiting
+              dish.save()
+              user.dishRaiting.push(crRaiting["_id"])
+              user.save()
+              res.send {status:true, rating:tekRaiting }
+              
 #            res.send {status:true, rating:tekRaiting }
 #      else
 #        res.send {status:false}

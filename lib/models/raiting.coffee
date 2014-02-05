@@ -8,10 +8,9 @@ raiting = new Schema
 	dish : {type: ObjectId, ref: 'Dish'} 
 Model = mongoose.model 'Raiting', raiting
 
-Model.createThis = (st,  dishId) ->
+Model.createThis = (st,  dishId, cb) ->
   @create {st:st, dish:dishId}, (err, raiting) ->
-    console.log "err",err
-    console.log "raiting",raiting
+    cb(raiting)
 
 
 module.exports = Model

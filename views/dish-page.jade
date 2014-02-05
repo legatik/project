@@ -65,9 +65,9 @@ block content
               img.pic-smile( src="/img/images/smails/pipe.png", txtSmile=":-o", style="position: relative;top: -2px;")
               img.pic-smile(src="/img/images/smails/sleep.png", txtSmile=":sleep:")
             div#like-cont
-              a(href !="/kitchenGet/raiting/#{dish.id}/false" )
+              a#raiting-not-true.raiting-url(url !="/kitchenGet/raiting/#{dish.id}/false", not-check="raiting-not-false" )
                 img(src="/img/images/dlk.png", style="margin-top:8px")
-              a(href !="/kitchenGet/raiting/#{dish.id}/true" )
+              a#raiting-not-false.raiting-url(url !="/kitchenGet/raiting/#{dish.id}/true", not-check="raiting-not-true" )
                 img(src="/img/images/lk.png", style="margin-left:14px; margin-top:-9px")
             a#send-message.zoom-clases Отправить
         h3#coment-title Коментарии к блюду
