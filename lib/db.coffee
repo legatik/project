@@ -3,7 +3,7 @@ User = require './models/user'
 Product = require './models/product'
 Dish = require './models/dish'
 Comment = require './models/comment'
-Raiting  = require './models/comment' 
+Raiting  = require './models/raiting' 
 
 module.exports =
 	models: {User, Product, Dish, Comment, Raiting}

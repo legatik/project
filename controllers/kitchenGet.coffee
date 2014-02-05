@@ -11,34 +11,41 @@ exports.boot = (app) ->
 
 
   app.get '/raiting/:dish/:st', (req, res) ->
-    getClientIp = (req) ->
-      x_ip = req.headers['x-forwarded-for']
-      unless x_ip? then x_ip = req.connection.remoteAddress
-      x_ip
-    dish = req.params.dish
+    dishId = req.params.dish
     st = req.params.st
+    if st != "false" and st != "true"
+      res.send {status:false}
+      return
+    console.log "firs st", st
+    if st == "true" then st = true
+    if st == "false" then st = false
     if req.user
-      status = true
-      req.user.dishRaiting.forEach (idDish)->
-        if idDish.toString() == dish then status = false
-      if status
-        User.findOne {"_id":req.user["_id"]}, (err, user) ->
-          user.dishRaiting.push(dish)
-          user.save()
-          Dish.findOne {"_id":dish}, (err, dish) ->
+#      Raiting.createThis(true, dish)
+      User.findById(req.user["_id"])
+      .populate('dishRaiting')
+      .exec (err, user) ->
+        Dish.findById dishId , (err ,dish) ->
+          idRaiting = false
+          user.dishRaiting.forEach (raiting)->
+            if raiting.dish.toString() == dishId.toString() then idRaiting = raiting["_id"]
+          if idRaiting
             tekRaiting = dish.rating
-            if st == "true"
+            console.log "st",st
+            if st
               if Number tekRaiting < 10 then tekRaiting++
-            if st == "false"
+            if !st
               if Number tekRaiting != 0 then tekRaiting--
             dish.rating = tekRaiting
             dish.save()
-            res.send {status:true, rating:tekRaiting }
-      else
-        res.send {status:false}
-    else
-       x_ip = getClientIp(req)
-       console.log "x_ip",x_ip
+            Raiting.findById idRaiting, (err, raiting) ->
+              console.log "raiting",raiting
+              if !err
+                raiting.st = st
+                raiting.save()
+            res.send {status:true, rating:tekRaiting }            
+#            res.send {status:true, rating:tekRaiting }
+#      else
+#        res.send {status:false}
       
 #    Dish.find {kitchen: keyKitchen.name}, (err, dishes) ->
 #      res.send dishes
