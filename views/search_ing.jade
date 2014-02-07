@@ -3,13 +3,18 @@ extends layout
 
 block content
   != js('libs/turn.js')
+  != js('libs/ion.rangeSlider.min.js')
   != js('pm')
-  != css('style-cooler')
+  != css('style-ing-search')
+  != css('lib/ion.rangeSlider')
+  != css('lib/ion.rangeSlider.skinFlat')
   //!= css('style-search-new')
   include navigation
   include left-column
   include right-column
   #center-column
+    h2 Поиск по ингридиентам
+    input#pm-dish-ing(type="text", placeholder="введите ингридиент")
     #cooler-container
       img#holodilnik(src="/img/cooler/holodilnik.png")
       img#p-left-1.polki(src="/img/cooler/p-left-1.png")
@@ -116,32 +121,27 @@ block content
         ol.dobavki-ol
 
     #pm-container
-      lable Введите название блюда
-      input#pm-dish-input(type="text",name="test")
-      lable Введите ингридиент
-      input#pm-dish-ing(type="text", placeholder="введите ингридиент")
-      lable Тип кухни
-      select#selectKitchen
-        option Русская
-        option Новая русская
-      #pm-species
-        input(type="checkbox", name="Закуски")
-        lable Закуски
-        input(type="checkbox", name="Салаты")
-        lable Салаты
-        input(type="checkbox", name="Супы")
-        lable Супы
-        input(type="checkbox", name="Вторые блюда")
-        lable Вторые блюда
-        input(type="checkbox", name="Выпечка")
-        lable Выпечка
-        input(type="checkbox", name="Десерты")
-        lable Десерты
-        input(type="checkbox", name="Напитки")
-        lable Напитки
+      h4 Фильтры
+      div#filter-kitchen.block-end
+        lable Тип кухни
+        select#selectKitchen
+          option Русская
+          option Новая русская
+      #pm-species.block-end
+        .pm-header Категории
+        br
+        div(style="width:108px").no-checked.species-searh Вторые блюда
+        div(style="width:71px").no-checked.species-searh Выпечка
+        div(style="width:67px").no-checked.species-searh Закуски
+        div(style="width:67px").no-checked.species-searh Салаты
+        div(style="width:50px").no-checked.species-searh Супы
+        div(style="width:67px").no-checked.species-searh Десерты
+        div(style="width:69px").no-checked.species-searh Напитки
       #pm-more-options
+        div(style="position:relative")
+          input#range_1(type="text")
         span Веремя приготовления
-        input#time-cooke(type="number", min=0)
+        div#time-cooke(type="number", min=0)
         span Популярность
         input#rating(type="number", min=0)
         span Кремлевская диета

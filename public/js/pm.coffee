@@ -96,18 +96,18 @@ $(document).ready () ->
 
 
 
-    autoCompliteDish = (val) ->
-      $("#pm-dish-input").autocomplete
-        source: (request, response) ->
-          $.ajax
-            url: "/search/title_complete"
-            data: {title: $("#pm-dish-input").val()}
-            success: (data) ->
-              console.log data
-              response $.map(data.result, (item) ->
-                label: item
-              )
-        minLength: 2
+#    autoCompliteDish = (val) ->
+#      $("#pm-dish-input").autocomplete
+#        source: (request, response) ->
+#          $.ajax
+#            url: "/search/title_complete"
+#            data: {title: $("#pm-dish-input").val()}
+#            success: (data) ->
+#              console.log data
+#              response $.map(data.result, (item) ->
+#                label: item
+#              )
+#        minLength: 2
 
 
     autoCompliteIng = () =>
@@ -222,6 +222,24 @@ $(document).ready () ->
       listEl = classEl + "-cont"
       $(listEl).removeClass("red-color")
 
-    autoCompliteDish()
+    $(".species-searh").on "click", (e) ->
+      if $(@).hasClass("checked")
+        $(@).removeClass("checked")
+      else
+        $(@).addClass("checked")
+  
+    $("#range_1").ionRangeSlider
+        min: 0,
+        max: 5000,
+        from: 1000,
+        to: 4000,
+        type: 'double',
+        step: 1,
+        prefix: "$",
+        prettify: true,
+        hasGrid: true
+
+
+#    autoCompliteDish()
     autoCompliteIng()
 
