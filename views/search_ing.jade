@@ -15,6 +15,44 @@ block content
   #center-column
     h2 Поиск по ингридиентам
     input#pm-dish-ing(type="text", placeholder="введите ингридиент")
+    #pm-ing-container
+      h4 Ингридиенты
+
+      .ob-cont-ing.gribi-cont
+        div.category-name Грибы
+        ol.gribi-ol
+
+      .ob-cont-ing.krupa_oreh-cont 
+        div.category-name Крупы и каши
+        ol.krupa_oreh-ol
+
+      .ob-cont-ing.molochnie-cont 
+        div.category-name Молочные продукты
+        ol.molochnie-ol
+
+      .ob-cont-ing.frukti-cont 
+        div.category-name Фрукты и ягоды
+        ol.frukti-ol
+
+      .ob-cont-ing.ovochi-cont 
+        div.category-name Овощи и зелень
+        ol.ovochi-ol
+
+      .ob-cont-ing.moreprodukti-cont 
+        div.category-name Рыба и морепродукты
+        ol.moreprodukti-ol
+
+      .ob-cont-ing.maso-cont 
+        div.category-name Мясные продукты
+        ol.maso-ol
+
+      .ob-cont-ing.muchnie-cont 
+        div.category-name Мука и мучные изделия
+        ol.muchnie-ol
+
+      .ob-cont-ing.dobavki-cont 
+        div.category-name Добавки и витамины
+        ol.dobavki-ol
     #cooler-container
       img#holodilnik(src="/img/cooler/holodilnik.png")
       img#p-left-1.polki(src="/img/cooler/p-left-1.png")
@@ -90,41 +128,14 @@ block content
         img.cooler-companent#muchnie(src="/img/cooler/muchnie.png", ing="")
         img.cooler-companent#ovochi(src="/img/cooler/ovochi.png", ing="")
 
-    #pm-ing-container
-      h4 Ингридиенты
 
-      .gribi-cont Грибы
-        ol.gribi-ol
-
-      .krupa_oreh-cont Крупы и каши
-        ol.krupa_oreh-ol
-
-      .molochnie-cont Молочные продукты
-        ol.molochnie-ol
-
-      .frukti-cont Фрукты и ягоды
-        ol.frukti-ol
-
-      .ovochi-cont Овощи и зелень
-        ol.ovochi-ol
-
-      .moreprodukti-cont Рыба и морепродукты
-        ol.moreprodukti-ol
-
-      .maso-cont Мясные продукты
-        ol.maso-ol
-
-      .muchnie-cont Мука и мучные изделия
-        ol.muchnie-ol
-
-      .dobavki-cont Добавки и витамины
-        ol.dobavki-ol
 
     #pm-container
       h4 Фильтры
       div#filter-kitchen.block-end
         lable Тип кухни
         select#selectKitchen
+          option Любая
           option Русская
           option Новая русская
       #pm-species.block-end
@@ -138,19 +149,31 @@ block content
         div(style="width:67px").no-checked.species-searh Десерты
         div(style="width:69px").no-checked.species-searh Напитки
       #pm-more-options
-        div(style="position:relative")
-          input#range_1(type="text")
-        span Веремя приготовления
-        div#time-cooke(type="number", min=0)
-        span Популярность
-        input#rating(type="number", min=0)
-        span Кремлевская диета
-        input#kremling_diet(type="number", min=0)
-        span Сложность
-        input#complexity(type="number", min=0, max=10, style='width:170px')
-        br
-        br
-        span Цена
+        .pm-header Веремя приготовления
+        div(style="text-align:center")
+          div.ind-col#time-ind-max
+          div.input-col(style="top:-15px")
+            input#time-cooke(type="text")
+          div.ind-col#time-ind-min
+        .pm-header Популярность
+        div(style="text-align:center")
+          div.ind-col#pop-ind-max
+          div.input-col
+            input#rating(type="text")
+          div.ind-col#pop-ind-min
+        .pm-header Кремлевская диета
+        div(style="text-align:center")
+          div.ind-col#kr-ind-max
+          div.input-col
+            input#kremling_diet
+          div.ind-col#kr-ind-min
+        .pm-header Сложность
+        div(style="text-align:center")
+          div.ind-col#com-ind-max
+          div.input-col
+            input#complexity
+          div.ind-col#com-ind-min
+        .pm-header Цена
         select#cost
           option
           option Низкая

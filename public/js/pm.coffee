@@ -127,7 +127,8 @@ $(document).ready () ->
               $("#pm-dish-ing").val("")
           })
 
-    checkIng = (event,ui) ->
+    checkIng = (event,ui) =>
+      console.log "HEARE", @productsArr
       eventIng = @productsArr.filter (item)->
         item.title is ui.item.label
       key = eventIng[0].species
@@ -151,7 +152,7 @@ $(document).ready () ->
 #      if !newIng then return
       ol = key + "-ol"
       container = key + "-cont"
-      newIngEl = "<li><span class='pm-ing'>"+newIng+"</span><div class='del-ing' key="+key+">x</div></li>"
+      newIngEl = "<li><div class='del-ing' key="+key+">x</div><span class='pm-ing'>"+newIng+"</span></li>"
       $(ol).append(newIngEl)
       $(container).show()
       addEventRemoveIng()
@@ -228,17 +229,59 @@ $(document).ready () ->
       else
         $(@).addClass("checked")
   
-    $("#range_1").ionRangeSlider
+
+    $("#time-cooke").ionRangeSlider
         min: 0,
-        max: 5000,
-        from: 1000,
-        to: 4000,
+        max: 720,
+        from: 0,
+        to: 720,
         type: 'double',
         step: 1,
-        prefix: "$",
+        prefix: "минут ",
+        prettify: true,
+        hasGrid: true,
+        onChange: (ob) ->
+          $("#time-ind-min").html(ob.toNumber)
+          $("#time-ind-max").html(ob.fromNumber)
+
+    $("#rating").ionRangeSlider
+        min: 0,
+        max: 100,
+        from: 0,
+        to: 100,
+        type: 'double',
+        step: 1,
         prettify: true,
         hasGrid: true
+        onChange: (ob) ->
+          $("#pop-ind-min").html(ob.toNumber)
+          $("#pop-ind-max").html(ob.fromNumber)
+          
+    $("#kremling_diet").ionRangeSlider
+        min: 0,
+        max: 100,
+        from: 0,
+        to: 100,
+        type: 'double',
+        step: 1,
+        prettify: true,
+        hasGrid: true
+        onChange: (ob) ->
+          $("#kr-ind-min").html(ob.toNumber)
+          $("#kr-ind-max").html(ob.fromNumber)
 
+    $("#complexity").ionRangeSlider
+        min: 0,
+        max: 10,
+        from: 0,
+        to: 10,
+        type: 'double',
+        step: 1,
+        prettify: true,
+        hasGrid: true
+        onChange: (ob) ->
+          $("#com-ind-min").html(ob.toNumber)
+          $("#com-ind-max").html(ob.fromNumber)
 
 #    autoCompliteDish()
     autoCompliteIng()
