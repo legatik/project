@@ -162,11 +162,12 @@ $(document).ready () ->
 
     collectDataSearch = () ->
       #species
-      speciesArr = $("#pm-species > input[type='checkbox']:checked")
+      speciesArr = $(".species-searh")
       speciesSend = []
       i = 0
       while i < speciesArr.length
-        speciesSend.push($(speciesArr[i]).attr("name"))
+        if($(speciesArr[i])).hasClass("checked")
+          speciesSend.push($(speciesArr[i]).attr("name"))
         i++
 
       # ing
@@ -181,7 +182,6 @@ $(document).ready () ->
       #todo добавить массив ингридиетнов
 
       searchDatasent =
-        title        : $("#pm-dish-input").val()
         kitchen      : $("#selectKitchen").val()
         species      : speciesSend
         ing          : ingSend
@@ -191,6 +191,10 @@ $(document).ready () ->
         rating       : $("#rating").val()
         kremling_diet : $("#kremling_diet").val()
 
+      if !searchDatasent.ing.length
+        alert("Ваш холодильник пустой. Мы не можем предложить вам ни одного рецепта")
+        return
+      console.log "searchDatasent",searchDatasent
       $.ajax
         type: 'POST'
         url: "/search/DishesReq"
