@@ -228,7 +228,7 @@ $(document).ready () ->
         $(@).removeClass("checked")
       else
         $(@).addClass("checked")
-  
+    $(".species-searh").addClass("checked")
 
     $("#time-cooke").ionRangeSlider
         min: 0,
