@@ -52,6 +52,11 @@ $(document).ready () ->
 #      $(@el).html(@template({data:@model, key:key}));
 #      @
 
+    firstObj = {
+      species : true
+      ing     : true
+    }
+    
     @productsArr = []
     @arrComparison = []
     @arrComparison["Грибы"] = ".gribi"
@@ -75,6 +80,8 @@ $(document).ready () ->
 
 
     addEventRemoveIng = () ->
+      
+      #for del
       $(".del-ing").unbind("click")
       $(".del-ing").on "click", (e) =>
         console.log "$(e.target)",$(e.target)
@@ -192,9 +199,9 @@ $(document).ready () ->
       console.log searchDatasent
 
 
-      if !searchDatasent.ing.length
-        alert("Ваш холодильник пустой. Мы не можем предложить вам ни одного рецепта")
-        return
+#      if !searchDatasent.ing.length
+#        alert("Ваш холодильник пустой. Мы не можем предложить вам ни одного рецепта")
+#        return
       console.log "searchDatasent",searchDatasent
       $.ajax
         type: 'POST'
@@ -217,7 +224,8 @@ $(document).ready () ->
       classPic = classEl + "-fon"
       $(classPic).css("opacity",1)
       listEl = classEl + "-cont"
-      $(listEl).addClass("red-color")
+#      $(listEl).addClass("red-color")
+      $(listEl).find(".pm-ing").css("color","#DE505F")
 
 
     $(".cooler-companent").on "mouseout", (e)=>
@@ -226,14 +234,37 @@ $(document).ready () ->
       classPic = classEl + "-fon"
       $(classPic).css("opacity",0)
       listEl = classEl + "-cont"
-      $(listEl).removeClass("red-color")
+#      $(listEl).removeClass("red-color")
+      $(listEl).find(".pm-ing").css("color","black")
 
     $(".species-searh").on "click", (e) ->
+      if firstObj.species
+          $(".species-searh").removeClass("checked")
+          firstObj.species = false
       if $(@).hasClass("checked")
-        $(@).removeClass("checked")
+        if $(".checked").length != 1
+          $(@).removeClass("checked")
+        else
+          $(@).removeClass("checked")
+          $(".species-searh").addClass("checked")
       else
         $(@).addClass("checked")
     $(".species-searh").addClass("checked")
+
+    $(".ob-cont-ing > ol").mouseenter (e) ->
+        $(@).find(".pm-ing").css({cursor:"default",color:"#DE505F"})
+        className =  $(@).attr("class")
+        key = className.replace("-ol", "")
+        key = "." + key + "-fon"
+        $(key).css("opacity", 1)
+
+
+    $(".ob-cont-ing > ol").mouseleave (e) ->
+      $(@).find(".pm-ing").css({cursor:"default",color:"black"})
+      className =  $(@).attr("class")
+      key = className.replace("-ol", "")
+      key = "." + key + "-fon"
+      $(key).css("opacity", 0)
 
     $("#time-cooke").ionRangeSlider
         min: 0,
