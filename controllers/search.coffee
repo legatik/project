@@ -29,7 +29,6 @@ exports.boot = (app) ->
 
 
   app.post '/DishesReq', (req, res) ->
-    console.log 'DishesReq'
     ProductsList = []
     ExProductsList = []
     species = []
@@ -62,7 +61,6 @@ exports.boot = (app) ->
     else unless ProductsList.length is 0
       filter.ingredients = $in: ProductsList
     else filter.ingredients = $nin: ExProductsList  unless ExProductsList.length is 0
-    console.log filter
 #    dish = Dish.find filter, (err, dishes) ->
     Dish.find(filter)
     .limit(15)
