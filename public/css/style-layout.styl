@@ -328,9 +328,10 @@ body
         width: 649px;
         height: 110px;
       .reg-cont-show
-        width:468px
-        height:320px
+        width:365px
+        height:333px
       #login-reg-blok
+        padding-top:6px
         float: right;
         margin: 28px 53px 0 0;
         padding: 0px;
@@ -347,7 +348,18 @@ body
           margin: 0px;
           padding: 17px 0 0 27px;
           position:relative;
+          .input-reg-li
+            label
+              .parsley-error-list
+                display: block;
+                text-align: center;
+                list-style: none;
+                height:2px
+                position:relative
+                li
+                  height:2px
           #close-reg
+            z-index: 2;
             text-align: center;
             width: 16px;
             height: 16px;
@@ -356,8 +368,8 @@ body
             border: 1px solid #ab8e4e;
             border-radius: 10px;
             line-height: 12px;
-            top: -86px;
-            left: 438px;
+            top: -83px;
+            left: 337px;
             cursor: pointer;
             &:hover
               color:#B34326
@@ -365,6 +377,8 @@ body
               top: -85px;
               border: 1px solid #B34326;
         #regheading
+          position:relative;
+          top:-10px;
           width: 622px;
           height: 21px;
           float: left;
@@ -422,9 +436,9 @@ body
           height: 35px;
           margin: 0 0 0 20px;
           padding: 0px;
-          margin-left: 154px;
-          margin-top: 36px;
-          cursor:pointer;
+          margin-left: 102px;
+          margin-top: 41px;
+          cursor: pointer;
           a
             width: 112px;
             height: 33px;

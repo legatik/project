@@ -31,11 +31,11 @@ $(document).ready () ->
     $(".form-reg-func").stop(true)
     $("#login-send").fadeOut "slow", () ->
       $("#headerbg").animate
-        height: 526
+        height: 533
       , 300
       $("#login-reg-blok").animate
-        height: 320
-        width: 468
+        height: 333
+        width: 365
       , 400, () ->
         $("#reg-send").fadeIn 'slow'
 
@@ -57,7 +57,7 @@ $(document).ready () ->
 
   $("#sing-up-button").click () ->
     if !reqShow and !logShow
-      openWindow('reg-cont-show', 526, "#reg-send")
+      openWindow('reg-cont-show', 533, "#reg-send")
       reqShow = true
     if logShow
       renderReg()
