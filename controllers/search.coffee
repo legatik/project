@@ -29,22 +29,32 @@ exports.boot = (app) ->
 
 
   app.post '/DishesReq', (req, res) ->
+    console.log 'DishesReq'
     ProductsList = []
     ExProductsList = []
     species = []
     ProductsList = req.body.ing  if req.body.ing
     ExProductsList = req.body.exproducts  if req.body.exproducts
-    species = req.body.species  if req.body.species
     filter = {}
-    filter.kitchen = req.body.kitchen  if req.body.kitchen
-    filter.cost = req.body.cost  if req.body.cost
+    species = req.body.species  if req.body.species
     if species.length isnt 0
       filter.species =
         $in: species
-    filter.time_cooking = +req.body.time_cooking  if req.body.time_cooking
-    filter.rating = +req.body.rating  if req.body.rating
-    filter.kremling_diet = req.body.kremling_diet  if req.body.kremling_diet
-    console.log 'filter',filter
+    if req.body.kitchen and  req.body.kitchen isnt 'Любая'
+      filter.kitchen = req.body.kitchen
+    filter.cost = req.body.cost  if req.body.cost
+    if req.body.time_cooking
+      time_cooking = req.body.time_cooking.split(';')
+      filter.time_cooking = {$gte: +time_cooking[0], $lte: +time_cooking[1]}
+    if req.body.rating
+      rating = req.body.rating.split(';')
+      filter.rating = {$gte: +rating[0], $lte: +rating[1]}
+    if req.body.kremling_diet
+      kremling_diet = req.body.kremling_diet.split(';')
+      filter.kremling_diet = {$gte: +kremling_diet[0], $lte: +kremling_diet[1]}
+    if req.body.complexity
+      complexity = req.body.complexity.split(';')
+      filter.complexity = {$gte: +complexity[0], $lte: +complexity[1]}
     if ProductsList.length isnt 0 and ExProductsList.length isnt 0
       filter.ingredients =
         $in: ProductsList
@@ -54,10 +64,12 @@ exports.boot = (app) ->
     else filter.ingredients = $nin: ExProductsList  unless ExProductsList.length is 0
     console.log filter
     dish = Dish.find filter, (err, dishes) ->
+      if err
+        console.log err
+        res.send err
       result = dishes.sort((a, b) ->
         x = _.intersection(req.body.ing, a.get("ingredients")).length
         y = _.intersection(req.body.ing, b.get("ingredients")).length
-        console.log 'XY', x, y
         (if (x > y) then -1 else ((if (x is y) then 0 else 1)))
       )
       res.send(result)

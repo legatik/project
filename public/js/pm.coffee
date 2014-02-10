@@ -128,7 +128,6 @@ $(document).ready () ->
           })
 
     checkIng = (event,ui) =>
-      console.log "HEARE", @productsArr
       eventIng = @productsArr.filter (item)->
         item.title is ui.item.label
       key = eventIng[0].species
@@ -167,7 +166,7 @@ $(document).ready () ->
       i = 0
       while i < speciesArr.length
         if($(speciesArr[i])).hasClass("checked")
-          speciesSend.push($(speciesArr[i]).attr("name"))
+          speciesSend.push($(speciesArr[i]).text())
         i++
 
       # ing
@@ -190,6 +189,8 @@ $(document).ready () ->
         complexity   : $("#complexity").val()
         rating       : $("#rating").val()
         kremling_diet : $("#kremling_diet").val()
+      console.log searchDatasent
+
 
       if !searchDatasent.ing.length
         alert("Ваш холодильник пустой. Мы не можем предложить вам ни одного рецепта")
@@ -260,7 +261,7 @@ $(document).ready () ->
         onChange: (ob) ->
           $("#pop-ind-min").html(ob.toNumber)
           $("#pop-ind-max").html(ob.fromNumber)
-          
+
     $("#kremling_diet").ionRangeSlider
         min: 0,
         max: 100,
