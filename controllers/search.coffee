@@ -63,7 +63,12 @@ exports.boot = (app) ->
       filter.ingredients = $in: ProductsList
     else filter.ingredients = $nin: ExProductsList  unless ExProductsList.length is 0
     console.log filter
-    dish = Dish.find filter, (err, dishes) ->
+#    dish = Dish.find filter, (err, dishes) ->
+    console.log "filter",filter
+    Dish.find(filter)
+    .limit(15)
+    .skip(req.body.skip)
+    .exec (err, dishes) ->
       if err
         console.log err
         res.send err

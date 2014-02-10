@@ -56,7 +56,8 @@ $(document).ready () ->
       species : true
       ing     : true
     }
-    
+    @skip = 0
+    @searchDatasent = false
     @productsArr = []
     @arrComparison = []
     @arrComparison["Грибы"] = ".gribi"
@@ -166,7 +167,7 @@ $(document).ready () ->
       $("#pm-dish-ing").focus()
 
 
-    collectDataSearch = () ->
+    collectDataSearch = () =>
       #species
       speciesArr = $(".species-searh")
       speciesSend = []
@@ -187,7 +188,7 @@ $(document).ready () ->
 
       #todo добавить массив ингридиетнов
 
-      searchDatasent =
+      @searchDatasent =
         kitchen      : $("#selectKitchen").val()
         species      : speciesSend
         ing          : ingSend
@@ -196,23 +197,44 @@ $(document).ready () ->
         complexity   : $("#complexity").val()
         rating       : $("#rating").val()
         kremling_diet : $("#kremling_diet").val()
-      console.log searchDatasent
 
+      @skip = 0
+      requestDish(@searchDatasent, @skip)
 
 #      if !searchDatasent.ing.length
 #        alert("Ваш холодильник пустой. Мы не можем предложить вам ни одного рецепта")
 #        return
-      console.log "searchDatasent",searchDatasent
+
+    requestDish = (searchDatasent, skip) =>
+      searchDatasent.skip = skip
       $.ajax
         type: 'POST'
         url: "/search/DishesReq"
         data: searchDatasent
-        success: (data) ->
+        success: (data) =>
+          $("#dishBookAppender").empty()
           renderDish(data)
+          @skip = 15
+          
+          
+    inProgress = false
+    $(window).scroll =>
+      if $(window).scrollTop() + $(window).height() >= $(document).height() - 250 and not inProgress and @searchDatasent
+        @searchDatasent.skip = @skip
+        $.ajax(
+          type: 'POST'
+          url: "/search/DishesReq"
+          data: @searchDatasent
+          beforeSend: =>
+            inProgress = true
+        ).done (data) =>
+          renderDish(data)
+          @skip = @skip + 15
+          inProgress = false
+    
 
 
     renderDish = (data) ->
-      $("#dishBookAppender").empty()
       data.forEach (model) ->
         dishBookView = new window.DishView({model:model})
         $("#dishBookAppender").append(dishBookView.render().el)
