@@ -214,6 +214,9 @@ $(document).ready () ->
         success: (data) =>
           $("#dishBookAppender").empty()
           renderDish(data)
+          $("html, body").animate
+            scrollTop: 770
+          , 500, () ->
           @skip = 15
           
           
