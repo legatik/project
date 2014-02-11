@@ -84,6 +84,7 @@ $(document).ready () ->
       $("#login-reg-blok").hide().fadeIn 'slow'
   
   $("#loginbutton").click () ->
+    if $('#login-send').parsley( 'isValid')
       email = $("#textfield").val()
       pass = $("#textfield2").val()
       $.ajax
@@ -95,10 +96,29 @@ $(document).ready () ->
             window.location.reload()
           else
             $("#fail-reg").hide().fadeIn("slow")
-#    $("#login-send").submit()
 
   $("#regbutton").click () ->
-    $("#reg-send").submit()
+    if $('#reg-send').parsley( 'isValid')  
+      data = {
+        nickname  : $("#reg-nik").val()
+        email     : $("#reg-email").val()
+        password  : $("#inputPassword").val()
+        firstName : $("#reg-fname").val()
+        lastName  : $("#reg-lname").val()
+      }
+      $.ajax
+        url: "/register"
+        method:"post"
+        data: data
+        success: (d) ->
+          console.log "st", d
+      
+#{ nickname: 'e',
+#  email: 'qwe@qwe.qwe',
+#  password: 'qwe',
+#  firstName: 'e',
+#  lastName: 'w' }
+
     
   $("#center-column").mouseenter () ->
       $("#zoom-clases").hide()

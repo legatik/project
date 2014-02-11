@@ -96,9 +96,10 @@ app.get '/register', (req, res) ->
 app.post '/register', (req, res) ->
 	user = req.body
 	User.register user, (err,user) ->
-		console.log err, user
-		return res.render 'registration', {title: 'Onlile JS Compiller', err, user} if err
-		res.redirect '/'
+		if err
+			res.send {status:false, data:err}
+		else
+			res.send {status:true, data:user}
 
 app.get '/login', (req, res) ->
 	res.render 'login', {title: 'Onlile JS Compiller'}
