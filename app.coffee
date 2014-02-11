@@ -103,8 +103,17 @@ app.post '/register', (req, res) ->
 app.get '/login', (req, res) ->
 	res.render 'login', {title: 'Onlile JS Compiller'}
 
-app.post '/login', passport.authenticate("local", {failureRedirect: '/login'}), (req, res) ->
-	res.redirect '/'
+#app.post '/login', passport.authenticate("local", {failureRedirect: '/login'}), (req, res) ->
+#	res.redirect '/'
+app.post "/login", (req, res, next) ->
+	passport.authenticate("local", (err, user, info) ->
+		if user
+			req.logIn user, (err) ->
+				res.send true
+		else
+			res.send false
+	) req, res, next
+
 
 app.get '/logout', (req,res) ->
 	req.logout()

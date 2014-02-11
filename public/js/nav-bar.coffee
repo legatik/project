@@ -84,7 +84,18 @@ $(document).ready () ->
       $("#login-reg-blok").hide().fadeIn 'slow'
   
   $("#loginbutton").click () ->
-    $("#login-send").submit()
+      email = $("#textfield").val()
+      pass = $("#textfield2").val()
+      $.ajax
+        url: "/login"
+        method:"post"
+        data: { email: email, password: pass}
+        success: (st) ->
+          if st
+            window.location.reload()
+          else
+            $("#fail-reg").hide().fadeIn("slow")
+#    $("#login-send").submit()
 
   $("#regbutton").click () ->
     $("#reg-send").submit()

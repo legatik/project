@@ -15,8 +15,8 @@ exports.init = (app, passport) ->
 			done null, user
 
 	localStrategy._usernameField = 'email'
-
 	passport.use localStrategy
+	
 exports.user = (req, res, next) ->  
 	return res.redirect '/login' unless req.user
 	res.locals.user = req.user
