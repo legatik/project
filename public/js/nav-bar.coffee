@@ -182,4 +182,6 @@ $(document).ready () ->
         top: heightHover
       , 180
         
-    
+  $("#search-global-btn").click () ->
+    searchDish = $("#nav-dish-input").val()
+    console.log "searchDish",searchDish
