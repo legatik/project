@@ -87,18 +87,30 @@ $(document).ready () ->
     if $('#login-send').parsley( 'isValid')
       email = $("#textfield").val()
       pass = $("#textfield2").val()
-      $.ajax
-        url: "/login"
-        method:"post"
-        data: { email: email, password: pass}
-        success: (st) ->
-          if st
-            window.location.reload()
-          else
-            $("#fail-reg").hide().fadeIn("slow")
+      login(email, pass)
 
+  $("#register").click (e) ->
+    $("#sing-up-button").click()
+
+  login = (email, pass) ->
+    $.ajax
+      url: "/login"
+      method:"post"
+      data: { email: email, password: pass}
+      success: (st) ->
+        if st
+          window.location.reload()
+        else
+          $("#fail-reg").hide().fadeIn("slow")
+          
+  $(".input-new-sty").focus (e) ->
+    id = $(@).attr("id")
+    if id == "reg-email" then $("#repeat-email").fadeOut("slow")
+    if id == "reg-nik" then $("#repeat-nik").fadeOut("slow")
+    
   $("#regbutton").click () ->
-    if $('#reg-send').parsley( 'isValid')  
+    if $('#reg-send').parsley( 'isValid')
+      $(".err-repeat").fadeOut("slow")
       data = {
         nickname  : $("#reg-nik").val()
         email     : $("#reg-email").val()
@@ -111,8 +123,15 @@ $(document).ready () ->
         method:"post"
         data: data
         success: (d) ->
-          console.log "st", d
-      
+          if !d.status
+            $("#repeat-email").fadeIn("slow") if d.data.email
+            $("#repeat-nik").fadeIn("slow") if d.data.nickname
+          else
+            email = data.email
+            pass  = data.password
+            login(email, pass)
+            
+            
 #{ nickname: 'e',
 #  email: 'qwe@qwe.qwe',
 #  password: 'qwe',

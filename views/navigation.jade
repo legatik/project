@@ -42,7 +42,7 @@
 					else
 						li
 							a(href="/news") Кулинарные новости
-			#login-reg-blok
+			#login-reg-blok(style="position:relative")
 				form#reg-send.form-reg-func(
 					action="/register",
 					method="POST",
@@ -50,6 +50,7 @@
 					data-validate="parsley",
 					data-trigger="change"
 				)
+				
 						#close-reg.close-window
 							b x
 						#regheading
@@ -65,6 +66,7 @@
 									data-trigger="focusin focusout"
 									data-required="true"
 								)
+						span.err-repeat#repeat-nik(style="color: #8c2b01;position: absolute;left: 26px;font-size: 10pt;top: 63px;display:none") Пользователь с таким ником уже зарегестрирован
 						br
 						br
 						br
@@ -80,6 +82,7 @@
 									data-required="true"
 									data-type="email"
 								)
+						span.err-repeat#repeat-email(style="color: #8c2b01;position: absolute;left: 26px;font-size: 10pt;top: 103px;display:none") Пользователь с такой почтой уже зарегестрирован
 						br
 						br
 						.lable-reg Ваш пароль:
@@ -154,7 +157,7 @@
 							a.login(nohref) Войти
 						#member Not yet a Member? 
 						#register
-							a.register(href='/register') Register Now
+							a.register(nohref) Register Now
 
 							
 							
