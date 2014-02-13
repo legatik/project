@@ -185,5 +185,7 @@ $(document).ready () ->
   $("#search-global-btn").click () ->
     searchDish = $("#nav-dish-input").val()
     if searchDish
-      searchDish = escape(searchDish)
       window.location.href = "/search/dish/" + searchDish
+
+  $("#nav-dish-input").keypress (e) ->
+    $("#search-global-btn").click() if e.keyCode == 13
