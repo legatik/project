@@ -224,6 +224,9 @@ $(document).ready () ->
         success: (data) =>
           $("#dishBookAppender").empty()
           renderDish(data)
+          $("html, body").animate
+            scrollTop: 770
+          , 500, () ->
           @skip = 15
           
           
@@ -248,17 +251,11 @@ $(document).ready () ->
       $("#titte-search").fadeIn("slow")
       if data.length == 0
         $("#empty-result").show()
-        $("html, body").animate
-          scrollTop: 770
-        , 500, () ->
       else
         data.forEach (model) ->
           dishBookView = new window.DishView({model:model})
           $("#dishBookAppender").append(dishBookView.render().el)
           $(dishBookView.el).hide(0).fadeIn('slow')
-        $("html, body").animate
-          scrollTop: 770
-        , 500, () ->
 
 
     $(".cooler-companent").on "mouseenter", (e)=>
@@ -367,6 +364,9 @@ $(document).ready () ->
 
     if searchTitleData.title
       renderDish(searchTitleData.dishes)
+      $("html, body").animate
+        scrollTop: 770
+      , 500, () ->
 
 
 
