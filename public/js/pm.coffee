@@ -94,7 +94,6 @@ $(document).ready () ->
       #for del
       $(".del-ing").unbind("click")
       $(".del-ing").on "click", (e) =>
-        console.log "$(e.target)",$(e.target)
         key = $(e.target).attr("key")
         ings = $(key).attr("ing")
         ingDel = $($(e.target).parent()).find(".pm-ing").text()
@@ -107,7 +106,6 @@ $(document).ready () ->
         keyOl = key + "-ol"
         keyCont = key + "-cont"
         liArr = $(keyOl).find("li")
-        console.log "liArr.length",liArr.length
         if liArr.length == 0 then $(keyCont).hide()
 
 
@@ -154,6 +152,10 @@ $(document).ready () ->
       if listIng.indexOf(ui.item.label) >= 0
         alert("Вы уже добавили этот ингридиент")
         return
+      if firstObj.ing
+        $("#all-ing-info").hide()
+        $(".cooler-companent").css({display: "none"; opacity: 0;})
+        firstObj.ing = false
       $(id).show()
       $(id).css("opacity",1)
 #      if !listIng
@@ -243,7 +245,7 @@ $(document).ready () ->
             beforeSend: =>
               inProgress = true
           ).done (data) =>
-            renderDish(data)
+            renderDish(data, true)
             @skip = @skip + 15
             inProgress = false
         else
@@ -258,15 +260,15 @@ $(document).ready () ->
             beforeSend: =>
               inProgress = true
           ).done (data) =>
-            renderDish(data.result)
+            renderDish(data.result, true)
             @skip = @skip + 15
             inProgress = false
     
 
 
-    renderDish = (data) ->
+    renderDish = (data, load) ->
       $("#titte-search").fadeIn("slow")
-      if data.length == 0
+      if data.length == 0 and !load
         $("#empty-result").show()
       else
         data.forEach (model) ->
@@ -277,7 +279,6 @@ $(document).ready () ->
 
     $(".cooler-companent").on "mouseenter", (e)=>
       classEl = $(e.target).attr("fonClass")
-      console.log "class",classEl
       classPic = classEl + "-fon"
       $(classPic).css("opacity",1)
       listEl = classEl + "-cont"
@@ -287,7 +288,6 @@ $(document).ready () ->
 
     $(".cooler-companent").on "mouseout", (e)=>
       classEl = $(e.target).attr("fonClass")
-      console.log "class",classEl
       classPic = classEl + "-fon"
       $(classPic).css("opacity",0)
       listEl = classEl + "-cont"
@@ -376,6 +376,8 @@ $(document).ready () ->
           $("#com-ind-min").html(ob.toNumber)
           $("#com-ind-max").html(ob.fromNumber)
 
+    $(".cooler-companent").css({display: "block"; opacity: 1;})
+  
 #    autoCompliteDish()
     autoCompliteIng()
 
