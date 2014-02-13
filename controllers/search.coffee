@@ -5,9 +5,33 @@ fs = require 'fs'
 {Dish, Product} = db.models
 
 exports.boot = (app) ->
+
+  app.get '/dish/:searchDish', (req, res) ->
+    {keyKitchen, objk, objs} = app.mitching()
+    searchDish = req.params.searchDish
+    
+    find = new RegExp(searchDish, "i")
+    Dish.find({title: find})
+    .limit(15)
+    .exec (err, dishes) ->
+      data = {
+        title  : true
+        dishes : dishes
+      }
+      data = JSON.stringify(data)
+      res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data}
+      
+
+    
+
   app.get '/ing', (req, res) ->
     {keyKitchen, objk, objs} = app.mitching()
-    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs}
+    data = {
+      title  : false
+      dishes : []
+    }
+    data = JSON.stringify(data)
+    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data}
 
 #  app.get '/category', (req, res) ->
 #    {keyKitchen, objk, objs} = app.mitching()

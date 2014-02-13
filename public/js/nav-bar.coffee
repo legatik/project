@@ -184,4 +184,6 @@ $(document).ready () ->
         
   $("#search-global-btn").click () ->
     searchDish = $("#nav-dish-input").val()
-    console.log "searchDish",searchDish
+    if searchDish
+      searchDish = escape(searchDish)
+      window.location.href = "/search/dish/" + searchDish

@@ -52,6 +52,15 @@ $(document).ready () ->
 #      $(@el).html(@template({data:@model, key:key}));
 #      @
 
+
+
+
+
+                  ############### FOR SEARCH TITLE #################
+
+    searchTitleData = $("#search-ing").attr("serchtitle")
+    searchTitleData = JSON.parse searchTitleData
+
     firstObj = {
       species : true
       ing     : true
@@ -199,6 +208,7 @@ $(document).ready () ->
         kremling_diet : $("#kremling_diet").val()
 
       @skip = 0
+      $("#empty-result").hide()
       requestDish(@searchDatasent, @skip)
 
 #      if !searchDatasent.ing.length
@@ -214,9 +224,6 @@ $(document).ready () ->
         success: (data) =>
           $("#dishBookAppender").empty()
           renderDish(data)
-          $("html, body").animate
-            scrollTop: 770
-          , 500, () ->
           @skip = 15
           
           
@@ -238,10 +245,21 @@ $(document).ready () ->
 
 
     renderDish = (data) ->
-      data.forEach (model) ->
-        dishBookView = new window.DishView({model:model})
-        $("#dishBookAppender").append(dishBookView.render().el)
-        $(dishBookView.el).hide(0).fadeIn('slow')
+      $("#titte-search").fadeIn("slow")
+      if data.length == 0
+        $("#empty-result").show()
+        $("html, body").animate
+          scrollTop: 770
+        , 500, () ->
+      else
+        data.forEach (model) ->
+          dishBookView = new window.DishView({model:model})
+          $("#dishBookAppender").append(dishBookView.render().el)
+          $(dishBookView.el).hide(0).fadeIn('slow')
+        $("html, body").animate
+          scrollTop: 770
+        , 500, () ->
+
 
     $(".cooler-companent").on "mouseenter", (e)=>
       classEl = $(e.target).attr("fonClass")
@@ -346,4 +364,10 @@ $(document).ready () ->
 
 #    autoCompliteDish()
     autoCompliteIng()
+
+    if searchTitleData.title
+      renderDish(searchTitleData.dishes)
+
+
+
 
