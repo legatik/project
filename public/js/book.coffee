@@ -137,7 +137,7 @@ $(document).ready () ->
             recipeWithPic.push {recept:recept,pic:false}
       pic_equal.forEach (eq, index) ->
         eqFind = Number(eq) - 1
-        recipeWithPic[eqFind].pic = index
+        recipeWithPic[eqFind].pic = index.toString()
       @model.recipeWithPic = recipeWithPic
       
 
@@ -164,7 +164,7 @@ $(document).ready () ->
       
       if @model.composition.length > 11
         @model.compositionMore = true
-      
+      console.log "@model",@model
       key =
         kitchen : @mitchingK[@model.kitchen]
         species : @mitchingS[@model.species]
