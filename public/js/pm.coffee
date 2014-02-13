@@ -208,6 +208,7 @@ $(document).ready () ->
         kremling_diet : $("#kremling_diet").val()
 
       @skip = 0
+      searchTitleData.title = false
       $("#empty-result").hide()
       requestDish(@searchDatasent, @skip)
 
@@ -232,18 +233,34 @@ $(document).ready () ->
           
     inProgress = false
     $(window).scroll =>
-      if $(window).scrollTop() + $(window).height() >= $(document).height() - 250 and not inProgress and @searchDatasent
-        @searchDatasent.skip = @skip
-        $.ajax(
-          type: 'POST'
-          url: "/search/DishesReq"
-          data: @searchDatasent
-          beforeSend: =>
-            inProgress = true
-        ).done (data) =>
-          renderDish(data)
-          @skip = @skip + 15
-          inProgress = false
+      if $(window).scrollTop() + $(window).height() >= $(document).height() - 250 and not inProgress
+        if !searchTitleData.title and @searchDatasent
+          @searchDatasent.skip = @skip
+          $.ajax(
+            type: 'POST'
+            url: "/search/DishesReq"
+            data: @searchDatasent
+            beforeSend: =>
+              inProgress = true
+          ).done (data) =>
+            renderDish(data)
+            @skip = @skip + 15
+            inProgress = false
+        else
+          data = {
+            skip  : @skip
+            title : searchTitleData.searchDish
+          }
+          $.ajax(
+            type: 'GET'
+            url: "/search/title_complete_load"
+            data: data
+            beforeSend: =>
+              inProgress = true
+          ).done (data) =>
+            renderDish(data.result)
+            @skip = @skip + 15
+            inProgress = false
     
 
 
@@ -367,7 +384,7 @@ $(document).ready () ->
       $("html, body").animate
         scrollTop: 770
       , 500, () ->
-
+      @skip = 15
 
 
 

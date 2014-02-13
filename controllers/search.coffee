@@ -15,8 +15,9 @@ exports.boot = (app) ->
     .limit(15)
     .exec (err, dishes) ->
       data = {
-        title  : true
-        dishes : dishes
+        title      : true
+        dishes     : dishes
+        searchDish : searchDish
       }
       data = JSON.stringify(data)
       res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data}
@@ -36,6 +37,15 @@ exports.boot = (app) ->
 #  app.get '/category', (req, res) ->
 #    {keyKitchen, objk, objs} = app.mitching()
 #    res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs}
+
+
+  app.get '/title_complete_load',  (req, res) ->
+    find = new RegExp(req.query.title, "i")
+    Dish.find({title: find})
+    .limit(15)
+    .skip(req.query.skip)
+    .exec (err, dishes) ->
+      res.send {err: err, result: dishes}
 
 
   app.get '/title_complete',  (req, res) ->
