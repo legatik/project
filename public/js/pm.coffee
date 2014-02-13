@@ -248,7 +248,7 @@ $(document).ready () ->
             renderDish(data, true)
             @skip = @skip + 15
             inProgress = false
-        else
+        if searchTitleData.title
           data = {
             skip  : @skip
             title : searchTitleData.searchDish
