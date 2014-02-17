@@ -27,16 +27,48 @@ $(document).ready () ->
       @openBook = false
       @titleBolshe = 0
       @contAnimateTxt = false
+      @progressBook = false
+      @progressFlag = false
 
     events:
-      "click .peview-dish"      : "makeBook",
+      "click .peview-dish"      : "goDishPage",
+      "click .book-view"        : "makeBook",
       "click .raiting"          : "raitingSend",
       "mouseenter .flag-img"    : "hoverFlagOn",
       "mouseleave .flag-img"    : "hoverFlagOff",
+      "mouseenter .book-view"   : "hoverBookOn",
+      "mouseleave .book-view"   : "hoverBookOff",
       "click .flag-img"         : "clickFlag",
       "mouseenter"              : "beginAnimateTxt",
       "mouseleave"              : "endAnimateTxt"
 
+    goDishPage: () =>
+      window.location.href = "/kitchen/"+ @mitchingK[@model.kitchen] + "/" + @mitchingS[@model.species] + "/" + @model["_id"] + "/false"
+    hoverBookOn: () =>
+      if !@progressBook
+        @progressBook = true
+        $(".book-view", @el).animate
+          width  : 55
+        , 300, () =>
+          @progressBook = false
+        $(".book-view", @el).parent().animate
+          left : -5
+        , 300
+        $(".book-view", @el).parent().parent().animate
+          top : -10
+        , 300
+
+
+    hoverBookOff: () ->
+        $(".book-view", @el).animate
+          width  : 50
+        , 300, () =>
+        $(".book-view", @el).parent().animate
+          left : 0
+        , 300
+        $(".book-view", @el).parent().parent().animate
+          top : -5
+        , 300
 
     beginAnimateTxt: () ->
       @contAnimateTxt = true
@@ -56,7 +88,6 @@ $(document).ready () ->
         $("#title-text", @el).stop(true)
         
         textLeng = ($("#title-text", @el).text()).length
-        console.log "textLeng",textLeng
         
         timeout = 800
         
@@ -91,21 +122,26 @@ $(document).ready () ->
         width: 45
       , 300
 
-    hoverFlagOn: () ->
-      $flagCont = $(".flag-img", @el).parent()
-      $($flagCont).animate
-        top:149
-      , 300
-      $(".flag-img", @el).animate
-        width: 60
-      , 300
+    hoverFlagOn: () =>
+      if !@progressFlag
+        @progressFlag = true
+        
+        $flagCont = $(".flag-img", @el).parent()
+        $($flagCont).animate
+          top:149
+        , 300, () =>
+          @progressFlag = false
+        $(".flag-img", @el).animate
+          width: 60
+        , 300
     
     clickFlag: (e) ->
       e.stopPropagation()
       window.location.href = "/kitchen/"+ @mitchingK[@model.kitchen]
       
 
-    makeBook: ->
+    makeBook : (e) ->
+      e.stopPropagation()
       if !@openBook
         @turn()
         @openBook = true
@@ -164,7 +200,7 @@ $(document).ready () ->
       
       if @model.composition.length > 11
         @model.compositionMore = true
-      console.log "@model",@model
+
       key =
         kitchen : @mitchingK[@model.kitchen]
         species : @mitchingS[@model.species]

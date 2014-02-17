@@ -225,7 +225,9 @@ $(document).ready () ->
         url: "/search/DishesReq"
         data: searchDatasent
         success: (data) =>
-          $("#dishBookAppender").empty()
+          #$("#dishBookAppender").empty()
+          $(".dish-book").hide()
+          console.log "DDDDD"
           renderDish(data)
           $("html, body").animate
             scrollTop: 770

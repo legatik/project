@@ -11,6 +11,9 @@ script#dishBookTemplate(type="text/template")
     img.title-img(src!="/img/dishes/<%=data.id_picture%>/title.jpg")
     .border-flag
       img.flag-img(src!="/img/flags/<%=key.kitchen%>.gif", title!="<%=data.kitchen%> кухня")
+    .cont-f
+      .cont-s
+        img.book-view(src="/img/book-view.png")
   .bookModel.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog
       .modal-content
