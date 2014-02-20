@@ -49,9 +49,13 @@ input.parsley-success, textarea.parsley-success
   margin: 0 auto;
   margin-top:-20px
 
-
+.ffx-right-header
+  font-size:21px !important
+  width:246px !important
+  height:41px !important
+  
 .column-header
-  width: 216px;
+  width: 218px;
   height: 46px;
   float: left;
   margin: 0px;
@@ -61,6 +65,18 @@ input.parsley-success, textarea.parsley-success
   font-weight: normal;
   color: #7e8901;
   text-align:center;
+
+btn-background-active()
+  background:#C0943B
+
+btn-background()
+    background rgb(209,176,97)
+    background -moz-linear-gradient(top, rgb(209,176,97) 7%, rgb(209,176,97) 21%, rgb(209,176,97) 27%, rgb(192,148,59) 71%, rgb(192,148,59) 99%)
+    background -webkit-gradient(linear, left top, left bottom, color-stop(7%,rgb(209,176,97)), color-stop(21%,rgb(209,176,97)), color-stop(27%,rgb(209,176,97)), color-stop(71%,rgb(192,148,59)), color-stop(99%,rgb(192,148,59)))
+    background -webkit-linear-gradient(top, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
+    background -o-linear-gradient(top, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
+    background -ms-linear-gradient(top, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
+    background linear-gradient(to bottom, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
 
 
 .zoom-clases
@@ -232,12 +248,11 @@ body
       color: #FFF;
       text-align: center;
       text-decoration: none;
-      background-image: url(../img/images/menu-item.jpg);
       background-repeat: repeat;
+      btn-background()
       &:hover
-        background-image: url(../img/images/menu-item-hover.jpg) !important
-        background-repeat: repeat;
-        border-radius: 20px  
+        btn-background-active()
+        border-radius:20px
 
 
   #login-cont-button
@@ -264,12 +279,11 @@ body
       color: #FFF;
       text-align: center;
       text-decoration: none;
-      background-image: url(../img/images/menu-item.jpg);
-      background-repeat: repeat;
+      btn-background()
       &:hover
-        background-image: url(../img/images/menu-item-hover.jpg) !important
-        background-repeat: repeat;
+        btn-background-active()
         border-radius: 20px   
+        
 #headerblank
     width: 1004px;
     height: 166px;
@@ -315,12 +329,12 @@ body
               color: #FFF;
               text-align: center;
               text-decoration: none;
-              background-image: url(../img/images/menu-item.jpg);
               background-repeat: repeat;
               border-top-left-radius: 5px;
               border-top-right-radius: 5px;
+              btn-background()
               &:hover
-                background-image: url(../img/images/menu-item-hover.jpg) !important
+                btn-background-active()
                 background-repeat: repeat;
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
@@ -635,8 +649,7 @@ body
 
 
 .active-menu-item
-  background-image: url(../img/images/menu-item-hover.jpg) !important
-  background-repeat: repeat
+  btn-background-active()
   border-top-left-radius: 5px
   border-top-right-radius: 5px
     

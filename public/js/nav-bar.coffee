@@ -1,6 +1,17 @@
 $(document).ready () ->
   reqShow = false
   logShow = false
+  
+  jQuery.browser = {};
+  jQuery.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase());
+  jQuery.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase());
+  jQuery.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
+  jQuery.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+  
+  
+  if jQuery.browser.mozilla
+    $("#right-column").find(".column-header").addClass("ffx-right-header")
+  
   $("#nav-dish-input").autocomplete
     source: (request, response) ->
       $.ajax
@@ -174,7 +185,11 @@ $(document).ready () ->
     $("#zoom-clases-species").css("display","inline-block")
     number = Number $(e.target).attr("number")
     idFind = "#" + $(e.target).attr("idFind")
-    heightHover = 11 + number*32
+
+    if jQuery.browser.mozilla
+      heightHover = 10 + number*33
+    else
+      heightHover = 11 + number*32
     $(".li-hover").removeClass("li-hover")
     $(idFind).addClass("li-hover")
     $("#zoom-clases-species").stop(true,true)

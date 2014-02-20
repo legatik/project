@@ -1,3 +1,15 @@
+btn-background-active()
+  background:#C0943B
+
+btn-background()
+    background rgb(209,176,97)
+    background -moz-linear-gradient(top, rgb(209,176,97) 7%, rgb(209,176,97) 21%, rgb(209,176,97) 27%, rgb(192,148,59) 71%, rgb(192,148,59) 99%)
+    background -webkit-gradient(linear, left top, left bottom, color-stop(7%,rgb(209,176,97)), color-stop(21%,rgb(209,176,97)), color-stop(27%,rgb(209,176,97)), color-stop(71%,rgb(192,148,59)), color-stop(99%,rgb(192,148,59)))
+    background -webkit-linear-gradient(top, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
+    background -o-linear-gradient(top, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
+    background -ms-linear-gradient(top, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
+    background linear-gradient(to bottom, rgb(209,176,97) 7%,rgb(209,176,97) 21%,rgb(209,176,97) 27%,rgb(192,148,59) 71%,rgb(192,148,59) 99%)
+
 #center-column
   width:737px
   #start-search-btn
@@ -14,13 +26,11 @@
     color: #fff;
     text-align: center;
     text-decoration: none;
-    background-image: url("../img/images/menu-item.jpg");
-    background-repeat: repeat;
+    btn-background()
     margin-top: 6px;
     margin-left: 5px;
     &:hover
-      background-image: url(../img/images/menu-item-hover.jpg) !important
-      background-repeat: repeat;
+      btn-background-active()
       border-radius: 20px  
   h2
     margin-top: 14px;
