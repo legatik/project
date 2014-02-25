@@ -31,12 +31,15 @@ module.exports  = (keyKitchen,keySpecies, jastName, inverse) ->
       italy:
         name: "Итальянская"
         key: "italy"
-      georgia:
-        name : "Грузинская"
-        key  : "georgia"
       franch :
         name: "Французкая"
         key : "franch"
+      arab :
+        name : "Арабская"
+        key  : "arab"
+#      georgia:
+#        name : "Грузинская"
+#        key  : "georgia"
   #    china :"Китайская"
   #    armenia : "Армянская"
   #    ukrainian : "Украинская"

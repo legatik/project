@@ -102,6 +102,7 @@ $(document).ready () ->
         if !ings
           $(key).hide()
           $(key).css("opacity",0)
+          $(key+"-fon").css("opacity",0)
         $($(e.target).parent()).remove()
         keyOl = key + "-ol"
         keyCont = key + "-cont"

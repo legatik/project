@@ -7,6 +7,12 @@ fs = require 'fs-extra'
 exports.boot = (app) ->
 
 
+
+#Dish.find {title:"Тирамису"}, (err, dishArr) ->
+#  dishArr[0].pic_equal = "2,4,3"
+#  dishArr[0].save () ->
+#    console.log "dishArr[0]",dishArr[0]
+  
 #Dish.find {}, (err, dishArr) ->
 #  testArr = []
 #  dishArr.forEach (dish) ->

@@ -23,6 +23,7 @@ $(document).ready () ->
       @mitchingK["Итальянская"] = "italy"
       @mitchingK["Грузинская"] = "georgia"
       @mitchingK["Французкая"] = "franch"
+      @mitchingK["Арабская"] = "arab"
       @model = @options.model
       @openBook = false
       @titleBolshe = 0
@@ -176,18 +177,6 @@ $(document).ready () ->
         recipeWithPic[eqFind].pic = index.toString()
       @model.recipeWithPic = recipeWithPic
       
-
-#    afterRender(): ->
-#      cont = Number(($("#title-dish", @el).css("width")).replace("px",""))
-#      console.log "cont",cont
-#      if cont > 25
-#        text = $("#title-dish", @el).text()
-#        console.log "text",text
-#        $("#title-dish", @el).text("")
-#        $titleText = "<div id='#title-text'/>"
-#        $($titleText).text(text)
-#        $("#title-dish").append($titleText)
-        
 
     render: ->
       $ = jQuery
