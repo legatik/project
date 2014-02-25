@@ -35,6 +35,7 @@ module.exports  = (keyKitchen,keySpecies, jastName, inverse) ->
         name: "Французкая"
         key : "franch"
       arab :
+        idImg:"arab-left"
         name : "Арабская"
         key  : "arab"
 #      georgia:

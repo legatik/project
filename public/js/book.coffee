@@ -117,7 +117,7 @@ $(document).ready () ->
     hoverFlagOff: () ->
       $flagCont = $(".flag-img", @el).parent()
       $($flagCont).animate
-        top:159
+        top:155
       , 300
       $(".flag-img", @el).animate
         width: 45
@@ -129,7 +129,7 @@ $(document).ready () ->
         
         $flagCont = $(".flag-img", @el).parent()
         $($flagCont).animate
-          top:149
+          top:145
         , 300, () =>
           @progressFlag = false
         $(".flag-img", @el).animate
