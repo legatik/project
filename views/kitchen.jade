@@ -8,7 +8,8 @@ block content
   include navigation
   include left-column
   include right-column
-
+  
+  input#hidden-data(type="hidden", key="#{key}")
   #center-column
     h2 #{temp}
     #first_course
