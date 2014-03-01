@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://adw0rd.ru/sitemap.xml
+Sitemap: http://vps-1026617.srv.pa.infobox.ru/sitemap.xml

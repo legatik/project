@@ -92,7 +92,6 @@ module.exports  = (keyKitchen,keySpecies, jastName, inverse) ->
     kitcchenSent = ""
     speciesSent = ""
     _.each objk, (data) ->
-      console.log 'data',data, keyKitchen
       if data.name == keyKitchen then kitcchenSent = data.key
     _.each objs, (data) ->
       if data.name == keySpecies then speciesSent = data.key
