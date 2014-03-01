@@ -32,7 +32,7 @@ exports.boot = (app) ->
       dishes : []
     }
     data = JSON.stringify(data)
-    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data}
+    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data}
 
 #  app.get '/category', (req, res) ->
 #    {keyKitchen, objk, objs} = app.mitching()

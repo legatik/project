@@ -17,6 +17,12 @@
 		#header
 			div
 				ul
+					if (loc=='home')
+						li
+							a.active-menu-item(href="/") На главную
+					else
+						li
+							a(href="/") На главную
 					if (loc=='searchIng')
 						li
 							a.active-menu-item(href="/search/ing") Поиск по ингридиентам
@@ -36,12 +42,6 @@
 					else
 						li
 							a(href="/addDish") Добавить рецепт
-					if (loc=='newsCookery')
-						li
-							a.active-menu-item(href="/news") Кулинарные новости
-					else
-						li
-							a(href="/news") Кулинарные новости
 			#login-reg-blok(style="position:relative")
 				form#reg-send.form-reg-func(
 					action="/register",

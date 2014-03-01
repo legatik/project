@@ -50,7 +50,7 @@ exports.boot = (app) ->
     .sort({rating: -1})
     .exec (err, dishPop) ->
       {keyKitchen, objk, objs} = app.mitching()
-      res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop}
+      res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop, loc:"home"}
 
   app.get '/addDish',  (req, res) ->
     {keyKitchen, objk, objs} = app.mitching()
