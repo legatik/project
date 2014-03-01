@@ -9,6 +9,19 @@ $(document).ready () ->
   jQuery.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
   
   
+  window.heightColumn = (page) ->
+    if page == "home"
+      $("#left-column").css("height", 846)
+      $("#right-column").css("height", 846)
+    if page == "search"
+      heightCont = $(".container-my").css("height")
+      heightCont = Number(heightCont.replace("px","")) - 100
+      $("#left-column").css("height", heightCont)
+      $("#right-column").css("height", heightCont)
+  
+  heightColumn("search")
+  
+  
   if jQuery.browser.mozilla
     $("#right-column").find(".column-header").addClass("ffx-right-header")
   
@@ -204,3 +217,7 @@ $(document).ready () ->
 
   $("#nav-dish-input").keypress (e) ->
     $("#search-global-btn").click() if e.keyCode == 13
+
+
+
+

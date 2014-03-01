@@ -9,4 +9,4 @@ $(document).ready () ->
       data.forEach (model) ->
         dishBookView = new window.DishView({model:model})
         $("#dish-date-cont").append(dishBookView.render().el)
-
+      heightColumn("home")
