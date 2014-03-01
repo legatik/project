@@ -50,5 +50,6 @@ exports.boot = (app) ->
   app.get '/type/:species', (req, res) ->
     keySpecies = req.params.species
     {keyKitchen, objk, objs} = app.mitching(keyKitchen, null)
-    res.render 'species', {title: "tmp", user: req.user, loc:'searchIng', kitchens: objk, species:objs , key : keyKitchen, keySpecies : keySpecies}
+    rusName = objs[keySpecies].name
+    res.render 'species', {title: "Мировая кухня - " + rusName, user: req.user, loc:'searchIng', kitchens: objk, species:objs , key : keyKitchen, keySpecies : keySpecies, description: "" +rusName+". Вкуснейшие блюда! Рецепты любой сложности с картинками пошагового приготовления", metaKey: rusName+ ", кулинарные, приготовить, с фото, картинками"}
 

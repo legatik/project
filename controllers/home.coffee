@@ -13,7 +13,7 @@ exports.boot = (app) ->
     .sort({rating: -1})
     .exec (err, dishPop) ->
       {keyKitchen, objk, objs} = app.mitching()
-      res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop, metaKey:"мировая кухня, зарубежная кухня, деликатесы, рецепты, поиск по ингредиентам, кулинарные, кулинария", description: "Все вкуснейшие рецепты мира любой сложности с картинками на одном сайте!"}
+      res.render 'index', {title: 'Мировая кухня - рецепты с картинками', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop, metaKey:"мировая кухня, зарубежная кухня, деликатесы, рецепты, кулинарные, кулинария, с картинками", description: "Все вкуснейшие рецепты мира любой сложности с картинками на одном сайте!"}
 
   app.post '/send_email_recept',  (req, res) ->
     attachments = []
@@ -55,7 +55,7 @@ exports.boot = (app) ->
 
   app.get '/addDish',  (req, res) ->
     {keyKitchen, objk, objs} = app.mitching()
-    res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs, metaKey:"кухня народов мира, добавить рецепт", description: "Добавьте свой рецеп на сайт мировой кухни!"}
+    res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs, metaKey:"кухня народов мира, добавить рецепт, блюдо, с фото", description: "Добавьте свой рецеп на сайт мировой кухни!"}
 
   app.get '/random_dish',  (req, res) ->
     console.log "HEARE"
