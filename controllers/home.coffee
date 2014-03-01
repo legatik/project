@@ -6,6 +6,15 @@ nodemailer = require 'nodemailer'
 
 exports.boot = (app) ->
 
+  app.get '/', (req, res) ->
+    console.log req.user
+    Dish.find({})
+    .limit(10)
+    .sort({rating: -1})
+    .exec (err, dishPop) ->
+      {keyKitchen, objk, objs} = app.mitching()
+      res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop, metaKey:"мировая кухня, зарубежная кухня, деликатесы, рецепты, поиск по ингредиентам, кулинарные, кулинария", description: "Все вкуснейшие рецепты мира любой сложности с картинками на одном сайте!"}
+
   app.post '/send_email_recept',  (req, res) ->
     attachments = []
     _.each req.files, (data,key)->
@@ -43,18 +52,10 @@ exports.boot = (app) ->
     .exec (er, dishDate) ->
       res.send dishDate
 
-  app.get '/', (req, res) ->
-    console.log req.user
-    Dish.find({})
-    .limit(10)
-    .sort({rating: -1})
-    .exec (err, dishPop) ->
-      {keyKitchen, objk, objs} = app.mitching()
-      res.render 'index', {title: 'Мировая кухня', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, popDish:dishPop, loc:"home"}
 
   app.get '/addDish',  (req, res) ->
     {keyKitchen, objk, objs} = app.mitching()
-    res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs}
+    res.render 'add_dish', {title: 'Мировая кухня - Добавить блюдо', user: req.user, loc:'addDish', kitchens: objk, species:objs, metaKey:"кухня народов мира, добавить рецепт", description: "Добавьте свой рецеп на сайт мировой кухни!"}
 
   app.get '/random_dish',  (req, res) ->
     console.log "HEARE"

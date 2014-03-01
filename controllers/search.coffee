@@ -20,11 +20,8 @@ exports.boot = (app) ->
         searchDish : searchDish
       }
       data = JSON.stringify(data)
-      res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data}
+      res.render 'search_ing', {title: 'Мировая кухня | Поиск рецепта', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data, metaKey:"суп, супы, итальянская кухня, арабская кухня, японская кухня", description: "Поиск рецептов с картинками шагов приготовления по ингридиентам"}
       
-
-    
-
   app.get '/ing', (req, res) ->
     {keyKitchen, objk, objs} = app.mitching()
     data = {
@@ -32,11 +29,7 @@ exports.boot = (app) ->
       dishes : []
     }
     data = JSON.stringify(data)
-    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data}
-
-#  app.get '/category', (req, res) ->
-#    {keyKitchen, objk, objs} = app.mitching()
-#    res.render 'search_category', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchCategory', key : keyKitchen, kitchens: objk, species:objs}
+    res.render 'search_ing', {title: 'Мировая кухня | Поиск по инргридиентам', user: req.user, loc:'searchIng', key : keyKitchen, kitchens: objk, species:objs, serchTitle:data, metaKey:"мировая кухня, поиск по ингредиентам, салаты, рецепты кулинарии, французская кухня", description: "Поиск рецептов с картинками шагов приготовления по ингридиентам"}
 
 
   app.get '/title_complete_load',  (req, res) ->
@@ -49,9 +42,7 @@ exports.boot = (app) ->
 
 
   app.get '/title_complete',  (req, res) ->
-#    console.log('HELLOOOO TIIIITTTLLLEEEE', req.query)
     find = new RegExp(req.query.title, "i")
-  #	  find = '/'+req.query.title+'/'
     dish = Dish.find {title: find}, (err, dishes) ->
       dishes = dishes.map (dish) ->
         dish.title

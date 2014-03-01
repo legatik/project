@@ -10,7 +10,7 @@ exports.boot = (app) ->
     {keyKitchen, objk, objs} = app.mitching(keyKitchen)
     rusName = objk[keyKitchen].name
     title = "Мировая кухня | " + rusName + " кухня"
-    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: objk, temp: rusName + " кухня", key : keyKitchen, species:objs}
+    res.render 'kitchen', {title: title, user: req.user, loc:'searchIng', kitchens: objk, temp: rusName + " кухня", key : keyKitchen, species:objs, metaKey:""+rusName.toLowerCase() + ", "+rusName.toLowerCase()+" кухня, зарубежная, рецепты, вкусная, простая, приготовление", description: ""+rusName + " кухня. Вкуснейшие рецепты любой сложности с картинками шагов приготовления!"}
 
   app.get '/:kitchen/:species/:dish/:random', (req, res) ->
     idDish = req.params.dish
@@ -25,7 +25,8 @@ exports.boot = (app) ->
         keyKitchen = req.params.kitchen
         keySpecies = req.params.species
         {keyKitchen, objk, objs} = app.mitching(keyKitchen, keySpecies)
-        title = "Мировая кухня | "+ dish.title_key
+        rusName = objk[keyKitchen].name
+        title = dish.title_key
         stLike = 'no-check'
         if req.user
           User.findById(req.user["_id"])
@@ -34,8 +35,6 @@ exports.boot = (app) ->
             user.dishRaiting.forEach (raiting)->
               console.log "raiting",raiting
               if raiting.dish.toString() == idDish.toString() then stLike = raiting.st
-            console.log "st", stLike
-            res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike}
+            res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike, description: dish.description, metaKey:""+rusName.toLowerCase()+" кухня, " + dish.key}
         else
-          console.log "RRRRRRRRRRRRRR"
-          res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike}
+          res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike, description: dish.description, metaKey:""+rusName.toLowerCase()+" кухня, " + dish.key}
