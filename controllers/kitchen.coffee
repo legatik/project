@@ -35,6 +35,6 @@ exports.boot = (app) ->
             user.dishRaiting.forEach (raiting)->
               console.log "raiting",raiting
               if raiting.dish.toString() == idDish.toString() then stLike = raiting.st
-            res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike, description: dish.description, metaKey:""+rusName.toLowerCase()+" кухня, " + dish.key}
+            res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike, description: dish.description, metaKey: dish.key + ", " + rusName.toLowerCase()+ " кухня"}
         else
-          res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike, description: dish.description, metaKey:""+rusName.toLowerCase()+" кухня, " + dish.key}
+          res.render 'dish-page', {title: title, user: req.user, kitchens: objk, species:objs , key : keyKitchen, dish:dish, loc: loc, stLike:stLike, description: dish.description, metaKey: dish.key + ", " + rusName.toLowerCase()+ " кухня"}
