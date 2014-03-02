@@ -20,7 +20,7 @@ block content
 
       if(user)
         tr
-          td Введите ваше имя
+          td Введите ваше имя*
           td
             input#Fname(type="text", value="#{user.firstName}", disabled="disabled")
         tr
@@ -33,7 +33,7 @@ block content
             input#email(type="text", value="#{user.email}", disabled="disabled")
       else
         tr
-          td Введите ваше имя
+          td Введите ваше имя*
           td
             input#Fname(type="text")
         tr
@@ -66,6 +66,7 @@ block content
           img#del-step-0.del.del-step(src="/img/close.png")
 
     a#sendMail Отослать рецепт
+    span#send-alert Ваш рецепт был успешно добавлен!
     br
     br
     div *рецепт проверется администратором, и появится на сайте в течение 24 часов

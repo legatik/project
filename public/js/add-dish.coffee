@@ -57,10 +57,6 @@ $(document).ready () ->
     $("#del-img-title").hide()
 
 
-#  $("#pic-title").change (e) =>
-#    this.titlePic = e.target.files[0]
-#    console.log "this.titlePic",this.titlePic
-
   $("#sendMail").click () =>
     sendObj = {
       firstName : $("#Fname").val()
@@ -69,6 +65,16 @@ $(document).ready () ->
       receptTxt : $("#recept").val()
       typeImg   : typePicArr.toString()
     }
+    
+    message = false
+    
+    message = "Укажите пожалуйста ваш рецепт" if !sendObj.receptTxt
+    message = "Укажите пожалуйста ваше имя" if !sendObj.firstName
+    
+    if message
+      alert message
+      return
+    
     stepArr = []
     $(".step-inp").each (index, one) ->
       if one.files.length != 0
@@ -82,9 +88,6 @@ $(document).ready () ->
     stepArr.forEach (one, index) ->
       newForm.append("step"+index, one)
 
-
-
-
     $.ajax
       url: "/send_email_recept"
       data: newForm
@@ -93,18 +96,22 @@ $(document).ready () ->
       processData: false
       type: "POST"
       success: (status) ->
-        $("#Fname").val("")
-        $("#Lname").val("")
-        $("#email").val("")
-        $("#recept").val("")
-        $("#del-img-title").click()
-        typePicArr = []
-        arrDelStep = $(".del-step")
-        i = 0
-        while i < arrDelStep.length
-          $item = arrDelStep[i]
-          display = $($item).css("display")
-          $($item).click() if display isnt "none"
-          i++
+        
+    clearFeld()
 
-
+  clearFeld = () ->
+    $("#Fname").val("")
+    $("#Lname").val("")
+    $("#email").val("")
+    $("#recept").val("")
+    $("#del-img-title").click()
+    typePicArr = []
+    arrDelStep = $(".del-step")
+    i = 0
+    while i < arrDelStep.length
+      $item = arrDelStep[i]
+      display = $($item).css("display")
+      $($item).click() if display isnt "none"
+      i++
+    $("#send-alert").hide()
+    $("#send-alert").fadeIn("slow")
