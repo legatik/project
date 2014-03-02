@@ -1,9 +1,11 @@
 $(document).ready () ->
 #  this.titlePic
 #  this.stepArr = []
+  typePicArr = []
   readURLTitle = (input) =>
     if input.files and input.files[0]
       if input.files[0].type.indexOf("image") != -1
+        typePicArr.push input.files[0].type
         reader = new FileReader()
         reader.readAsDataURL input.files[0]
         reader.onload = (e) ->
@@ -16,6 +18,7 @@ $(document).ready () ->
     template = _.template(jQuery('#stepTemplate').html())
     if input.files and input.files[0]
       if input.files[0].type.indexOf("image") != -1
+        typePicArr.push input.files[0].type
         reader = new FileReader()
         reader.readAsDataURL input.files[0]
         reader.onload = (e) =>
@@ -64,6 +67,7 @@ $(document).ready () ->
       lastName  : $("#Lname").val()
       email     : $("#email").val()
       receptTxt : $("#recept").val()
+      typeImg   : typePicArr.toString()
     }
     stepArr = []
     $(".step-inp").each (index, one) ->
@@ -72,16 +76,14 @@ $(document).ready () ->
 
     fileTitle = ($("#pic-title"))[0].files[0]
 
-
-    console.log "fileTitle",fileTitle
-    console.log "stepArr",stepArr
-    console.log "sendObj",sendObj
-
     newForm = new FormData()
     newForm.append("info",JSON.stringify sendObj)
     newForm.append("fileTitle",fileTitle)
     stepArr.forEach (one, index) ->
       newForm.append("step"+index, one)
+
+
+
 
     $.ajax
       url: "/send_email_recept"
@@ -91,5 +93,18 @@ $(document).ready () ->
       processData: false
       type: "POST"
       success: (status) ->
-        console.log "SEND"
+        $("#Fname").val("")
+        $("#Lname").val("")
+        $("#email").val("")
+        $("#recept").val("")
+        $("#del-img-title").click()
+        typePicArr = []
+        arrDelStep = $(".del-step")
+        i = 0
+        while i < arrDelStep.length
+          $item = arrDelStep[i]
+          display = $($item).css("display")
+          $($item).click() if display isnt "none"
+          i++
+
 

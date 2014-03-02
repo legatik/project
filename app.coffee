@@ -19,6 +19,7 @@ app = express()
 
 {User,Product, Dish, Comment, Raiting} = db.models
 
+console.log "process.env.PORT", process.env.PORT
 
 app.configure () ->
 	app.set "port", process.env.PORT or 3000

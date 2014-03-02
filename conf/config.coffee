@@ -1,4 +1,4 @@
-production = process.env.NODE_ENV is "production"
+production = process.env.NODE_ENV is "prod"
 development = process.env.NODE_ENV is "development"
 
 	# production configuration

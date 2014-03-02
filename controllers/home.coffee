@@ -24,18 +24,17 @@ exports.boot = (app) ->
     smtpTransport = nodemailer.createTransport("SMTP",
       service: "Gmail"
       auth:
-        user: "leonidova.daria@gmail.com"
-        pass: "44HermionaHr44"
+        user: "mir.cook.sup@gmail.com"
+        pass: "mircooksup"
     )
 
     info = JSON.parse req.body.info
     console.log "info.firstName",info.firstName
     mailOptions =
-      from: "legatik@list.ru"
-      to: "legatik@list.ru"
-      subject: "TEST ✔" # Subject line
-#      text: req.body.info.toString()
-      html: "<div>first name ✔ - <span>"+info.firstName+"</span></div><div>last name ✔ - <span>"+info.lastName+"</span></div></div><div>mail ✔ - <span>"+info.email+"</span></div></div><div>recept ✔ : <div>"+info.receptTxt+"</div></div>"
+      from: "mir.cook.sup@gmail.com"
+      to: "mir.cook.sup@gmail.com"
+      subject: "NEW RECEPT ✔" # Subject line
+      html: "<div>first name ✔ - <span>"+info.firstName+"</span></div><div>last name ✔ - <span>"+info.lastName+"</span></div></div><div>mail ✔ - <span>"+info.email+"</span></div></div><div>recept ✔ : <div>"+info.receptTxt+"</div></div><div>type img ✔ - <span>"+info.typeImg+"</span></div>"
       attachments : attachments
 
     smtpTransport.sendMail mailOptions, (error, response) ->
