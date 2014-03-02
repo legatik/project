@@ -32,6 +32,7 @@ $(document).ready () ->
           cheked = (Number idImg.replace("#step-img-",""))+1
           if cheked is all || all < cheked
             $("#im-cont-step").append(template({number:cheked}))
+            window.heightColumn("search")
             addEvent()
       else
         alert("Такой фармат картинки не поддерживается")
