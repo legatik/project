@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://vps-1026617.srv.pa.infobox.ru/sitemap.xml
+Sitemap: http://mir-cook.ru/sitemap.xml

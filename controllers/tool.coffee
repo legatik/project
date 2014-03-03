@@ -7,12 +7,12 @@ fs = require 'fs-extra'
 exports.boot = (app) ->
 
   app.get '/createSitemap', (req, res) ->
-    hostUrl = "http://vps-1026617.srv.pa.infobox.ru/"
-    siteMap = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"><url> <loc>http://vps-1026617.srv.pa.infobox.ru/</loc></url><url><loc>http://vps-1026617.srv.pa.infobox.ru/search/ing</loc></url><url> <loc>http://vps-1026617.srv.pa.infobox.ru/addDish</loc></url><url><loc>http://vps-1026617.srv.pa.infobox.ru/kitchen/russian</loc></url><url>  <loc>http://vps-1026617.srv.pa.infobox.ru/kitchen/italy</loc></url><url><loc>http://vps-1026617.srv.pa.infobox.ru/kitchen/franch</loc></url><url><loc>http://vps-1026617.srv.pa.infobox.ru/kitchen/arab</loc></url><url><loc>http://vps-1026617.srv.pa.infobox.ru/species/type/first_course</loc></url><url> <loc>http://vps-1026617.srv.pa.infobox.ru/species/type/main_dishes</loc></url><url><loc>http://vps-1026617.srv.pa.infobox.ru/species/type/snack</loc></url><url> <loc>http://vps-1026617.srv.pa.infobox.ru/species/type/salad</loc></url><url> <loc>http://vps-1026617.srv.pa.infobox.ru/species/type/dessert</loc></url><url><loc>http://vps-1026617.srv.pa.infobox.ru/species/type/bake</loc></url><url> <loc>http://vps-1026617.srv.pa.infobox.ru/species/type/drinks</loc></url>'
+    hostUrl = "http://mir-cook.ru/"
+    siteMap = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"><url>  <loc>http://mir-cook.ru/</loc></url><url>  <loc>http://mir-cook.ru/search/ing</loc></url><url>  <loc>http://mir-cook.ru/addDish</loc></url><url>  <loc>http://mir-cook.ru/kitchen/russian</loc></url><url><loc>http://mir-cook.ru/kitchen/italy</loc></url><url><loc>http://mir-cook.ru/kitchen/franch</loc></url><url><loc>http://mir-cook.ru/kitchen/arab</loc></url><url><loc>http://mir-cook.ru/species/type/first_course</loc></url><url>  <loc>http://mir-cook.ru/species/type/main_dishes</loc></url><url><loc>http://mir-cook.ru/species/type/snack</loc></url><url><loc>http://mir-cook.ru/species/type/salad</loc></url><url><loc>http://mir-cook.ru/species/type/dessert</loc></url><url><loc>http://mir-cook.ru/species/type/bake</loc></url><url><loc>http://mir-cook.ru/species/type/drinks</loc></url>'
     Dish.find {}, (err, dishes) ->
       dishes.forEach (dish, i) ->
         {kitcchenSent, speciesSent} = app.mitching(dish.kitchen, dish.species, null, true)
-        url = "<url>" + hostUrl + "kitchen/"+kitcchenSent+"/"+speciesSent+"/"+dish['_id']+"/false" + "</url>"
+        url = "<url><loc>" + hostUrl + "kitchen/"+kitcchenSent+"/"+speciesSent+"/"+dish['_id']+"/false" + "</loc></url>"
         siteMap = siteMap + url
       siteMap = siteMap + '</urlset>'
       fs.writeFile "public/sitemap-new.xml", siteMap, (err) ->
