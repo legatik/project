@@ -1,0 +1,18 @@
+extends layout
+
+
+block content
+  include navigation
+  include left-column
+  include right-column
+  != css('style-home')
+
+
+  #center-column
+    h2 Карта сайта мировой кухни
+    div#hello-txt Здесь представлены все рецепты которые имеются на нашем сайте
+    - each item in dishes
+      div 
+        a(href!="#{item.url}", style="color:#8c2b01") #{item.title}
+
+

@@ -68,3 +68,15 @@ exports.boot = (app) ->
         link = '/kitchen/'+kitcchenSent+'/'+speciesSent+'/'+id+"/true"
         res.redirect link
 
+  app.get '/site_map',  (req, res) ->
+    Dish.find {}, (err, dishes) ->
+      sendObj = []
+      dishes.forEach (item) ->
+        {keyKitchen, kitcchenSent, speciesSent} = app.mitching(item.kitchen, item.species, false, true)
+        title = item.title
+        url = "/kitchen/"+kitcchenSent+"/"+speciesSent+"/"+item['_id']+"/false"
+        sendObj.push({title:title,url:url})
+      {keyKitchen, objk, objs} = app.mitching()
+      console.log "sendObj", sendObj
+      res.render 'sitemap', {title: 'Мировая кухня - карта сайта', user: req.user, loc:'home', kitchens: objk, species:objs, key:keyKitchen, dishes:sendObj, metaKey:"кулинарный путиводитель", description: "Путиводитель по вкуснейшем мировым рецетам!"}
+      
