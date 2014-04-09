@@ -1,31 +1,44 @@
 doctype 5
 html
-	head
-		meta(http-equiv="X-UA-Compatible")
-		meta(name="viewport",content="width=device-width")
-		meta(name="description", content=description)
-		meta(name="keywords", content=metaKey)
-		meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
-		meta(name="yandex-verification", content="52a89e92ed971130")
-		meta(name="google-site-verification", content="YME6VsVXxPKSRHJTGOKgeUCk-Bdme1PT1b7b7Aqf4WU")
-		meta(name='wmail-verification', content='eb861a5af9cd4f76')
-		link(rel="shortcut icon", href="/img/apple.ico", type="image/x-icon")
-		title= title
-		!= css('style-layout')
-		!= css('lib/bootstrap.min')
-		!= css('lib/jquery-ui')
-		!= js('libs/jquery-2.0.3.min')
-		!= js('libs/bootstrap.min')
-		!= js('libs/parsley')
-		!= js('libs/underscore-min')
-		!= js("libs/backbone-min")
-		!= js("libs/jquery-ui")
-	body
-		include book-dish
-		#global-header
-		.container-my
-			block content
-		
-		include footer
-		
-				
+  head
+    meta(http-equiv="X-UA-Compatible")
+    meta(name="viewport",content="width=device-width")
+    meta(name="description", content=description)
+    meta(name="keywords", content=metaKey)
+    meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+    meta(name="yandex-verification", content="52a89e92ed971130")
+    meta(name="google-site-verification", content="YME6VsVXxPKSRHJTGOKgeUCk-Bdme1PT1b7b7Aqf4WU")
+    meta(name='wmail-verification', content='eb861a5af9cd4f76')
+    link(rel="shortcut icon", href="/img/apple.ico", type="image/x-icon")
+    title= title
+    != css('style-layout')
+    != css('lib/bootstrap.min')
+    != css('lib/jquery-ui')
+    != js('libs/jquery-2.0.3.min')
+    != js('libs/bootstrap.min')
+    != js('libs/parsley')
+    != js('libs/underscore-min')
+    != js("libs/backbone-min")
+    != js("libs/jquery-ui")
+  body
+    script(type='text/javascript')
+      //<![CDATA[
+      var _tmr = _tmr || [];
+      _tmr.push({id: "2499575", type: "pageView", start: (new Date()).getTime()});
+      (function (d, w) {
+      var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+      ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+      var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+      if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+      })(document, window);
+      //]]>
+    noscript
+      div(style='position: absolute; left: -10000px;')
+        img(src='//top-fwz1.mail.ru/counter?id=2499575;js=na', style='border: 0;', height='1', width='1', alt='Рейтинг@Mail.ru')
+    include book-dish
+    #global-header
+    .container-my
+      block content
+
+    include footer
+
